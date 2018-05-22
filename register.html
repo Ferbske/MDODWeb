@@ -1,28 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>MDOD Registratie</title>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>MDOD Registratie</title>
 
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!-- Bootstrap -->
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <h1>MDOD Registratie</h1>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-  </body>
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="css/register.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="container">
+            <form class="form-register">
+                <h2>MDOD Registratie</h2>
+                <h4>Voornaam: </h4>
+                <label for="inputVoornaam" class="sr-only">Voornaam</label>
+                <input type="naam" id="inputVoornaam" class="form-control" placeholder="Voornaam" required autofocus>
+                <h4>Tussenvoegsel: </h4>
+                <label for="inputTussenvoegsel" class="sr-only">Tussenvoegsel</label>
+                <input type="tussenvoegsel" id="inputTussenvoegsel" class="form-control" placeholder="Tussenvoegsel" required autofocus>
+                <h4>Achternaam: </h4>
+                <label for="inputAchternaam" class="sr-only">Achternaam</label>
+                <input type="achternaam" id="inputAchternaam" class="form-control" placeholder="Achternaam" required autofocus>
+                <h4>Email: </h4>
+                <label for="inputEmailRegister" class="sr-only">Email</label>
+                <input type="email" id="inputEmailRegister" class="form-control" placeholder="Email" required autofocus>
+                <h4>Geboortedatum: </h4>
+                <label for="inputGeboortedatum" class="sr-only">Geboorte Datum</label>
+                <input type="geboortedatum" id="inputGeboortedatum" class="form-control" placeholder="Geboortedatum" required autofocus>
+                <h4>Wachtwoord: </h4>
+                <label for="inputWachtwoordRegister" class="sr-only">Wachtwoord</label>
+                <input type="wachtwoord" id="inputWachtwoordRegister" class="form-control" placeholder="Wachtwoord" required autofocus>
+            </form>
+        </div> <!-- /container -->
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+    </body>
 </html>
