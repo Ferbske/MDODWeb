@@ -15,7 +15,8 @@ body {
   }
 
   .form-signin-heading {
-      text-align: center;
+    text-align: center;
+    color: #4e555b;
   }
   .form-signin .checkbox {
     font-weight: normal;
