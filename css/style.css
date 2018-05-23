@@ -1,9 +1,17 @@
 body {
     font-family: proxima-nova, Arial;
     background-color: #eee;
+    width: 100%;
+    margin: 0;
+    padding: 0;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
 }
 
 .img_logo {
@@ -17,7 +25,12 @@ p, a, a:hover, a:active {
     line-height: 18px;
 }
 
-h3 {
+h2  {
+    color: #eeeeee;
+    margin: 0;
+}
+
+h3  {
     color: #ea8516 !important;
     font-size: 21px;
     font-weight: 600;
