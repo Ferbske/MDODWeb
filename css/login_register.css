@@ -1,0 +1,26 @@
+form {
+    max-width: 330px;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+
+form h3 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+form .form-control {
+    position: relative;
+    height: auto;
+
+    padding: 10px;
+}
+
+form input {
+    margin-bottom: 10px;
+}
+
+.link-to-registration {
+    text-align: center;
+    padding-bottom: 10px;
+}
