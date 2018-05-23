@@ -1,0 +1,26 @@
+body {
+    font-family: proxima-nova, Arial;
+}
+
+p, a {
+    font-size: 14px;
+    font-weight: 400;
+    color: #686759;
+    line-height: 18px;
+}
+
+a:hover {
+    color: #686759;
+}
+
+h1 {
+
+}
+
+h2 {
+
+}
+
+h3 {
+    color: #ea8516;
+}
