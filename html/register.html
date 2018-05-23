@@ -23,7 +23,6 @@
     </head>
     <body>
         <div class="container">
-            <div w3-include-html="header.html"></div>
             <form class="form-register">
                 <h2 class="register-heading">MDOD Registratie</h2>
                 <h4>Voornaam: </h4>
@@ -46,12 +45,10 @@
                 <input type="password" id="inputWachtwoordRegister" class="form-control" placeholder="Wachtwoord" required autofocus>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
             </form>
-
-            <div w3-include-html="footer.html"></div>
         </div> <!-- /container -->
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="../script/includehtml.js"></script>
-        <script>includeHTML();</script>
+        <script>include();</script>
     </body>
 </html>
