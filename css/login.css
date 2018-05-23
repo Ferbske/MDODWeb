@@ -10,10 +10,6 @@ body {
     margin: 0 auto;
   }
 
-  .form-signin .login_logo {
-    width: 100%;
-  }
-
   .form-signin .form-signin-heading,
   .form-signin .checkbox {
     margin-bottom: 10px;
@@ -51,7 +47,4 @@ body {
       padding: 2%;
   }
 
-  .btn, .btn:hover, .btn:active {
-    background-color: #ea8516;
-  }
-  
+
