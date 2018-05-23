@@ -2,7 +2,8 @@
      "firstname": "VOORNAAM",
      "infix": "TUSSENVOEGSEL",
      "lastname": "ACHTERNAAM",
-     "dateofbirth": "DD-MM-JJJJ",
+     "phonenumber": "NUMMER",
+     "location": "LOCATIE",
      "email": "EMAIL",
      "password": "PASSWORD"
- }
+}
