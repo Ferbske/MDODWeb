@@ -1,7 +1,9 @@
 .header_body {
     height: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     width: 100%;
-    background-color: #0a0a0a;
+    background-color: #43363C;
 }
 
 .header_inner {
@@ -10,16 +12,40 @@
     margin: 0 auto;
 }
 
-.header_inner h2 {
-    position: absolute;
-    left: 10%;
-    top: 11px;
+.header_menu {
+    padding: 0;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
 }
 
-.header_menu {
+.img_logo {
+    height: inherit;
+    width: auto;
+}
 
+.header_menu li:first-child {
+    width: auto;
+    margin-right: 25px;
 }
 
 .header_menu li {
     list-style: none;
+    height: 100%;
+    color: white;
+    float: left;
+    width: 20%;
 }
+
+.header_menu a {
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    line-height: inherit;
+    text-decoration: none;
+}
+
+.header_menu h2 {
+    padding-top: 11px;
+}
+
