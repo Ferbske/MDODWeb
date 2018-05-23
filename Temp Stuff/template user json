@@ -1,0 +1,8 @@
+{
+     "firstname": "VOORNAAM",
+     "infix": "TUSSENVOEGSEL",
+     "lastname": "ACHTERNAAM",
+     "dateofbirth": "DD-MM-JJJJ",
+     "email": "EMAIL",
+     "password": "PASSWORD"
+ }
