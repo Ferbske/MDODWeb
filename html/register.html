@@ -34,16 +34,16 @@
                 <input type="text" id="inputTussenvoegsel" class="form-control" placeholder="Tussenvoegsel" required autofocus>
                 <h4>Achternaam: </h4>
                 <label for="inputAchternaam" class="sr-only">Achternaam</label>
-                <input type="text" id="inputAchternaam" class="form-control" placeholder="Achternaam" required autofocus>
+                <input type="text" id="inputAchternaam" class="form-control" placeholder="Achternaam">
                 <h4>Email: </h4>
                 <label for="inputEmailRegister" class="sr-only">Email</label>
                 <input type="email" id="inputEmailRegister" class="form-control" placeholder="Email" required autofocus>
                 <h4>Geboortedatum: </h4>
                 <label for="inputGeboortedatum" class="sr-only">Geboorte Datum</label>
-                <input type="date" id="inputGeboortedatum" class="form-control" placeholder="Geboortedatum" required autofocus min="2000-01-01">
+                <input type="date" id="inputGeboortedatum" class="form-control" placeholder="Geboortedatum" required autofocus min="1950-01-01">
                 <h4>Wachtwoord: </h4>
                 <label for="inputWachtwoordRegister" class="sr-only">Wachtwoord</label>
-                <input type="password" id="inputWachtwoordRegister" class="form-control" placeholder="Wachtwoord" required autofocus>
+                <input type="password" id="inputWachtwoordRegister" class="form-control" placeholder="Wachtwoord" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
             </form>
 
