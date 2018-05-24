@@ -19,13 +19,18 @@
     overflow: hidden;
 }
 
+#header_logo a {
+    height: inherit;
+    width: auto!important;
+}
+
 .img_logo {
     height: inherit;
-    width: auto;
+    width: auto!important;
 }
 
 .header_menu li:first-child {
-    width: auto;
+    width: auto!important;
     margin-right: 25px;
 }
 
