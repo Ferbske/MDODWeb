@@ -11,8 +11,11 @@ router.get('/', (req, res) => {
 
 // Endpoint for registration
 router.get('/registration', (req, res) => {
-    console.log("test");
     res.render('../views/register.ejs');
+});
+
+router.get('/dashboard', (req, res) => {
+    res.render('../views/VoorbeeldHeaderFooter.ejs')
 });
 
 module.exports = router;
