@@ -13,7 +13,7 @@ $(document).ready(function() {
             dataType: 'JSON',
 
             success: function (data, textStatus, xhr) {
-                console.log(xhr.status + " | success");
+                console.log("User token: " + data.token);
             },
             error: function (data, textStatus, error ) {
                 if (error === "Not Found") {
