@@ -31,3 +31,8 @@ form input {
     text-align: center;
     padding-bottom: 10px;
 }
+
+#inputDisclaimer {
+    margin-top: 10px;
+    text-align: center;
+}
