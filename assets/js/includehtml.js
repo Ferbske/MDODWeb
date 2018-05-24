@@ -1,4 +1,4 @@
 function include() {
-    $("#header").load("../views/header.html");
-    $("#footer").load("../views/footer.html");
+    $("#header").load("../views/header");
+    $("#footer").load("../views/footer");
 };

@@ -10,12 +10,20 @@ router.get('/', (req, res) => {
 });
 
 // Endpoint for registration
-router.get('/registration', (req, res) => {
+router.get('/register', (req, res) => {
     res.render('../views/register.ejs');
 });
 
 router.get('/dashboard', (req, res) => {
     res.render('../views/VoorbeeldHeaderFooter.ejs')
+});
+
+router.get('/views/header', (req, res) => {
+    res.render('../views/header.ejs')
+});
+
+router.get('/views/footer', (req, res) => {
+    res.render('../views/footer.ejs')
 });
 
 module.exports = router;
