@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 let urlencodedParser = bodyParser.urlencoded({extended:false});
 
 // Endpoint for login page
-router.get('/', (req, res) => {
+router.get('/login', (req, res) => {
    res.render('../views/login.ejs')
 });
 

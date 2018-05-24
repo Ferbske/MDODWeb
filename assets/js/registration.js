@@ -5,8 +5,8 @@ $(document).ready(function() {
         let lastname = $("#inputAchternaam").val();
         let phonenumber = $("#inputTelefoonnummerRegister").val();
         let location = $("#inputLocatieRegister").val();
-        let email = $("#inputEmailLogin").val();
-        let password = $("#inputPasswordLogin").val();
+        let email = $("#inputEmailRegister").val();
+        let password = $("#inputWachtwoordRegister").val();
 
         $.ajax({
             type: 'POST',
@@ -23,14 +23,16 @@ $(document).ready(function() {
             dataType: 'JSON',
 
             success: function (data, textStatus, xhr) {
-                // Redirect the user to the login page after a successfull login
-                console.log(xhr.status);
-                location.href = "/"
+                // Redirect the user to the login page after a successful registration
+                window.location.href = "/login"
             },
             error: function (data, textStatus, error ) {
-                console.log(error);
-                console.log(textStatus);
-                console.log(data.firstname);
+                if (error === "Conflict") {
+                    alert("Dit emailadres is niet beschikbaar")
+                } else {
+                    console.log(error);
+                    console.log(textStatus);
+                }
             },
             complete: function(xhr, textStatus) {
                 console.log(xhr.status);
