@@ -1,0 +1,9 @@
+{
+     "firstname": "VOORNAAM",
+     "infix": "TUSSENVOEGSEL",
+     "lastname": "ACHTERNAAM",
+     "phonenumber": "NUMMER",
+     "location": "LOCATIE",
+     "email": "EMAIL",
+     "password": "PASSWORD"
+}
