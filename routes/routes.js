@@ -14,14 +14,17 @@ router.get('/register', (req, res) => {
     res.render('../views/register.ejs');
 });
 
+// Endpoints for the dashboard after login
 router.get('/dashboard', (req, res) => {
     res.render('../views/VoorbeeldHeaderFooter.ejs')
 });
 
+// Endpoint thats needed for adding the header in pages
 router.get('/views/header', (req, res) => {
     res.render('../views/header.ejs')
 });
 
+// Endpoint thats needed for adding the footer in pages
 router.get('/views/footer', (req, res) => {
     res.render('../views/footer.ejs')
 });

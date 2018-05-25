@@ -1,3 +1,6 @@
+// This function gets the email and password from the input field at the login page
+// and does a post request at the API server to login
+
 $(document).ready(function() {
     $('form').on('submit', function () {
         let email = $("#inputEmailLogin").val();

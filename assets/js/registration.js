@@ -1,10 +1,13 @@
+// This function gets the firstname, infix, lastname, phonenumber, location, email and password from the input field at the register page
+// and does a post request at the API server to register
+
 $(document).ready(function() {
     $('form').on('submit', function () {
         let firstname = $("#inputVoornaam").val();
         let infix = $("#inputTussenvoegsel").val() + " ";
         let lastname = $("#inputAchternaam").val();
         let phonenumber = $("#inputTelefoonnummerRegister").val();
-        let location = $("#inputLocatieRegister").val();
+        let location = $("#inputLocatieRegister").val() + "";
         let email = $("#inputEmailRegister").val();
         let password = $("#inputWachtwoordRegister").val();
 
