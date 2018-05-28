@@ -35,11 +35,14 @@ $(document).ready(function() {
                 window.location.href = "/login"
             },
             error: function (data, textStatus, error ) {
-                if (error === "Conflict") {
-                    alert("Dit emailadres is niet beschikbaar")
+                if (data.status === 420) {
+                    alert("Dit emailadres is niet beschikbaar");
+                } else if (data.status === 509) {
+                    alert("Systeemfout, probeer het later opnieuw");
+                } else if (data.status === 400) {
+                    alert("Er missen gegevens of er zijn gegevens foutief ingevoerd");
                 } else {
-                    console.log(error);
-                    console.log(textStatus);
+                    console.log(data.status);
                 }
             },
             complete: function(xhr, textStatus) {
