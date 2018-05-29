@@ -16,7 +16,7 @@ router.get('/register', (req, res) => {
 
 // Endpoints for the dashboard after login
 router.get('/dashboard', (req, res) => {
-    res.render('../views/VoorbeeldHeaderFooter.ejs')
+    res.render('../views/dashboard.ejs')
 });
 
 // Endpoint thats needed for adding the header in pages

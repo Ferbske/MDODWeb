@@ -16,7 +16,10 @@ $(document).ready(function() {
             dataType: 'JSON',
 
             success: function (data, textStatus, xhr) {
-                console.log("User token: " + data.token);
+                // alert("User token: " + data.token);
+                setCookie("AuthToken", data.token, 1);
+                // let cookies = listCookies();
+                // alert(cookies);
                 // Redirect the user to the dashboard after a successful login
                 location.href = "/dashboard";
             },
