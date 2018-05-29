@@ -3,6 +3,7 @@ footer {
     bottom: 0;
     overflow: hidden;
     background-color: #43363C;
+    width: 100%;
 }
 
 .footer_body {
@@ -14,9 +15,9 @@ footer {
 }
 
 .footer_block {
-    width: 29%;
+    width: 30%;
     float: left;
-    padding-right: 15px;
+    padding-right: 25px;
 }
 
 .footer_block h2 {
