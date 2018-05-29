@@ -28,6 +28,53 @@ $(document).ready(function() {
             console.log(xhr.status);
         }
     });
+
+    $('form').on('submit', function () {
+        let firstname = $("#inputVoornaam").val();
+        let infix = $("#inputTussenvoegsel").val();
+        let lastname = $("#inputAchternaam").val();
+        let phonenumber = $("#inputTelefoonnummer").val();
+        let location = $("#inputLocatie").val();
+
+        if (!infix) {
+            infix = "";
+        }
+        console.log(firstname)
+        console.log(infix)
+        console.log(lastname)
+        console.log(phonenumber)
+        console.log(location)
+
+// ======================================================================================
+// After submit functionality
+        $.ajax({
+            type: 'PUT',
+            url: 'https://mdod.herokuapp.com/api/psychologist',
+            data: {
+                "firstname": firstname,
+                "infix": infix,
+                "lastname": lastname,
+                "phonenumber": phonenumber,
+                "location": location
+            },
+            dataType: 'JSON',
+            beforeSend: setHeader,
+
+            success: function (data, textStatus, xhr) {
+                alert("Wijzigingen doorgevoerd!");
+                console.log("De status is : " + xhr.status);
+            },
+            error: function (data, textStatus, error ) {
+                console.log(error);
+            },
+            complete: function(xhr, textStatus) {
+                console.log(xhr.status);
+            }
+        });
+        return false;
+
+    });
+
 });
 
 function setHeader(xhr) {
