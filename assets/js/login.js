@@ -17,7 +17,7 @@ $(document).ready(function() {
 
             success: function (data, textStatus, xhr) {
                 // alert("User token: " + data.token);
-                setCookie("AuthToken", data.token, 1);
+                setCookie("AuthToken", data.token, 8);
                 // let cookies = listCookies();
                 // alert(cookies);
                 // Redirect the user to the dashboard after a successful login
