@@ -1,9 +1,4 @@
 let token = getCookie("AuthToken");
-// let firstname = " ";
-// let lastname = " ";
-// let infix = " ";
-// let phonenumber = " ";
-// let location = " ";
 
 $(document).ready(function() {
     $.ajax({
@@ -13,8 +8,6 @@ $(document).ready(function() {
         beforeSend: setHeader,
 
         success: function (data, textStatus, xhr) {
-            console.log("Succes");
-            console.log(data[0].email);
             // Fill firstname input field
             document.getElementById("inputVoornaam").value = data[0].firstname;
             // Fill infix if present
@@ -25,18 +18,21 @@ $(document).ready(function() {
             document.getElementById("inputTelefoonnummer").value = data[0].phonenumber;
             // Fill location input field
             document.getElementById("inputLocatie").value = data[0].job_location;
-
         },
         error: function (data, textStatus, error ) {
-            console.log(error + "ERROR!");
+            // Log the error
+            console.log(error);
         },
         complete: function(xhr, textStatus) {
+            // Log the status returned by the server
             console.log(xhr.status);
         }
     });
 });
 
 function setHeader(xhr) {
+    // Set Authorization header
     xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+    // Set X-Access-Token header
     xhr.setRequestHeader('X-Access-Token', token);
 }
