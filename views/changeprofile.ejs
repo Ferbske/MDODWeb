@@ -10,7 +10,7 @@
 
         <!-- Retrieving the CSS for styling -->
         <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/login_register.css">
+        <link rel="stylesheet" href="css/forms.css">
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,44 +27,47 @@
         <header id="header"></header>
         <!-- Container -->
         <div class="container">
-            <form class="form-changeprofile">
-                <!-- Profile Change heading -->
-                <h3 class="profilechange-heading">Wijzig hier uw profiel gegevens</h3>
-                <!-- Firstname inputfield -->
-                <div class="form-group">
-                    <h4>Voornaam:  * </h4>
-                    <label for="inputCVoornaamChange" class="sr-only">Voornaam</label>
-                    <input type="text" id="inputVoornaamChange" name="firstname" class="form-control" placeholder="Voornaam" required autofocus>
-                </div>
-                <!-- Infix inputfield -->
-                <div class="form-group">
-                    <h4>Tussenvoegsel: </h4>
-                    <label for="inputTussenvoegselChange" class="sr-only">Tussenvoegsel</label>
-                    <input type="text" id="inputTussenvoegselChange" name="infix" class="form-control" placeholder="Tussenvoegsel">
-                </div>
-                <!-- Lastname inputfield -->
-                <div class="form-group">
-                    <h4>Achternaam:  *</h4>
-                    <label for="inputAchternaamChange" class="sr-only">Achternaam</label>
-                    <input type="text" id="inputAchternaamChange" name="lastname" class="form-control" placeholder="Achternaam" required>
-                </div>
-                <!-- Phonenumber inputfield -->
-                <div class="form-group">
-                    <h4>Telefoonnummer: </h4>
-                    <label for="inputTelefoonnummerChange" class="sr-only">Telefoonnummer</label>
-                    <input type="text" id="inputTelefoonnummerChange" name="phonenumber" class="form-control" placeholder="Telefoonnummer" required>
-                </div>
-                <!-- Location inputfield -->
-                <div class="form-group">
-                    <h4>Locatie: </h4>
-                    <label for="inputLocatieChange" class="sr-only">Locatie</label>
-                    <input type="text" id="inputLocatieChange" name="location" class="form-control" placeholder="Locatie" required>
-                </div>
-                <!-- Submit inputfield -->
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Wijzig gegevens</button>
-                <!-- Disclaimer -->
-                <p id="inputDisclaimer"><b>Alle velden met een * zijn verplicht</b></p>
-            </form>
+            <div class="inner_container">
+                <form class="form-changeprofile">
+                    <!-- Profile Change heading -->
+                    <h3 class="profilechange-heading">Wijzig hier uw profiel gegevens</h3>
+                    <!-- Firstname inputfield -->
+                    <div class="form-group">
+                        <h4>Voornaam:  * </h4>
+                        <label for="inputCVoornaamChange" class="sr-only">Voornaam</label>
+                        <input type="text" id="inputVoornaamChange" name="firstname" class="form-control" placeholder="Voornaam" required autofocus>
+                    </div>
+                    <!-- Infix inputfield -->
+                    <div class="form-group">
+                        <h4>Tussenvoegsel: </h4>
+                        <label for="inputTussenvoegselChange" class="sr-only">Tussenvoegsel</label>
+                        <input type="text" id="inputTussenvoegselChange" name="infix" class="form-control" placeholder="Tussenvoegsel">
+                    </div>
+                    <!-- Lastname inputfield -->
+                    <div class="form-group">
+                        <h4>Achternaam:  *</h4>
+                        <label for="inputAchternaamChange" class="sr-only">Achternaam</label>
+                        <input type="text" id="inputAchternaamChange" name="lastname" class="form-control" placeholder="Achternaam" required>
+                    </div>
+                    <!-- Phonenumber inputfield -->
+                    <div class="form-group">
+                        <h4>Telefoonnummer: </h4>
+                        <label for="inputTelefoonnummerChange" class="sr-only">Telefoonnummer</label>
+                        <input type="text" id="inputTelefoonnummerChange" name="phonenumber" class="form-control" placeholder="Telefoonnummer" required>
+                    </div>
+                    <!-- Location inputfield -->
+                    <div class="form-group">
+                        <h4>Locatie: </h4>
+                        <label for="inputLocatieChange" class="sr-only">Locatie</label>
+                        <input type="text" id="inputLocatieChange" name="location" class="form-control" placeholder="Locatie" required>
+                    </div>
+                    <!-- Submit inputfield -->
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Wijzig gegevens</button>
+                    <!-- Disclaimer -->
+                    <p id="inputDisclaimer"><b>Alle velden met een * zijn verplicht</b></p>
+                </form>
+            </div>
+
         </div> <!-- /container -->
         <!-- Footer added -->
         <footer id="footer"></footer>
