@@ -17,6 +17,7 @@ $(document).ready(function() {
 
             success: function (data, textStatus, xhr) {
                 console.log("User token: " + data.token);
+                let token = data.token;
                 // Redirect the user to the dashboard after a successful login
                 location.href = "/dashboard";
             },
