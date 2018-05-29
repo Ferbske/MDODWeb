@@ -26,7 +26,12 @@ function getCookie(cname) {
     return "";
 }
 
-// The function gives back a String with all the cookies that are currently created
+// This function looks up a cookie by name and set the value to nothing and makes it expired
+function delCookie(cname) {
+    document.cookie = cname + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
+// this function gives back a String with all the cookies that are currently created
 // when you call this function
 function listCookies() {
     let theCookies = document.cookie.split(';');
