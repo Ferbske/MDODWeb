@@ -14,9 +14,14 @@ router.get('/register', (req, res) => {
     res.render('../views/register.ejs');
 });
 
-// Endpoints for the dashboard after login
+// Endpoint for the dashboard after login
 router.get('/dashboard', (req, res) => {
     res.render('../views/dashboard.ejs')
+});
+
+// Endpoint for changing Psychologist's Information
+router.get('/change', (req, res) => {
+    res.render('../views/changeprofile.ejs')
 });
 
 // Endpoint thats needed for adding the header in pages
