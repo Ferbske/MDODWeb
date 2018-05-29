@@ -1,8 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const bodyParser = require('body-parser');
-
-let urlencodedParser = bodyParser.urlencoded({extended:false});
 
 // Endpoint for login page
 router.get('/login', (req, res) => {
@@ -17,6 +14,11 @@ router.get('/register', (req, res) => {
 // Endpoint for the dashboard after login
 router.get('/dashboard', (req, res) => {
     res.render('../views/dashboard.ejs')
+});
+
+// Endpoint for viewing Psychologist's profile
+router.get('/profile', (req, res) => {
+    res.render('../views/profile.ejs')
 });
 
 // Endpoint for changing Psychologist's Information
