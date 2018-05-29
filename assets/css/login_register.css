@@ -2,6 +2,10 @@
     width: 100%;
 }
 
+.container_login, .container_register {
+    padding: 0;
+}
+
 form {
     max-width: 330px;
     margin: 0 auto;
@@ -14,7 +18,7 @@ form h3 {
 }
 
 form .form-control {
-    position: relative;
+    /*position: relative;*/
     height: auto;
     padding: 10px;
 }
