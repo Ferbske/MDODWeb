@@ -16,6 +16,11 @@ router.get('/dashboard', (req, res) => {
     res.render('../views/dashboard.ejs')
 });
 
+// Endpoint for viewing Psychologist's profile
+router.get('/profile', (req, res) => {
+    res.render('../views/profile.ejs')
+});
+
 // Endpoint for changing Psychologist's Information
 router.get('/change', (req, res) => {
     res.render('../views/changeprofile.ejs')
