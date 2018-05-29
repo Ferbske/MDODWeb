@@ -13,7 +13,7 @@
 
     <!-- Retrieving the CSS for styling -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/login_register.css">
+    <link rel="stylesheet" href="css/forms.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,50 +27,52 @@
 </head>
 <body>
     <header id="header"></header>
-    <div class="container" id="form">
-        <form class="form-register">
-            <!-- Registreren logo -->
-            <!-- Register heading -->
-            <h3 class="register-heading">Wijzig uw gegevens</h3>
+    <div class="container">
+        <div class="inner_container">
+            <form class="form-register">
+                <!-- Registreren logo -->
+                <!-- Register heading -->
+                <h3 class="register-heading">Wijzig uw gegevens</h3>
 
-            <!-- Firstname inputfield -->
-            <div class="form-group">
-                <h4>Voornaam:</h4>
-                <label for="inputVoornaam" class="sr-only">Voornaam</label>
-                <input type="text" id="inputVoornaam" name="firstname" class="form-control" placeholder="Voornaam" required autofocus>
-            </div>
+                <!-- Firstname inputfield -->
+                <div class="form-group">
+                    <h4>Voornaam:</h4>
+                    <label for="inputVoornaam" class="sr-only">Voornaam</label>
+                    <input type="text" id="inputVoornaam" name="firstname" class="form-control" placeholder="Voornaam" required autofocus>
+                </div>
 
-            <!-- Infix inputfield -->
-            <div class="form-group">
-                <h4>Tussenvoegsel:</h4>
-                <label for="inputTussenvoegsel" class="sr-only">Tussenvoegsel</label>
-                <input type="text" id="inputTussenvoegsel" name="infix" class="form-control" placeholder="Tussenvoegsel">
-            </div>
+                <!-- Infix inputfield -->
+                <div class="form-group">
+                    <h4>Tussenvoegsel:</h4>
+                    <label for="inputTussenvoegsel" class="sr-only">Tussenvoegsel</label>
+                    <input type="text" id="inputTussenvoegsel" name="infix" class="form-control" placeholder="Tussenvoegsel">
+                </div>
 
-            <!-- Lastname inputfield -->
-            <div class="form-group">
-                <h4>Achternaam:</h4>
-                <label for="inputAchternaam" class="sr-only">Achternaam</label>
-                <input type="text" id="inputAchternaam" name="lastname" class="form-control" placeholder="Achternaam" required>
-            </div>
+                <!-- Lastname inputfield -->
+                <div class="form-group">
+                    <h4>Achternaam:</h4>
+                    <label for="inputAchternaam" class="sr-only">Achternaam</label>
+                    <input type="text" id="inputAchternaam" name="lastname" class="form-control" placeholder="Achternaam" required>
+                </div>
 
-            <!-- Phonenumber inputfield -->
-            <div class="form-group">
-                <h4>Telefoonnummer:</h4>
-                <label for="inputTelefoonnummerRegister" class="sr-only">Telefoonnummer</label>
-                <input type="text" id="inputTelefoonnummerRegister" name="phonenumber" class="form-control" placeholder="Telefoonnummer" required>
-            </div>
+                <!-- Phonenumber inputfield -->
+                <div class="form-group">
+                    <h4>Telefoonnummer:</h4>
+                    <label for="inputTelefoonnummerRegister" class="sr-only">Telefoonnummer</label>
+                    <input type="text" id="inputTelefoonnummerRegister" name="phonenumber" class="form-control" placeholder="Telefoonnummer" required>
+                </div>
 
-            <!-- Location inputfield -->
-            <div class="form-group">
-                <h4>Locatie:</h4>
-                <label for="inputLocatieRegister" class="sr-only">Locatie</label>
-                <input type="text" id="inputLocatieRegister" name="location" class="form-control" placeholder="Locatie" required>
-            </div>
+                <!-- Location inputfield -->
+                <div class="form-group">
+                    <h4>Locatie:</h4>
+                    <label for="inputLocatieRegister" class="sr-only">Locatie</label>
+                    <input type="text" id="inputLocatieRegister" name="location" class="form-control" placeholder="Locatie" required>
+                </div>
 
-            <!-- Submit inputfield -->
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Wijzigingen opslaan</button>
-        </form>
+                <!-- Submit inputfield -->
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Wijzigingen opslaan</button>
+            </form>
+        </div>
     </div> <!-- /container -->
     <br>
     <footer id="footer"></footer>
