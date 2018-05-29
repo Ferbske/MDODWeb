@@ -1,8 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const bodyParser = require('body-parser');
-
-let urlencodedParser = bodyParser.urlencoded({extended:false});
 
 // Endpoint for login page
 router.get('/login', (req, res) => {
