@@ -14,6 +14,10 @@ footer {
     -webkit-box-sizing: content-box!important;
 }
 
+.footer_inner {
+    padding: 0% 10%;
+}
+
 .footer_block {
     width: 30%;
     float: left;
