@@ -17,6 +17,10 @@
     margin: 0 auto;
 }
 
+.header_inner .btn{
+    width: 10%;
+}
+
 #header_logo {
     width: 20%;
     height: inherit;
@@ -37,7 +41,7 @@
 .header_menu {
     padding: 0;
     height: 100%;
-    width: 80%;
+    width: 70%;
     float: left;
     margin: 0;
     overflow: hidden;
