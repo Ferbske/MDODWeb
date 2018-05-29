@@ -18,7 +18,11 @@
 }
 
 .header_inner .btn{
-    width: 10%;
+    width: 100px;
+}
+
+.header_inner .btn-lg {
+    padding: 10px 12px!important;
 }
 
 #header_logo {
