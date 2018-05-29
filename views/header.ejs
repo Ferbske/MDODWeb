@@ -12,17 +12,18 @@
 </head>
 <body>
     <div class="header_body">
-        <div class="header_inner">
-            <div id="header_logo"><a href="dashboard"><img class="img_logo" src="img/logo_tactus-groot.png" alt=""></a></div>
+        <div class="header_inner" id="header_inner">
+            <div id="header_logo"><a href="dashboard">
+                    <img class="img_logo" src="img/logo_tactus-groot.png" alt=""></a>
+            </div>
             <ul class="header_menu">
                 <li><a href=""><h2>test1</h2></a></li>
                 <li><a href=""><h2>test2</h2></a></li>
                 <li><a href=""><h2>test3</h2></a></li>
             </ul>
-            <button onclick="window.location.href='login'" class="btn btn-lg btn-primary btn-block" type="submit">Afmelden</button>
+            <button onclick="window.location.href='login';delCookie('AuthToken')" class="btn btn-lg btn-primary btn-block" type="submit" id="btnLogout">Afmelden</button>
         </div>
     </div>
-
-
 </body>
+<script src="js/authcookie.js"></script>
 </html>
