@@ -62,7 +62,7 @@ $(document).ready(function() {
 
             success: function (data, textStatus, xhr) {
                 alert("Wijzigingen doorgevoerd!");
-                console.log("De status is : " + xhr.status);
+                window.location.href = '/profile'
             },
             error: function (data, textStatus, error ) {
                 console.log(error);
