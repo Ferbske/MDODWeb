@@ -12,8 +12,7 @@ function deletePsychologist() {
             window.location.href = '/login';
         },
         error: function (data, textStatus, error ) {
-            // Log the error
-            console.log("dit is een error " + error);
+            console.log("Error " + error);
         },
         complete: function(xhr, textStatus) {
             // Log the status returned by the server
