@@ -22,7 +22,7 @@ router.get('/clients', (req, res) => {
 });
 
 // Endpoint for a specific selected client
-router.get('/client/:email', (req, res) => {
+router.get('/client', (req, res) => {
     res.render('../views/client.ejs')
 });
 
