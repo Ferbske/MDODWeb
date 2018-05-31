@@ -1,5 +1,4 @@
-// let token = getCookie("AuthToken");
-
+// This function deletes the logged in psychologist and redirects it back to the login page
 function deletePsychologist() {
     $.ajax({
         type: 'DELETE',

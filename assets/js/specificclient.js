@@ -1,5 +1,7 @@
 let token = getCookie("AuthToken");
 
+// This functionn gets info from 1 specific client by email
+// it gets the mail from the url
 function getInfoClient() {
     let email = getParameterByName("email");
     $.ajax({
@@ -72,7 +74,7 @@ function setHeader(xhr) {
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+    let regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
         results = regex.exec(url);
     if (!results) return null;
     if (!results[2]) return '';

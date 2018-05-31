@@ -1,6 +1,5 @@
 // This function gets the firstname, infix, lastname, phonenumber, location, email and password from the input field at the register page
 // and does a post request at the API server to register
-
 $(document).ready(function() {
     $('form').on('submit', function () {
         let firstname = $("#inputVoornaam").val();

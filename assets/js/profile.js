@@ -1,5 +1,6 @@
 let token = getCookie("AuthToken");
 
+// This function gets the name, phonennumber and location of the psychologist from the API
 $(document).ready(function() {
     $.ajax({
         type: 'GET',

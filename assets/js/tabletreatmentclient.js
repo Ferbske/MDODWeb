@@ -1,5 +1,6 @@
 let token = getCookie("AuthToken");
 
+// This function gets all clients from the api and puts them in an table in the html with an id of "tableClients"
 $(document).ready(function() {
     $.ajax({
         type: 'GET',
