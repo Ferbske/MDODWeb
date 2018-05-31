@@ -26,24 +26,38 @@
 </head>
 <body>
     <header id="header"></header>
-    <div class="container" id="form">
-        <!-- My profile heading -->
-        <h3 class="mijnprofile-heading">Mijn profiel</h3>
-        <!-- Firstname text -->
-        <h4>Voornaam:</h4>
-        <h5 id="lblvoornaam">404</h5>
-        <!-- Infix text -->
-        <h4>Tussenvoegsel:</h4>
-        <h5 id="lbltussenvoegsel">404</h5>
-        <!-- Lastname text -->
-        <h4>Achternaam:</h4>
-        <h5 id="lblachternaam">404</h5>
-        <!-- Phonenumber text -->
-        <h4>Telefoonnummer:</h4>
-        <h5 id="lbltelefoonnummer">404</h5>
-        <!-- Location text -->
-        <h4>Locatie:</h4>
-        <h5 id="lbllocatie">404</h5>
+    <div class="container">
+        <div class="inner_container">
+            <table class="table">
+                <tbody>
+                    <h3 class="mijnprofile-heading">Mijn profiel</h3>
+                    <tr>
+                        <th>Voornaam:</th>
+                        <td id="lblvoornaam">voornaam</td>
+                    </tr>
+                    <tr>
+                        <th>Tussenvoegsel:</th>
+                        <td id="lbltussenvoegsel">tussenvoegsel</td>
+                    </tr>
+                    <tr>
+                        <th>Achternaam:</th>
+                        <td id="lblachternaam">achternaam</td>
+                    </tr>
+                    <tr>
+                        <th>Telefoonnummer:</th>
+                        <td id="lbltelefoonnummer">telefoon</td>
+                    </tr>
+                    <tr>
+                        <th>Locatie:</th>
+                        <td id="lbllocatie">locatie</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="profile_buttons">
+                <button class="btn btn-lg btn-primary delete_profile" onclick="deletePsychologist()">Verwijderen</button>
+                <button class="btn btn-lg btn-primary edit_profile" onclick="window.location.href='change'">Bewerken</button>
+            </div>
+        </div>
     </div> <!-- /container -->
     <br>
     <footer id="footer"></footer>
@@ -51,5 +65,6 @@
 <script src="js/includehtml.js"></script>
 <script src="js/authcookie.js"></script>
 <script src="js/profile.js"></script>
+<script src="js/deleteprofile.js"></script>
 <script>include();</script>
 </html>
