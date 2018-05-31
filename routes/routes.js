@@ -16,6 +16,16 @@ router.get('/dashboard', (req, res) => {
     res.render('../views/dashboard.ejs')
 });
 
+// Endpoint for all clients in table
+router.get('/clients', (req, res) => {
+    res.render('../views/addclients.ejs')
+});
+
+// Endpoint for a specific selected client
+router.get('/client', (req, res) => {
+    res.render('../views/client.ejs')
+});
+
 // Endpoint for viewing Psychologist's profile
 router.get('/profile', (req, res) => {
     res.render('../views/profile.ejs')
