@@ -51,6 +51,10 @@
     /*overflow: hidden;*/
 }
 
+.mediascreen {
+    display: none;
+}
+
 .header_menu li {
     list-style: none;
     height: 100%;
@@ -72,5 +76,53 @@
     padding-top: 11px;
 }
 
+/*Responsive design*/
+@media screen and (max-width: 900px){
+    .normal {
+        display: none;
+    }
 
+    .mediascreen {
+        display: block;
+        width: 100%;
+    }
+
+    .mediascreen .header_menu {
+        float: right;
+    }
+
+    .mediascreen .dropdown {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+    }
+
+    .mediascreen .dropbtn {
+        background: none;
+        border: none;
+    }
+
+    .mediascreen .dropdown-content {
+        display: none;
+        border-radius: 5px;
+        background-color: white;
+        width: 50%;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        margin: 0 auto;
+    }
+
+    .mediascreen .dropdown-content a {
+        display: block;
+        color: #88888A;
+        padding: 5px;
+        line-height: inherit;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+        overflow: hidden;
+        margin: 0;
+    }
+}
 

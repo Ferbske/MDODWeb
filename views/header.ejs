@@ -16,14 +16,29 @@
             <div id="header_logo"><a href="dashboard">
                     <img class="img_logo" src="img/logo_tactus-groot.png" alt=""></a>
             </div>
-            <ul class="header_menu">
-                <li><a href="dashboard"><h2>Home</h2></a></li>
-                <li><a href="clients"><h2>Cliënten</h2></a></li>
-                <li><a href="profile"><h2>Mijn profiel</h2></a></li>
-            </ul>
-            <button onclick="window.location.href='login';delCookie('AuthToken')" class="btn btn-lg btn-primary btn-block" type="submit" id="btnLogout">Afmelden</button>
+            <div class="normal">
+                <ul class="header_menu">
+                    <li><a href="dashboard"><h2>Dashboard</h2></a></li>
+                    <li><a href="clients"><h2>Cliënten</h2></a></li>
+                    <li><a href="profile"><h2>Mijn profiel</h2></a></li>
+                </ul>
+                <button onclick="window.location.href='login';delCookie('AuthToken')" class="btn btn-lg btn-primary btn-block" type="submit" id="btnLogout">Afmelden</button>
+                </div>
+                <div class="mediascreen">
+                    <div class="header_menu">
+                        <div class="dropdown">
+                            <button class="dropbtn"><h2>Menu</h2></button>
+                            <div class="dropdown-content">
+                                <a href="dashboard">Dashboard</a>
+                                <a href="clients">Cliënten</a>
+                                <a href="profile">Mijn profiel</a>
+                                <a onclick="window.location.href='login';delCookie('AuthToken')">Afmelden</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</body>
-<script src="js/authcookie.js"></script>
-</html>
+    </body>
+    <script src="js/authcookie.js"></script>
+    </html>
