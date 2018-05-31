@@ -72,35 +72,5 @@
     padding-top: 11px;
 }
 
-.header_menu .dropdown {
-    position: relative;
-    display: inline-block;
-}
 
-.header_menu .dropbtn {
-    background: none;
-    border: none;
-}
-
-.header_menu .dropdown-content {
-    display: none;
-    border-radius: 5px;
-    background-color: white;
-    width: 50%;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    margin: 0 auto;
-}
-
-.header_menu .dropdown-content a {
-    display: block;
-    color: #88888A;
-    padding: 5px;
-    line-height: inherit;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-    overflow: hidden;
-}
 
