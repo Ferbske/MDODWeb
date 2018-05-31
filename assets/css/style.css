@@ -62,3 +62,11 @@ h4  {
     background-color: #d68024 !important;
     border-color: #d68024 !important;
 }
+
+table {
+    width: 100%;
+}
+
+table td {
+    padding: 10px;
+}
