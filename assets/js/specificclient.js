@@ -12,33 +12,46 @@ function getInfoClient() {
         success: function (data, textStatus, xhr) {
             console.log("Succes");
             let x = 0, txt = "";
-            txt += "<table border='1'><tr>" +
-                "<td>Email</td>" +
-                "<td>Naam</td>" +
-                "<td>Adres</td>" +
-                "<td>Postcode</td>" +
-                "<td>Stad</td>" +
-                "<td>Geboortedatum</td>" +
-                "<td>Telefoon</td>" +
-                "<td>Contact</td>" +
-                "</tr>";
             for (x in data) {
-                txt += "<tr id='tablerow" + x + "'>" +
-                    "<td>" + data[x].email + "</td>" +
-                    "<td>" + data[x].firstname + " " +
+                document.getElementById("clientname").innerHTML = data[x].firstname + " " + data[x].infix + " " + data[x].lastname;
+                txt +=
+                    "<tr>" +
+                        "<th>Email</th>" +
+                        "<td>" + data[x].email + "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                        "<th>Naam</th>" +
+                        "<td>" + data[x].firstname + " " +
                         data[x].infix + " " +
                         data[x].lastname + "</td>" +
-                    "<td>" + data[x].adress + "</td>" +
-                    "<td>" + data[x].zipcode + "</td>" +
-                    "<td>" + data[x].city + "</td>" +
-                    "<td>" + data[x].birthday + "</td>" +
-                    "<td>" + data[x].phonenumber + "</td>" +
-                    "<td>" + data[x].contact + "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                        "<th>Adres</th>" +
+                        "<td>" + data[x].adress + "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                        "<th>Postcode</th>" +
+                        "<td>" + data[x].zipcode + "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                        "<th>Woonplaats</th>" +
+                        "<td>" + data[x].city + "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                        "<th>Geboortedatum</th>" +
+                        "<td>" + data[x].birthday + "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                        "<th>Telefoonnummer</th>" +
+                        "<td>" + data[x].phonenumber + "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                        "<th>Contact</th>" +
+                        "<td>" + data[x].contact + "</td>" +
                     "</tr>";
                 x++;
             }
-            txt += "</table>";
-            document.getElementById("tableClient").innerHTML = txt;
+            document.getElementsByClassName("tbody")[0].innerHTML = txt;
         },
         error: function (data, textStatus, error) {
             console.log(error);
