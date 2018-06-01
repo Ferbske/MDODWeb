@@ -80,3 +80,7 @@ table td {
     float: right;
 }
 
+#tableClients tr {
+    cursor: pointer;
+}
+

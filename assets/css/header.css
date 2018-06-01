@@ -77,7 +77,7 @@
 }
 
 /*Responsive design*/
-@media screen and (max-width: 900px){
+@media screen and (max-width: 950px){
     .normal {
         display: none;
     }
@@ -89,6 +89,7 @@
 
     .mediascreen .header_menu {
         float: right;
+        width: 20%;
     }
 
     .mediascreen .dropdown {
@@ -106,10 +107,8 @@
         display: none;
         border-radius: 5px;
         background-color: white;
-        width: 50%;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         z-index: 1;
-        margin: 0 auto;
     }
 
     .mediascreen .dropdown-content a {
@@ -123,6 +122,12 @@
         display: block;
         overflow: hidden;
         margin: 0;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .mediascreen .dropdown-content {
+        overflow: auto!important;
     }
 }
 
