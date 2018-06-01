@@ -1,4 +1,3 @@
-
 function treatclient() {
     let clientEmail = getParameterByName("email");
     $.ajax({
