@@ -33,18 +33,21 @@ p, a, a:hover, a:active {
     line-height: 18px;
 }
 
+th, td {
+    color: #686759;
+    width: 50%;
+}
+
+h1, h3  {
+    color: #ea8516 !important;
+    line-height: 26px;
+}
+
 h2  {
     color: #eeeeee;
     margin: 0;
     font-weight: 600;
     font-size: 21px;
-    line-height: 26px;
-}
-
-h3  {
-    color: #ea8516 !important;
-    font-size: 21px;
-    font-weight: 600;
     line-height: 26px;
 }
 
@@ -80,7 +83,17 @@ table td {
     float: right;
 }
 
+/*tableallclients.js / manageclients.ejs*/
 #tableClients tr {
     cursor: pointer;
+}
+
+/*client.ejs*/
+#treatclientbutton {
+    float: right;
+}
+
+.table-hover >tbody>tr:hover {
+    background-color: rgba(234, 133, 22, 0.2);
 }
 
