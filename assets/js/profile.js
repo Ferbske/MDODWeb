@@ -35,6 +35,4 @@ $(document).ready(function() {
 function setHeader(xhr) {
     // Set Authorization header
     xhr.setRequestHeader('Authorization', 'Bearer ' + token);
-    // Set X-Access-Token header
-    xhr.setRequestHeader('X-Access-Token', token);
 }
