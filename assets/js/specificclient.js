@@ -18,37 +18,37 @@ function getInfoClient() {
                 document.getElementById("clientname").innerHTML = data[x].firstname + " " + data[x].infix + " " + data[x].lastname;
                 txt +=
                     "<tr>" +
-                        "<th>Email</th>" +
+                        "<th>Email:</th>" +
                         "<td id='clientEmail'>" + data[x].email + "</td>" +
                     "</tr>" +
                     "<tr>" +
-                        "<th>Naam</th>" +
+                        "<th>Naam:</th>" +
                         "<td id='clientName'>" + data[x].firstname + " " +
                         data[x].infix + " " +
                         data[x].lastname + "</td>" +
                     "</tr>" +
                     "<tr>" +
-                        "<th>Adres</th>" +
+                        "<th>Adres:</th>" +
                         "<td id='clientAddress'>" + data[x].adress + "</td>" +
                     "</tr>" +
                     "<tr>" +
-                        "<th>Postcode</th>" +
+                        "<th>Postcode:</th>" +
                         "<td id='clientZipcode'>" + data[x].zipcode + "</td>" +
                     "</tr>" +
                     "<tr>" +
-                        "<th>Woonplaats</th>" +
+                        "<th>Woonplaats:</th>" +
                         "<td id='clientCity'>" + data[x].city + "</td>" +
                     "</tr>" +
                     "<tr>" +
-                        "<th>Geboortedatum</th>" +
+                        "<th>Geboortedatum:</th>" +
                         "<td id='clientBirthday'>" + data[x].birthday + "</td>" +
                     "</tr>" +
                     "<tr>" +
-                        "<th>Telefoonnummer</th>" +
+                        "<th>Telefoonnummer:</th>" +
                         "<td id='clientPhonenumber'>" + data[x].phonenumber + "</td>" +
                     "</tr>" +
                     "<tr>" +
-                        "<th>Contact</th>" +
+                        "<th>Contact:</th>" +
                         "<td id='clientContact'>" + data[x].contact + "</td>" +
                     "</tr>";
                 x++;
