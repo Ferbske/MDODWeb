@@ -93,3 +93,7 @@ table td {
     float: right;
 }
 
+.table-hover >tbody>tr:hover {
+    background-color: rgba(234, 133, 22, 0.2);
+}
+
