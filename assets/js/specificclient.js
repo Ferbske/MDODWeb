@@ -19,41 +19,49 @@ function getInfoClient() {
                 txt +=
                     "<tr>" +
                         "<th>Email</th>" +
-                        "<td>" + data[x].email + "</td>" +
+                        "<td id='clientEmail'>" + data[x].email + "</td>" +
                     "</tr>" +
                     "<tr>" +
                         "<th>Naam</th>" +
-                        "<td>" + data[x].firstname + " " +
+                        "<td id='clientName'>" + data[x].firstname + " " +
                         data[x].infix + " " +
                         data[x].lastname + "</td>" +
                     "</tr>" +
                     "<tr>" +
                         "<th>Adres</th>" +
-                        "<td>" + data[x].adress + "</td>" +
+                        "<td id='clientAddress'>" + data[x].adress + "</td>" +
                     "</tr>" +
                     "<tr>" +
                         "<th>Postcode</th>" +
-                        "<td>" + data[x].zipcode + "</td>" +
+                        "<td id='clientZipcode'>" + data[x].zipcode + "</td>" +
                     "</tr>" +
                     "<tr>" +
                         "<th>Woonplaats</th>" +
-                        "<td>" + data[x].city + "</td>" +
+                        "<td id='clientCity'>" + data[x].city + "</td>" +
                     "</tr>" +
                     "<tr>" +
                         "<th>Geboortedatum</th>" +
-                        "<td>" + data[x].birthday + "</td>" +
+                        "<td id='clientBirthday'>" + data[x].birthday + "</td>" +
                     "</tr>" +
                     "<tr>" +
                         "<th>Telefoonnummer</th>" +
-                        "<td>" + data[x].phonenumber + "</td>" +
+                        "<td id='clientPhonenumber'>" + data[x].phonenumber + "</td>" +
                     "</tr>" +
                     "<tr>" +
                         "<th>Contact</th>" +
-                        "<td>" + data[x].contact + "</td>" +
+                        "<td id='clientContact'>" + data[x].contact + "</td>" +
                     "</tr>";
                 x++;
             }
             document.getElementsByClassName("tbody")[0].innerHTML = txt;
+
+            // This section removes the button if the contact field is filled out
+            let contactField = data[0].contact
+            // Check if the contactfield has a value of a string
+            if (contactField) {
+                console.log("Waarde: " + contactField);
+                $('#treatclientbutton').remove();
+            }
         },
         error: function (data, textStatus, error) {
             console.log(error);
