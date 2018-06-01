@@ -1,5 +1,6 @@
 let token = getCookie("AuthToken");
 
+// This function gets the name, phonennumber and location of the psychologist from the API
 $(document).ready(function() {
     $.ajax({
         type: 'GET',
@@ -34,6 +35,4 @@ $(document).ready(function() {
 function setHeader(xhr) {
     // Set Authorization header
     xhr.setRequestHeader('Authorization', 'Bearer ' + token);
-    // Set X-Access-Token header
-    xhr.setRequestHeader('X-Access-Token', token);
 }

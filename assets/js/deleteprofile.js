@@ -1,5 +1,4 @@
-// let token = getCookie("AuthToken");
-
+// This function deletes the logged in psychologist and redirects it back to the login page
 function deletePsychologist() {
     $.ajax({
         type: 'DELETE',
@@ -24,6 +23,4 @@ function deletePsychologist() {
 function setHeader(xhr) {
     // Set Authorization header
     xhr.setRequestHeader('Authorization', 'Bearer ' + token);
-    // Set X-Access-Token header
-    xhr.setRequestHeader('X-Access-Token', token);
 }

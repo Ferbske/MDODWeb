@@ -1,5 +1,6 @@
 let token = getCookie("AuthToken");
 
+// This function gets all clients from the api and puts them in an table in the html with an id of "tableClients"
 $(document).ready(function() {
     $.ajax({
         type: 'GET',
@@ -36,6 +37,4 @@ $(document).ready(function() {
 function setHeader(xhr) {
     // Set Authorization header
     xhr.setRequestHeader('Authorization', 'Bearer ' + token);
-    // Set X-Access-Token header
-    xhr.setRequestHeader('X-Access-Token', token);
 }
