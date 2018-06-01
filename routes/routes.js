@@ -1,8 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const bodyParser = require('body-parser');
-
-let urlencodedParser = bodyParser.urlencoded({extended:false});
 
 // Endpoint for login page
 router.get('/login', (req, res) => {
@@ -14,9 +11,29 @@ router.get('/register', (req, res) => {
     res.render('../views/register.ejs');
 });
 
-// Endpoints for the dashboard after login
+// Endpoint for the dashboard after login
 router.get('/dashboard', (req, res) => {
-    res.render('../views/VoorbeeldHeaderFooter.ejs')
+    res.render('../views/dashboard.ejs')
+});
+
+// Endpoint for all clients in table
+router.get('/clients', (req, res) => {
+    res.render('../views/addclients.ejs')
+});
+
+// Endpoint for a specific selected client
+router.get('/client', (req, res) => {
+    res.render('../views/client.ejs')
+});
+
+// Endpoint for viewing Psychologist's profile
+router.get('/profile', (req, res) => {
+    res.render('../views/profile.ejs')
+});
+
+// Endpoint for changing Psychologist's Information
+router.get('/change', (req, res) => {
+    res.render('../views/changeprofile.ejs')
 });
 
 // Endpoint thats needed for adding the header in pages

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Mijn Profiel</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Retrieving the CSS for styling -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <js src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></js>
+    <js src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></js>
+    <![endif]-->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+    <header id="header"></header>
+    <div class="container">
+        <div class="inner_container">
+            <table class="table table-striped">
+                <tbody>
+                    <h3 class="mijnprofile-heading">Mijn profiel</h3>
+                    <tr>
+                        <th>Voornaam:</th>
+                        <td id="lblvoornaam">voornaam</td>
+                    </tr>
+                    <tr>
+                        <th>Tussenvoegsel:</th>
+                        <td id="lbltussenvoegsel">tussenvoegsel</td>
+                    </tr>
+                    <tr>
+                        <th>Achternaam:</th>
+                        <td id="lblachternaam">achternaam</td>
+                    </tr>
+                    <tr>
+                        <th>Telefoonnummer:</th>
+                        <td id="lbltelefoonnummer">telefoon</td>
+                    </tr>
+                    <tr>
+                        <th>Locatie:</th>
+                        <td id="lbllocatie">locatie</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="profile_buttons">
+                <button class="btn btn-lg btn-primary delete_profile" onclick="deletePsychologist()">Verwijderen</button>
+                <button class="btn btn-lg btn-primary edit_profile" onclick="window.location.href='change'">Bewerken</button>
+            </div>
+        </div>
+    </div> <!-- /container -->
+    <br>
+    <footer id="footer"></footer>
+</body>
+<script src="js/includehtml.js"></script>
+<script src="js/authcookie.js"></script>
+<script src="js/profile.js"></script>
+<script src="js/deleteprofile.js"></script>
+<script>include();</script>
+</html>

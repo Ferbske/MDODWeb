@@ -13,8 +13,17 @@ body {
 }
 
 .container {
+    margin: 0 auto;
+    height: calc(100vh - 100px);
+    overflow-y: scroll;
+    padding: 50px 0;
+    width: 100%;
+}
+
+.inner_container {
     max-width: 960px;
     margin: 0 auto;
+    padding-top: 50px;
 }
 
 p, a, a:hover, a:active {
@@ -22,6 +31,16 @@ p, a, a:hover, a:active {
     font-weight: 400;
     color: #686759;
     line-height: 18px;
+}
+
+th, td {
+    color: #686759;
+    width: 50%;
+}
+
+h1, h3  {
+    color: #ea8516 !important;
+    line-height: 26px;
 }
 
 h2  {
@@ -32,16 +51,21 @@ h2  {
     line-height: 26px;
 }
 
-h3  {
-    color: #ea8516 !important;
-    font-size: 21px;
-    font-weight: 600;
-    line-height: 26px;
-}
-
 h4  {
     color: #686759;
     font-size: 16px;
+}
+
+table {
+    width: 100%;
+}
+
+table td {
+    padding: 10px;
+}
+
+.table tr:last-child {
+    border-bottom: 1px solid #ddd;
 }
 
 .btn{
@@ -53,3 +77,23 @@ h4  {
     background-color: #d68024 !important;
     border-color: #d68024 !important;
 }
+
+/*Profile*/
+.profile_buttons {
+    float: right;
+}
+
+/*tableallclients.js / manageclients.ejs*/
+#tableClients tr {
+    cursor: pointer;
+}
+
+/*client.ejs*/
+#treatclientbutton {
+    float: right;
+}
+
+.table-hover >tbody>tr:hover {
+    background-color: rgba(234, 133, 22, 0.2);
+}
+
