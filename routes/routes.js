@@ -36,11 +36,6 @@ router.get('/change', (req, res) => {
     res.render('../views/changeprofile.ejs')
 });
 
-// Endpoint for managing clients
-router.get('/manage_clients', (req, res) => {
-    res.render('../views/manageclients.ejs')
-});
-
 // Endpoint thats needed for adding the header in pages
 router.get('/views/header', (req, res) => {
     res.render('../views/header.ejs')
