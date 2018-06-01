@@ -11,14 +11,13 @@ $(document).ready(function() {
         success: function (data, textStatus, xhr) {
             console.log("Succes");
             let x = 0, txt = "";
-            txt += "<table border='1'>";
+            txt += "<table border='1' class='table-striped'>";
             for (x in data) {
-                txt += "<tr id='tablerow" + x + "'>" +
+                txt += "<tr id='tablerow" + x + "' onclick=redirect('" + data[x].email + "') >" +
                 "<td>" + data[x].email + "</td>" +
                 "<td>" + data[x].firstname + " " +
                     data[x].infix + " " +
                     data[x].lastname + "</td>" +
-                "<td><button onclick=redirect('" + data[x].email + "') class='btn btn-lg btn-primary'>Bekijk Client</button></td>" +
                 "</tr>";
                 x++;
             }
