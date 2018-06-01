@@ -18,37 +18,37 @@ function getInfoClient() {
                 document.getElementById("clientname").innerHTML = data[x].firstname + " " + data[x].infix + " " + data[x].lastname;
                 txt +=
                     "<tr>" +
-                        "<th>Email</th>" +
+                        "<th>Email:</th>" +
                         "<td>" + data[x].email + "</td>" +
                     "</tr>" +
                     "<tr>" +
-                        "<th>Naam</th>" +
+                        "<th>Naam:</th>" +
                         "<td>" + data[x].firstname + " " +
                         data[x].infix + " " +
                         data[x].lastname + "</td>" +
                     "</tr>" +
                     "<tr>" +
-                        "<th>Adres</th>" +
+                        "<th>Adres:</th>" +
                         "<td>" + data[x].adress + "</td>" +
                     "</tr>" +
                     "<tr>" +
-                        "<th>Postcode</th>" +
+                        "<th>Postcode:</th>" +
                         "<td>" + data[x].zipcode + "</td>" +
                     "</tr>" +
                     "<tr>" +
-                        "<th>Woonplaats</th>" +
+                        "<th>Woonplaats:</th>" +
                         "<td>" + data[x].city + "</td>" +
                     "</tr>" +
                     "<tr>" +
-                        "<th>Geboortedatum</th>" +
+                        "<th>Geboortedatum:</th>" +
                         "<td>" + data[x].birthday + "</td>" +
                     "</tr>" +
                     "<tr>" +
-                        "<th>Telefoonnummer</th>" +
+                        "<th>Telefoonnummer:</th>" +
                         "<td>" + data[x].phonenumber + "</td>" +
                     "</tr>" +
                     "<tr>" +
-                        "<th>Contact</th>" +
+                        "<th>Contact:</th>" +
                         "<td>" + data[x].contact + "</td>" +
                     "</tr>";
                 x++;

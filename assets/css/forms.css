@@ -27,6 +27,7 @@ form input[type=date].form-control {
 }
 
 form input {
+    color: #686759!important;
     margin-bottom: 10px;
 }
 

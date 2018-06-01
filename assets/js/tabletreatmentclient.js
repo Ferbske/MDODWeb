@@ -12,17 +12,17 @@ $(document).ready(function() {
         success: function (data, textStatus, xhr) {
             console.log("Succes");
             let x = 0, txt = "";
-            txt += "<table border='1' class='table-striped' onclick=redirect('" + data[x].email + "') >";
+            // txt += "<table class='table table-striped' onclick=redirect('" + data[x].email + "') >";
             for (x in data) {
-                txt += "<tr id='tablerow" + x + "'>" +
-                    "<td>" + data[x].email + "</td>" +
-                    "<td>" + data[x].firstname + " " +
+                txt += "<tr id='tablerow" + x + "' onclick=redirect('" + data[x].email + "')>" +
+                    "<th>" + data[x].firstname + " " +
                     data[x].infix + " " +
-                    data[x].lastname + "</td>" +
+                    data[x].lastname + "</th>" +
+                    "<td>" + data[x].email + "</td>" +
                     "</tr>";
                 x++;
             }
-            txt += "</table>";
+            // txt += "</table>";
             document.getElementById("tableClients").innerHTML = txt;
         },
         error: function (data, textStatus, error) {
