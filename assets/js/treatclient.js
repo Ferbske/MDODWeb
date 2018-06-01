@@ -1,13 +1,3 @@
-$(document).ready(function() {
-    let contactField = $('#clientContact');
-    // Check if the contactfield has a value of a string
-    if (contactField) {
-        console.log("Waarde: " + contactField.val());
-        $('#treatclientbutton').remove();
-    }
-});
-
-
 function treatclient() {
     let clientEmail = getParameterByName("email");
     $.ajax({

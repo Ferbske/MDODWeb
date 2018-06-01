@@ -54,6 +54,14 @@ function getInfoClient() {
                 x++;
             }
             document.getElementsByClassName("tbody")[0].innerHTML = txt;
+
+            // This section removes the button if the contact field is filled out
+            let contactField = data[0].contact
+            // Check if the contactfield has a value of a string
+            if (contactField) {
+                console.log("Waarde: " + contactField);
+                $('#treatclientbutton').remove();
+            }
         },
         error: function (data, textStatus, error) {
             console.log(error);
