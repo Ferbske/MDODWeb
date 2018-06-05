@@ -107,13 +107,7 @@ h3#clientname {
 }
 
 .client-buttons {
-    float: right;
-    margin-top: 20px;
-}
-
-.client-buttons .btn-lg {
-    padding: 8px 14px;
-    font-size: 12px;
+    float: left;
 }
 
 .table-hover >tbody>tr:hover {
