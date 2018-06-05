@@ -7,12 +7,25 @@ footer {
     height: 40px;
 }
 
-#socket-info {
+.footer_inner {
+    padding: 0px 20px;
+}
+
+#socket-name {
     width: 20%;
+    float: left;
+}
+
+#socket-info {
+    width: 10%;
     float: right;
 }
 
-p.tactus {
+#socket-info p {
+    float: right;
+}
+
+footer p {
     vertical-align: middle;
     margin: 10px;
     color: white;

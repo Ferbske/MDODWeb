@@ -24,7 +24,6 @@ body {
 .container {
     margin: 0 auto;
     height: 100%;
-    overflow-y: scroll;
     padding-top: 50px;
     padding-bottom: 40px;
     width: 100%;
