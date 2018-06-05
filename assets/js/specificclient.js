@@ -41,7 +41,7 @@ function getInfoClient() {
                     "</tr>" +
                     "<tr>" +
                         "<th>Geboortedatum:</th>" +
-                        "<td id='clientBirthday'>" + data[x].birthday + "</td>" +
+                        "<td id='clientBirthday'>" + data[x].birthday.substring(0,10) + "</td>" +
                     "</tr>" +
                     "<tr>" +
                         "<th>Telefoonnummer:</th>" +
