@@ -1,7 +1,7 @@
 // This function redirects the page to /client?mail= with the mail from the selected client
-function redirectaddiction(email){
+function redirectusage(email){
     email = getParameterByName("email");
-    window.location = "addiction?email=" + email;
+    window.location = "usage?email=" + email;
 }
 
 function getParameterByName(name, url) {
