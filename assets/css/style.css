@@ -98,7 +98,7 @@ table td {
 }
 
 /*client.ejs*/
-#treatclientbutton {
+#treatclientbutton ,#untreatclientbutton{
     float: right;
 }
 

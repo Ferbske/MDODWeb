@@ -6,12 +6,39 @@ function treatclient() {
         dataType: 'JSON',
         beforeSend: setHeader,
         data: {
-            "email": clientEmail
+            "email": clientEmail,
+            "insert": "1"
         },
 
         success: function (data, textStatus, xhr) {
             console.log("Succes");
             alert("U heeft de cliënt in behandeling genomen");
+            window.location.reload();
+        },
+        error: function (data, textStatus, error) {
+            console.log(error);
+        },
+        complete: function (xhr, textStatus) {
+            console.log(xhr.status);
+        }
+    })
+};
+
+function untreatclient() {
+    let clientEmail = getParameterByName("email");
+    $.ajax({
+        type: 'PUT',
+        url: 'https://mdod.herokuapp.com/api/v1/pickclient',
+        dataType: 'JSON',
+        beforeSend: setHeader,
+        data: {
+            "email": clientEmail,
+            "insert": "0"
+        },
+
+        success: function (data, textStatus, xhr) {
+            console.log("Succes");
+            alert("U heeft de cliënt uit behandeling genomen");
             window.location.reload();
         },
         error: function (data, textStatus, error) {

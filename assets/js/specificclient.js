@@ -14,6 +14,7 @@ function getInfoClient() {
         success: function (data, textStatus, xhr) {
             console.log("Succes");
             let x = 0, txt = "";
+            let contact = data[x].contact || "";
             for (x in data) {
                 document.getElementById("clientname").innerHTML = data[x].firstname + " " + data[x].infix + " " + data[x].lastname;
                 txt +=
@@ -49,7 +50,7 @@ function getInfoClient() {
                     "</tr>" +
                     "<tr>" +
                         "<th>Contact:</th>" +
-                        "<td id='clientContact'>" + data[x].contact + "</td>" +
+                        "<td id='clientContact'>" + contact + "</td>" +
                     "</tr>";
                 x++;
             }
@@ -61,6 +62,8 @@ function getInfoClient() {
             if (contactField) {
                 console.log("Waarde: " + contactField);
                 $('#treatclientbutton').remove();
+            } else {
+                $('#untreatclientbutton').remove();
             }
         },
         error: function (data, textStatus, error) {
