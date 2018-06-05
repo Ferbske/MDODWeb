@@ -1,40 +1,53 @@
 footer {
-    position: fixed;
-    bottom: 0;
     overflow: hidden;
     background-color: #43363C;
     width: 100%;
+    position: absolute;
+    bottom: 0;
+    height: 40px;
 }
 
-.footer_body {
-    max-height: 50px;
-    height: 50px;
-    padding: 20px 10px;
-    width: 100%;
-    -webkit-box-sizing: content-box!important;
+#socket-info {
+    width: 20%;
+    float: right;
 }
 
-.footer_inner {
-    padding: 0% 10%;
-}
-
-.footer_block {
-    width: 30%;
-    float: left;
-    padding-right: 25px;
-}
-
-.footer_block h2 {
+p.tactus {
+    vertical-align: middle;
+    margin: 10px;
     color: white;
-    font-weight: lighter;
 }
 
-.footer_block li {
-    list-style: none;
-    color: white;
-    padding-top: 5px;
-}
 
-.footer_block a {
-    color: #ea8516;
-}
+/*.footer_body {*/
+    /*max-height: 50px;*/
+    /*height: 50px;*/
+    /*padding: 20px 10px;*/
+    /*width: 100%;*/
+    /*-webkit-box-sizing: content-box!important;*/
+/*}*/
+
+/*.footer_inner {*/
+    /*padding: 0% 10%;*/
+/*}*/
+
+/*.footer_block {*/
+    /*width: 30%;*/
+    /*float: left;*/
+    /*padding-right: 25px;*/
+/*}*/
+
+/*.footer_block h2 {*/
+    /*color: white;*/
+    /*font-weight: lighter;*/
+/*}*/
+
+/*.footer_block li {*/
+    /*list-style: none;*/
+    /*color: white;*/
+    /*padding-top: 5px;*/
+/*}*/
+
+/*.footer_block a {*/
+    /*color: #ea8516;*/
+/*}*/
