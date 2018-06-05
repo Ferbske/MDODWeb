@@ -53,7 +53,7 @@ function getInfoClient() {
                     "</tr>";
                 x++;
             }
-            document.getElementsByClassName("tbody")[0].innerHTML = txt;
+            document.getElementsByClassName("tbody_client")[0].innerHTML = txt;
 
             // This section removes the button if the contact field is filled out
             let contactField = data[0].contact
