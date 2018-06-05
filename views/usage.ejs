@@ -15,17 +15,9 @@
 <!-- Container -->
 <div class="container">
     <div class="inner_container">
-        <table class="table table-striped">
-            <tbody class="tbody_client">
-                <h3 id="clientname"></h3>
-                <div class="client-buttons">
-                    <button id="usageclientbutton" class="btn btn-lg btn-primary" type="submit" onclick="redirectusage()">Gebruik</button>
-                    <button id="addictionclientbutton" class="btn btn-lg btn-primary" type="submit" onclick="redirectaddiction()">Verslaving</button>
-                </div>
-            </tbody>
-        </table>
-        <button id="treatclientbutton" class="btn btn-lg btn-primary" type="submit" onclick="treatclient()">Neem cliënt in behandeling</button>
-        <button id="untreatclientbutton" class="btn btn-lg btn-primary" type="submit" onclick="untreatclient()">Neem cliënt uit behandeling</button>
+        <tbody class="tbody">
+        <h3 id="clientname"></h3>
+        </tbody>
     </div>
 </div> <!-- /container -->
 <!-- Footer added -->
@@ -36,10 +28,7 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/includehtml.js"></script>
 <script src="js/authcookie.js"></script>
-<script src="js/redirectspecificaddiction.js"></script>
-<script src="js/redirectspecificusage.js"></script>
-<script src="js/specificclient.js"></script>
-<script>getInfoClient()</script>
+<script src="js/usage.js"></script>
+<script>usageclient()</script>
 <script>include();</script>
-<script src="js/treatclient.js"></script>
 </html>

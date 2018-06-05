@@ -102,6 +102,20 @@ table td {
     float: right;
 }
 
+h3#clientname {
+    float: left;
+}
+
+.client-buttons {
+    float: right;
+    margin-top: 20px;
+}
+
+.client-buttons .btn-lg {
+    padding: 8px 14px;
+    font-size: 12px;
+}
+
 .table-hover >tbody>tr:hover {
     background-color: rgba(234, 133, 22, 0.2);
 }

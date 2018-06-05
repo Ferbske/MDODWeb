@@ -36,12 +36,22 @@ router.get('/change', (req, res) => {
     res.render('../views/changeprofile.ejs')
 });
 
-// Endpoint thats needed for adding the header in pages
+// Endpoint for the addiction from a client
+router.get('/addiction', (req, res) => {
+    res.render('../views/addiction.ejs')
+});
+
+// Endpoint for the usage from a client
+router.get('/usage', (req, res) => {
+    res.render('../views/usage.ejs')
+});
+
+// Endpoint that is needed for adding the header in pages
 router.get('/views/header', (req, res) => {
     res.render('../views/header.ejs')
 });
 
-// Endpoint thats needed for adding the footer in pages
+// Endpoint that is needed for adding the footer in pages
 router.get('/views/footer', (req, res) => {
     res.render('../views/footer.ejs')
 });
