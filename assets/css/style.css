@@ -24,15 +24,14 @@ body {
 .container {
     margin: 0 auto;
     height: 100%;
-    padding-top: 50px;
-    padding-bottom: 40px;
+    padding: 50px 0px;
     width: 100%;
 }
 
 .inner_container {
     max-width: 960px;
     margin: 0 auto;
-    padding-top: 50px;
+    padding: 30px 0px;
 }
 
 p, a, a:hover, a:active {
@@ -107,16 +106,16 @@ h3#clientname {
 }
 
 .client-buttons {
-    float: right;
-    margin-top: 20px;
-}
-
-.client-buttons .btn-lg {
-    padding: 8px 14px;
-    font-size: 12px;
+    float: left;
 }
 
 .table-hover >tbody>tr:hover {
     background-color: rgba(234, 133, 22, 0.2);
 }
 
+@media screen and (max-width: 950px) {
+    .inner_container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
