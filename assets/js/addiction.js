@@ -1,7 +1,7 @@
 function addictionclient() {
     let email = getParameterByName("email");
     $.ajax({
-        type: 'PUT',
+        type: 'POST',
         url: '',
         dataType: 'JSON',
         beforeSend: setHeader,
@@ -18,7 +18,7 @@ function addictionclient() {
                     "</tr>";
                 x++;
             }
-            document.getElementsByClassName("tbody")[0].innerHTML = txt;
+            document.getElementsByClassName("tbody_addiction")[0].innerHTML = txt;
         },
         error: function (data, textStatus, error) {
             console.log(error);
