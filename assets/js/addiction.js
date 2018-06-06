@@ -29,7 +29,41 @@ function addictionclient() {
     })
 }
 
+function getAddictionFromClient() {
+    let email = getParameterByName("email");
+
+    $.ajax({
+        type: 'POST',
+        url: 'https://mdod.herokuapp.com/api/v1/addiction/single_client',
+        beforeSend: setHeader,
+        dataType: 'JSON',
+        body: {
+            "email": email
+        },
+
+        success: function (data, testStatus, xhr) {
+            console.log("Succes");
+            let txt = "";
+            for (let x in data) {
+                txt += "<tr id='tablerow" + x + "'>" +
+                    "<td>" + data[x].substance + "</td>" +
+                    "</tr>";
+            }
+            document.getElementsByClassName("tbody")[0].innerHTML = txt;
+        },
+        error: function (data, textStatus, error) {
+            console.log(error);
+            console.log("ERRORRRRR")
+        },
+        complete: function (xhr, textStatus) {
+            console.log(xhr.status);
+        }
+    })
+}
+
 function setHeader(xhr) {
+    let token = getCookie("AuthToken");
+    console.log(token);
     // Set Authorization header
     xhr.setRequestHeader('Authorization', 'Bearer ' + token);
 }
