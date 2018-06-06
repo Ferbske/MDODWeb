@@ -2,7 +2,7 @@ function addictionclient() {
     let email = getParameterByName("email");
     $.ajax({
         type: 'PUT',
-        url: '',
+        url: 'https://mdod.herokuapp.com/api/v1/addiction',
         dataType: 'JSON',
         beforeSend: setHeader,
         data: {

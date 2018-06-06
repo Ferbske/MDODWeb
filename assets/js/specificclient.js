@@ -8,13 +8,14 @@ function getInfoClient() {
         type: 'POST',
         url: "https://mdod.herokuapp.com/api/v1/specific/client",
         dataType: 'JSON',
-        data: { "email": email},
+        data: {"email": email},
         beforeSend: setHeader,
 
         success: function (data, textStatus, xhr) {
             console.log("Succes");
             let x = 0, txt = "";
             let contact = data[x].contact || "";
+            let clean = cleanDays(email);
             for (x in data) {
                 document.getElementById("clientname").innerHTML = data[x].firstname + " " + data[x].infix + " " + data[x].lastname;
                 txt +=
@@ -42,7 +43,7 @@ function getInfoClient() {
                     "</tr>" +
                     "<tr>" +
                         "<th>Geboortedatum:</th>" +
-                        "<td id='clientBirthday'>" + data[x].birthday.substring(0,10) + "</td>" +
+                        "<td id='clientBirthday'>" + data[x].birthday.substring(0, 10) + "</td>" +
                     "</tr>" +
                     "<tr>" +
                         "<th>Telefoonnummer:</th>" +
@@ -51,6 +52,10 @@ function getInfoClient() {
                     "<tr>" +
                         "<th>Contact:</th>" +
                         "<td id='clientContact'>" + contact + "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                        "<th>Dagen Clean:</th>" +
+                        "<td id='clientClean'>" + clean + "</td>" +
                     "</tr>";
                 x++;
             }
@@ -65,6 +70,27 @@ function getInfoClient() {
             } else {
                 $('#untreatclientbutton').remove();
             }
+        },
+        error: function (data, textStatus, error) {
+            console.log(error);
+        },
+        complete: function (xhr, textStatus) {
+            console.log(xhr.status);
+        }
+    });
+}
+
+function cleanDays(email) {
+    $.ajax({
+        type: 'PUT',
+        url: "https://mdod.herokuapp.com/api/v1/clean/status",
+        dataType: 'JSON',
+        data: {"email": email},
+        beforeSend: setHeader,
+
+        success: function (data, textStatus, xhr) {
+            let result = data[0].daysClean;
+            return result;
         },
         error: function (data, textStatus, error) {
             console.log(error);
