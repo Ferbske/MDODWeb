@@ -14,15 +14,15 @@ function difficultmoment() {
         success: function (data, testStatus, xhr) {
             console.log("Succes");
             let x = 0;
-            let txt = "<tr id='tablehead'>" +
-            "<td>Wat</td>" +
-            "<td>Beschrijving</td>" +
-            "<td>Datum</td>" +
-            "<td>Trek schaal 1 op 5</td>" +
+            let txt = "<tr id='dm_head'>" +
+            "<th>Wat</th>" +
+            "<th>Beschrijving</th>" +
+            "<th>Datum</th>" +
+            "<th>Trek schaal 1 op 5</th>" +
             "</tr>";
             for (x in data) {
                 let date = data[x].date_lust.substring(0, 10);
-                txt += "<tr id='tablerow" + x + "'>" +
+                txt += "<tr id='dm_data" + x + "'>" +
                     "<td>" + data[x].name + "</td>" +
                     "<td>" + data[x].description + "</td>" +
                     "<td>" + date + "</td>" +
@@ -30,7 +30,7 @@ function difficultmoment() {
                     "</tr>";
                 x++;
             }
-            document.getElementById("tbody").innerHTML = txt;
+            document.getElementById("dm_body").innerHTML = txt;
         },
         error: function (data, textStatus, error) {
             console.log(error);
