@@ -31,22 +31,25 @@ function addictionclient() {
 
 function getAddictionFromClient() {
     let email = getParameterByName("email");
+    console.log("Supplied email: " + email);
 
     $.ajax({
         type: 'POST',
         url: 'https://mdod.herokuapp.com/api/v1/addiction/single_client',
         beforeSend: setHeader,
         dataType: 'JSON',
-        body: {
+        data: {
             "email": email
         },
 
         success: function (data, testStatus, xhr) {
+            console.log(data[0]);
             console.log("Succes");
             let txt = "";
             for (let x in data) {
                 txt += "<tr id='tablerow" + x + "'>" +
-                    "<td>" + data[x].substance + "</td>" +
+                    "<td>" + data[x].substanceId + "</td>" +
+                    "<td>" + data[x].name + "</td>" +
                     "</tr>";
             }
             document.getElementsByClassName("tbody")[0].innerHTML = txt;
@@ -63,7 +66,6 @@ function getAddictionFromClient() {
 
 function setHeader(xhr) {
     let token = getCookie("AuthToken");
-    console.log(token);
     // Set Authorization header
     xhr.setRequestHeader('Authorization', 'Bearer ' + token);
 }
