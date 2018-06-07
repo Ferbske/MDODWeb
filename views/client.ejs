@@ -5,9 +5,12 @@
     <meta charset="UTF-8">
     <title>Client</title>
 
+    <!--Style for Bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!--Style for icons (font-awesome)-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--Style-->
     <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <body>
@@ -16,19 +19,35 @@
 <!-- Container -->
 <div class="container">
     <div class="inner_container">
-        <table class="table table-striped">
-            <tbody class="tbody_client">
-                <h3 id="clientname"></h3>
-            </tbody>
+        <h3 id="clientname"></h3>
+        <!--Table with client info-->
+        <table class="client_table table table-striped">
+            <tbody class="tbody" id="client_body"></tbody>
         </table>
+        <!--/Table with client info-->
+        <!--Buttons for usage and difficult moments-->
         <div class="client-buttons">
-            <button id="usageclientbutton" class="btn btn-lg btn-primary" type="submit" onclick="redirectusage()">Gebruik</button>
-            <button id="difficultmomentclientbutton" class="btn btn-lg btn-primary" type="submit" onclick="redirectdifficultmoment()">Moeilijke momenten</button>
+            <button id="usageclientbutton" class="btn btn-lg btn-primary" type="submit" onclick="redirectusage()">
+                Gebruik
+            </button>
+            <button id="difficultmomentclientbutton" class="btn btn-lg btn-primary" type="submit" onclick="redirectdifficultmoment()">
+                Moeilijke momenten
+            </button>
         </div>
-        <button id="treatclientbutton" class="btn btn-lg btn-primary" type="submit" onclick="treatclient()"><i class="fa fa-plus"></i></button>
-        <button id="untreatclientbutton" class="btn btn-lg btn-primary" type="submit" onclick="untreatclient()"><i class="fa fa-minus"></i></button>
+        <!--/Buttons for usage and difficult moments-->
+        <!--Buttons for treatment client-->
+        <div class="treatclient-buttons">
+            <button id="treatclientbutton" class="btn btn-lg btn-primary" type="submit" onclick="treatclient()">
+                <i class="fa fa-plus"></i>
+            </button>
+            <button id="untreatclientbutton" class="btn btn-lg btn-primary" type="submit" onclick="untreatclient()">
+                <i class="fa fa-minus"></i>
+            </button>
+        </div>
+        <!--/Buttons for treatment client-->
     </div>
-</div> <!-- /container -->
+</div>
+<!-- /container -->
 <!-- Footer added -->
 <footer id="footer"></footer>
 </body>

@@ -1,3 +1,5 @@
+/*General*/
+
 html {
     height: 100%;
     -webkit-box-sizing: border-box;
@@ -34,6 +36,7 @@ body {
     padding: 30px 0px;
 }
 
+/*Text*/
 p, a, a:hover, a:active {
     font-size: 14px;
     font-weight: 400;
@@ -63,7 +66,36 @@ h4  {
     color: #686759;
     font-size: 16px;
 }
+/*End Text*/
 
+/*Forms*/
+form {
+    max-width: 330px;
+    margin: 0 auto;
+}
+
+form h3 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+form .form-control {
+    /*position: relative;*/
+    height: auto;
+    padding: 10px;
+}
+
+form input[type=date].form-control {
+    line-height: inherit;
+}
+
+form input {
+    color: #686759!important;
+    margin-bottom: 10px;
+}
+/*End Forms*/
+
+/*Table*/
 table {
     width: 100%;
 }
@@ -72,10 +104,16 @@ table td {
     padding: 10px;
 }
 
+.table-hover >tbody>tr:hover {
+    background-color: rgba(234, 133, 22, 0.2);
+}
+
 .table tr:last-child {
     border-bottom: 1px solid #ddd;
 }
+/*End Table*/
 
+/*Buttons*/
 .btn{
     background-color: #ea8516;
     border-color: #ea8516;
@@ -85,36 +123,55 @@ table td {
     background-color: #d68024 !important;
     border-color: #d68024 !important;
 }
+/*End Buttons*/
+
+/*End General*/
+
+/*Specific pages*/
+
+/*Login*/
+#loginreg_img_logo {
+    width: 100%;
+}
+
+.container_loginreg {
+    height: 100%;
+}
+
+.link-to-registration {
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+#inputDisclaimer {
+    margin-top: 10px;
+    text-align: center;
+}
+/*End Login*/
 
 /*Profile*/
 .profile_buttons {
     float: right;
 }
+/*End Profile*/
 
-/*tableallclients.js / manageclients.ejs*/
-#tableClients tr {
+/*Clients*/
+#clients_body tr, #tclients_body tr {
     cursor: pointer;
 }
+/*End Clients*/
 
-/*client.ejs*/
-#treatclientbutton ,#untreatclientbutton{
+/*Client*/
+.treatclient-buttons {
     float: right;
-}
-
-h3#clientname {
-    float: left;
 }
 
 .client-buttons {
     float: left;
 }
-
-.table-hover >tbody>tr:hover {
-    background-color: rgba(234, 133, 22, 0.2);
-}
+/*End Client*/
 
 /*Difficult moment*/
-
 #dm_body th, #dm_body td {
     width: 30%!important;
 }
@@ -122,12 +179,32 @@ h3#clientname {
 #dm_body th:last-child, #dm_body td:last-child {
     width: 10%!important;
 }
+/*End Difficult moment*/
 
+/*Usage*/
+#usage_body th:first-child, #usage_body td:first-child {
+    width: 20%!important;
+}
 
+#usage_body th, #usage_body td {
+    width: 70%!important;
+}
 
+#usage_body th:last-child, #usage_body td:last-child {
+    width: 10%!important;
+}
+/*End Usage*/
+
+/*End Specific pages*/
+
+/*Media screen*/
 @media screen and (max-width: 950px) {
     .inner_container {
         padding-left: 10px;
         padding-right: 10px;
     }
 }
+/*End Media screen*/
+
+
+

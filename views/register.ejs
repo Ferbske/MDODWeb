@@ -7,13 +7,12 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>MDOD Registratie</title>
 
-    <!-- Bootstrap -->
+    <!-- Style for Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <!-- Retrieving the CSS for styling -->
+    <!-- Style -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/forms.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -26,10 +25,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body>
+    <!--Container-->
     <div class="container container_loginreg">
+        <!--Registratie formulier-->
         <form class="form-register">
             <!-- Registreren logo -->
-            <img class="img_logo" src="img/logo_tactus-groot.png" alt="">
+            <img id="loginreg_img_logo" src="img/logo_tactus-groot.png" alt="">
             <!-- Register heading -->
             <h3 class="register-heading">MDOD Registratie</h3>
             <!-- Firstname inputfield -->
@@ -80,7 +81,9 @@
             <!-- Disclaimer -->
             <p id="inputDisclaimer"><b>Alle velden met een * zijn verplicht</b></p>
         </form>
-    </div> <!-- /container -->
+        <!--/Registratie formulier-->
+    </div>
+    <!-- /Container -->
 </body>
 <script src="js/registration.js"></script>
 </html>
