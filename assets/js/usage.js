@@ -1,8 +1,11 @@
+let token = getCookie("AuthToken");
+let substances;
+
 function usageclient() {
     let email = getParameterByName("email");
     $.ajax({
         type: 'POST',
-        url: '',
+        url: 'https://mdod.herokuapp.com/api/v1/usage/client/data',
         dataType: 'JSON',
         beforeSend: setHeader,
         data: {
@@ -11,14 +14,38 @@ function usageclient() {
 
         success: function (data, testStatus, xhr) {
             console.log("Succes");
-            let x = 0, txt = "";
-            for (x in data) {
+            let txt = "";
+            for (let x in data) {
+                let id = data[x].substanceId - 1;
+                let substance = substances[id].name;
                 txt += "<tr id='tablerow" + x + "'>" +
-                    "<td>" + data[x].substance + "</td>" +
+                    "<td>" + substance + "</td>" +
+                    "<td>" + data[x].description + "</td>" +
+                    "<td>" + data[x].usedAt.substring(0,10) + "</td>" +
                     "</tr>";
                 x++;
             }
-            document.getElementsByClassName("tbody_usage")[0].innerHTML = txt;
+            document.getElementsByClassName("tbody")[0].innerHTML = txt;
+        },
+        error: function (data, textStatus, error) {
+            console.log(error);
+        },
+        complete: function (xhr, textStatus) {
+            console.log(xhr.status);
+        }
+    })
+}
+
+function allsubstances(){
+    $.ajax({
+        type: 'GET',
+        url: 'https://mdod.herokuapp.com/api/v1/substance/all',
+        dataType: 'JSON',
+        beforeSend: setHeader,
+
+        success: function (data, testStatus, xhr) {
+            console.log("Succes");
+            substances = data;
         },
         error: function (data, textStatus, error) {
             console.log(error);
