@@ -15,7 +15,7 @@ function getInfoClient() {
             console.log("Succes");
             let x = 0, txt = "";
             let contact = data[x].contact || "";
-            let addiction = addiction(email);
+            // let addiction = addiction(email);
             for (x in data) {
                 document.getElementById("clientname").innerHTML = data[x].firstname + " " + data[x].infix + " " + data[x].lastname;
                 txt +=
@@ -49,10 +49,10 @@ function getInfoClient() {
                         "<th>Telefoonnummer:</th>" +
                         "<td id='clientPhonenumber'>" + data[x].phonenumber + "</td>" +
                     "</tr>" +
-                    "<tr>" +
-                    "<th>Verslaving:</th>" +
-                    "<td id='clientAddiction'>" + data[x].substance + "</td>" +
-                    "</tr>" +
+                    // "<tr>" +
+                    // "<th>Verslaving:</th>" +
+                    // "<td id='clientAddiction'>" + addiction + "</td>" +
+                    // "</tr>" +
                     "<tr>" +
                         "<th>Contact:</th>" +
                         "<td id='clientContact'>" + contact + "</td>" +
@@ -80,25 +80,25 @@ function getInfoClient() {
     });
 }
 
-function addiction(email) {
-    $.ajax({
-        type: 'PUT',
-        url: "https://mdod.herokuapp.com/api/v1/addiction",
-        dataType: 'JSON',
-        data: { "email": email},
-        beforeSend: setHeader,
-
-        success: function (data, textStatus, xhr) {
-            let result = "";
-
-            for (let x = 0; x < data.length; x++) {
-                result += data[x].addiction + ", ";
-                
-            }
-        }
-
-    })
-}
+// function addiction(email) {
+//     $.ajax({
+//         type: 'PUT',
+//         url: "https://mdod.herokuapp.com/api/v1/addiction",
+//         dataType: 'JSON',
+//         data: { "email": email},
+//         beforeSend: setHeader,
+//
+//         success: function (data, textStatus, xhr) {
+//             let result = "";
+//
+//             for (let x = 0; x < data.length; x++) {
+//                 result += data[x].addiction + ", ";
+//
+//             }
+//         }
+//
+//     })
+// }
 
 function setHeader(xhr) {
     // Set Authorization header
