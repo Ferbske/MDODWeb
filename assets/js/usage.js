@@ -1,7 +1,7 @@
 function usageclient() {
     let email = getParameterByName("email");
     $.ajax({
-        type: 'PUT',
+        type: 'POST',
         url: '',
         dataType: 'JSON',
         beforeSend: setHeader,
@@ -18,7 +18,7 @@ function usageclient() {
                     "</tr>";
                 x++;
             }
-            document.getElementsByClassName("tbody")[0].innerHTML = txt;
+            document.getElementsByClassName("tbody_usage")[0].innerHTML = txt;
         },
         error: function (data, textStatus, error) {
             console.log(error);
