@@ -113,6 +113,18 @@ h3#clientname {
     background-color: rgba(234, 133, 22, 0.2);
 }
 
+/*Difficult moment*/
+
+#dm_body th, #dm_body td {
+    width: 30%!important;
+}
+
+#dm_body th:last-child, #dm_body td:last-child {
+    width: 10%!important;
+}
+
+
+
 @media screen and (max-width: 950px) {
     .inner_container {
         padding-left: 10px;
