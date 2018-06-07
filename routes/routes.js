@@ -46,6 +46,11 @@ router.get('/usage', (req, res) => {
     res.render('../views/usage.ejs')
 });
 
+// Endpoint for the difficult moments from a client
+router.get('/difficultmoment', (req, res) => {
+    res.render('../views/difficultmoment.ejs')
+});
+
 // Endpoint that is needed for adding the header in pages
 router.get('/views/header', (req, res) => {
     res.render('../views/header.ejs')
