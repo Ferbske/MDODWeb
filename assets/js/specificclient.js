@@ -1,4 +1,6 @@
 let token = getCookie("AuthToken");
+let email = getParameterByName("email");
+let clean;
 
 // This functionn gets info from 1 specific client by email
 // it gets the mail from the url
@@ -49,20 +51,20 @@ function getInfoClient() {
                         "<th>Telefoonnummer:</th>" +
                         "<td id='clientPhonenumber'>" + data[x].phonenumber + "</td>" +
                     "</tr>" +
-                    // "<tr>" +
-                    // "<th>Verslaving:</th>" +
-                    // "<td id='clientAddiction'>" + addiction + "</td>" +
-                    // "</tr>" +
                     "<tr>" +
                         "<th>Contact:</th>" +
                         "<td id='clientContact'>" + contact + "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                        "<th>Dagen Clean:</th>" +
+                        "<td id='clientClean'>" + clean + "</td>" +
                     "</tr>";
                 x++;
             }
             document.getElementById("client_body").innerHTML = txt;
 
             // This section removes the button if the contact field is filled out
-            let contactField = data[0].contact
+            let contactField = data[0].contact;
             // Check if the contactfield has a value of a string
             if (contactField) {
                 console.log("Waarde: " + contactField);
@@ -80,25 +82,28 @@ function getInfoClient() {
     });
 }
 
-// function addiction(email) {
-//     $.ajax({
-//         type: 'PUT',
-//         url: "https://mdod.herokuapp.com/api/v1/addiction",
-//         dataType: 'JSON',
-//         data: { "email": email},
-//         beforeSend: setHeader,
-//
-//         success: function (data, textStatus, xhr) {
-//             let result = "";
-//
-//             for (let x = 0; x < data.length; x++) {
-//                 result += data[x].addiction + ", ";
-//
-//             }
-//         }
-//
-//     })
-// }
+function cleanDays() {
+    $.ajax({
+        type: 'POST',
+        url: "https://mdod.herokuapp.com/api/v1/usage/client/data/clean/status",
+        dataType: 'JSON',
+        beforeSend: setHeader,
+        data: {
+            "email": email
+        },
+
+        success: function (data, textStatus, xhr) {
+            console.log("Succes");
+            clean = data.daysClean;
+        },
+        error: function (data, textStatus, error) {
+            console.log(error);
+        },
+        complete: function (xhr, textStatus) {
+            console.log(xhr.status);
+        }
+    });
+}
 
 function setHeader(xhr) {
     // Set Authorization header
