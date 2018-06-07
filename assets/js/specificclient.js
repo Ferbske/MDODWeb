@@ -1,10 +1,43 @@
 let token = getCookie("AuthToken");
-let addictions = getAddictionFromClient();
+let addictionlist = [];
+
+// Get all addictions from a specific client. builds a table of all addictions on a succesful api-call
+function getAddictionFromClient() {
+    let email = getParameterByName("email");
+
+    $.ajax({
+        type: 'POST',
+        url: 'https://mdod.herokuapp.com/api/v1/addiction/single_client',
+        beforeSend: setHeader,
+        dataType: 'JSON',
+        data: {
+            "email": email
+        },
+
+        success: function (data, testStatus, xhr) {
+            console.log("Succes");
+            for (let x in data) {
+                addictionlist.push(data[x].name);
+            }
+            getInfoClient(addictionlist);
+        },
+        error: function (data, textStatus, error) {
+            console.log(error);
+        },
+        complete: function (xhr, textStatus) {
+            console.log(xhr.status);
+        }
+    })
+}
+
+
+
 
 // This functionn gets info from 1 specific client by email
 // it gets the mail from the url
-function getInfoClient() {
+function getInfoClient(addictionlist) {
     let email = getParameterByName("email");
+
     $.ajax({
         type: 'POST',
         url: "https://mdod.herokuapp.com/api/v1/specific/client",
@@ -14,10 +47,13 @@ function getInfoClient() {
 
         success: function (data, textStatus, xhr) {
             console.log("Succes");
+
+            let addictions = "";
+
             let x = 0, txt = "";
             let contact = data[x].contact || "";
-            let clean = cleanDays(email);
-            console.log("Verslavingen: " + addictions);
+            // let clean = cleanDays(email);
+            let clean = "";
             for (x in data) {
                 document.getElementById("clientname").innerHTML = data[x].firstname + " " + data[x].infix + " " + data[x].lastname;
                 txt +=
@@ -61,7 +97,7 @@ function getInfoClient() {
                     "</tr>" +
                     "<tr>" +
                         "<th>Verslavingen:</th>" +
-                        "<td id='clientClean'>" + clean + "</td>" +
+                        "<td id='clientAddiction'>" + addictionlist + "</td>" +
                     "</tr>";
                 x++;
             }
@@ -121,3 +157,6 @@ function getParameterByName(name, url) {
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
+
+getAddictionFromClient();
+// getInfoClient();
