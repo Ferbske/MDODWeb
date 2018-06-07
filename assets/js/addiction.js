@@ -48,7 +48,6 @@ function getAddictionFromClient() {
             let txt = "";
             for (let x in data) {
                 txt += "<tr id='tablerow" + x + "'>" +
-                    "<td>" + data[x].substanceId + "</td>" +
                     "<td>" + data[x].name + "</td>" +
                     "</tr>";
             }
