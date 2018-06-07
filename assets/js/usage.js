@@ -14,18 +14,23 @@ function usageclient() {
 
         success: function (data, testStatus, xhr) {
             console.log("Succes");
-            let txt = "";
+            let txt = "<tr id='usage_head'>" +
+                "<th>Wat</th>" +
+                "<th>Beschrijving</th>" +
+                "<th>Datum</th>" +
+                "</tr>";
             for (let x in data) {
                 let id = data[x].substanceId - 1;
                 let substance = substances[id].name;
-                txt += "<tr id='tablerow" + x + "'>" +
+                txt += "<tr id='usage_data" + x + "'>" +
                     "<td>" + substance + "</td>" +
                     "<td>" + data[x].description + "</td>" +
                     "<td>" + data[x].usedAt.substring(0,10) + "</td>" +
                     "</tr>";
                 x++;
             }
-            document.getElementsByClassName("tbody")[0].innerHTML = txt;
+
+            document.getElementById("usage_body").innerHTML = txt;
         },
         error: function (data, textStatus, error) {
             console.log(error);

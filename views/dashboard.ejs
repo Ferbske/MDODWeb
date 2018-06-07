@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <title>Dashboard</title>
 
+    <!--Style for Bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!--Style-->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -15,11 +17,19 @@
     <div class="container">
         <div class="inner_container">
             <h1>Mijn cliënten</h1>
-            <table id="tableClients" class='table table-striped table-hover'></table>
-            <button class="btn btn-lg btn-primary" type="submit" onclick="window.location.href='clients'">Voeg cliënt toe</button>
+            <!--Table with treatment clients -->
+            <table class='tclients_table table table-striped table-hover'>
+                <tbody class="tbody" id="tclients_body"></tbody>
+            </table>
+            <!--/Table with treatment clients -->
+            <!--Button to add client-->
+            <button class="btn btn-lg btn-primary" type="submit" onclick="window.location.href='clients'">
+                Voeg cliënt toe
+            </button>
+            <!--/Button to add client-->
         </div>
-
-    </div> <!-- /container -->
+    </div>
+    <!-- /Container -->
     <!-- Footer added -->
     <footer id="footer"></footer>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

@@ -11,17 +11,17 @@ footer {
     padding: 0px 20px;
 }
 
-#socket-name {
+#web-name {
     width: 60%;
     float: left;
 }
 
-#socket-info {
+#copyright {
     width: 40%;
     float: right;
 }
 
-#socket-info p {
+#copyright #tactus {
     float: right;
 }
 

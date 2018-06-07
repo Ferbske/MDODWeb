@@ -13,7 +13,7 @@ $(document).ready(function() {
             let x = 0, txt = "";
             // txt += "<table class='table table-striped'>";
             for (x in data) {
-                txt += "<tr id='tablerow" + x + "' onclick=redirect('" + data[x].email + "') >" +
+                txt += "<tr id='clients_row" + x + "' onclick=redirect('" + data[x].email + "') >" +
                     "<th>" + data[x].firstname + " " +
                     data[x].infix + " " +
                     data[x].lastname + "</th>" +
@@ -22,7 +22,7 @@ $(document).ready(function() {
                 x++;
             }
             // txt += "</table>";
-            document.getElementById("tableClients").innerHTML = txt;
+            document.getElementById("clients_body").innerHTML = txt;
         },
         error: function (data, textStatus, error) {
             console.log(error);
