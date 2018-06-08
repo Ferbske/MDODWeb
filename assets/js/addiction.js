@@ -1,35 +1,35 @@
 // API Call functions
 //==========================================================
-function addictionclient() {
-    let email = getParameterByName("email");
-    $.ajax({
-        type: 'PUT',
-        url: 'https://mdod.herokuapp.com/api/v1/addiction',
-        dataType: 'JSON',
-        beforeSend: setHeader,
-        data: {
-            "email": email
-        },
-
-        success: function (data, testStatus, xhr) {
-            console.log("Succes");
-            let x = 0, txt = "";
-            for (x in data) {
-                txt += "<tr id='tablerow" + x + "'>" +
-                    "<td>" + data[x].substance + "</td>" +
-                    "</tr>";
-                x++;
-            }
-            document.getElementsByClassName("tbody_addiction")[0].innerHTML = txt;
-        },
-        error: function (data, textStatus, error) {
-            console.log(error);
-        },
-        complete: function (xhr, textStatus) {
-            console.log(xhr.status);
-        }
-    })
-}
+// function addictionclient() {
+//     let email = getParameterByName("email");
+//     $.ajax({
+//         type: 'PUT',
+//         url: 'https://mdod.herokuapp.com/api/v1/addiction',
+//         dataType: 'JSON',
+//         beforeSend: setHeader,
+//         data: {
+//             "email": email
+//         },
+//
+//         success: function (data, testStatus, xhr) {
+//             console.log("Succes");
+//             let x = 0, txt = "";
+//             for (x in data) {
+//                 txt += "<tr id='tablerow" + x + "'>" +
+//                     "<td>" + data[x].substance + "</td>" +
+//                     "</tr>";
+//                 x++;
+//             }
+//             document.getElementsByClassName("tbody_addiction")[0].innerHTML = txt;
+//         },
+//         error: function (data, textStatus, error) {
+//             console.log(error);
+//         },
+//         complete: function (xhr, textStatus) {
+//             console.log(xhr.status);
+//         }
+//     })
+// }
 
 function addAddictionToClient() {
     let email = getParameterByName("email");
@@ -69,15 +69,11 @@ function tableAllSubstances() {
         success: function (data, testStatus, xhr) {
             for (let i in data) {
                 txt += "<li>" +
-                    "<input type='checkbox' id='substance" + i + "'" + "name='" + data[i].name + "'" + ">" +
+                    "<input type='checkbox' id='" + data[i].id + "' name='" + data[i].name + "'" + ">" +
                     data[i].name +
-                    "</li>"
-
-
+                    "</li>";
             }
             document.getElementsByClassName("substance_list")[0].innerHTML = txt;
-
-            console.log(data);
         },
         error: function (data, textStatus, xhr) {
             console.log("Error" + textStatus);
@@ -91,20 +87,17 @@ function tableAllSubstances() {
 function getSelectedSubstances() {
     let selectedSubstances = [];
     $("input:checked").each(function () {
-        selectedSubstances.push($(this).attr("name"))
+        selectedSubstances.push($(this).attr("id"))
     });
     console.log("substances: " + selectedSubstances);
 
-    for (let substance in selectedSubstances) {
-        createAddiction(substance);
+    for (let substanceId in selectedSubstances) {
+        createAddiction(substanceId);
     }
 }
 
-function createAddiction(substance) {
+function createAddiction(substanceId) {
     let email = getParameterByName("email");
-    let substanceId = substance.id;
-
-    console.log("SUBSTANCEID: " + substanceId);
 
     $.ajax({
         type: 'POST',
@@ -129,7 +122,6 @@ function createAddiction(substance) {
 
 
 tableAllSubstances();
-
 //=======================================//
 // Helper functions
 function setHeader(xhr) {
