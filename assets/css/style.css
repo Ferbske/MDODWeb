@@ -182,16 +182,16 @@ table td {
 /*End Difficult moment*/
 
 /*Usage*/
-#usage_body th:first-child, #usage_body td:first-child {
-    width: 20%!important;
-}
-
-#usage_body th, #usage_body td {
-    width: 70%!important;
-}
-
-#usage_body th:last-child, #usage_body td:last-child {
+#usage_body .usage_amount, #usage_body .usage_mood {
     width: 10%!important;
+}
+
+#usage_body .usage_date, #usage_body .usage_substance, #usage_body .usage_location {
+    width: 15%!important;
+}
+
+#usage_body .usage_cause {
+    width: 35%!important;
 }
 /*End Usage*/
 
