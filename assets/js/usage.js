@@ -9,7 +9,7 @@ function usageclient() {
         "<th class='usage_amount'>Hoeveel</th>" +
         "<th class='usage_location'>Waar</th>" +
         "<th class='usage_cause'>Oorzaak</th>" +
-        "<th class='usage_mood'>Gevoel</th>" +
+        "<th class='usage_mood'>Gevoel <br><span style='font-size: 10px'>(Schaal van 1 tm 5)</span></th>" +
         "</tr>";
     $.ajax({
         type: 'POST',
