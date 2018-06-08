@@ -3,6 +3,14 @@ let substances;
 
 function usageclient() {
     let email = getParameterByName("email");
+    let txt = "<tr id='usage_head'>" +
+        "<th class='usage_date'>Datum</th>" +
+        "<th class='usage_substance'>Wat</th>" +
+        "<th class='usage_amount'>Hoeveel</th>" +
+        "<th class='usage_location'>Waar</th>" +
+        "<th class='usage_cause'>Oorzaak</th>" +
+        "<th class='usage_mood'>Gevoel</th>" +
+        "</tr>";
     $.ajax({
         type: 'POST',
         url: 'https://mdod.herokuapp.com/api/v1/usage/client/data',
@@ -14,18 +22,16 @@ function usageclient() {
 
         success: function (data, testStatus, xhr) {
             console.log("Succes");
-            let txt = "<tr id='usage_head'>" +
-                "<th>Wat</th>" +
-                "<th>Beschrijving</th>" +
-                "<th>Datum</th>" +
-                "</tr>";
             for (let x in data) {
                 let id = data[x].substanceId - 1;
                 let substance = substances[id].name;
                 txt += "<tr id='usage_data" + x + "'>" +
-                    "<td>" + substance + "</td>" +
-                    "<td>" + data[x].description + "</td>" +
-                    "<td>" + data[x].usedAt.substring(0,10) + "</td>" +
+                    "<td class='usage_date'>" + data[x].usedAt.substring(0,10) + "</td>" +
+                    "<td class='usage_substance'>" + substance + "</td>" +
+                    "<td class='usage_amount'>" + data[x].amount + "</td>" +
+                    "<td class='usage_location'>" + data[x].location + "</td>" +
+                    "<td class='usage_cause'>" + data[x].cause + "</td>" +
+                    "<td class='usage_mood'>" + data[x].mood + "</td>" +
                     "</tr>";
                 x++;
             }
@@ -34,6 +40,7 @@ function usageclient() {
         },
         error: function (data, textStatus, error) {
             console.log(error);
+            document.getElementById("usage_body").innerHTML = txt;
         },
         complete: function (xhr, textStatus) {
             console.log(xhr.status);
