@@ -169,7 +169,28 @@ table td {
 .client-buttons {
     float: left;
 }
+
+#client_body .addiction_row:hover {
+    background-color: rgba(234, 133, 22, 0.2);
+    cursor: pointer;
+}
 /*End Client*/
+
+/*Addiction*/
+.substance_list {
+    padding-left: 0px;
+}
+
+.substance_list li {
+    list-style: none;
+    padding-bottom: 5px;
+}
+
+.substance_list input[type=checkbox] {
+    margin-right: 8px;
+    cursor: pointer;
+}
+/*End Addiction*/
 
 /*Difficult moment*/
 #dm_body th, #dm_body td {

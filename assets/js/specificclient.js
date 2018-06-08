@@ -90,7 +90,7 @@ function getInfoClient(addictionlist, clean) {
                         "<th>Dagen Clean:</th>" +
                         "<td id='clientClean'>" + clean + "</td>" +
                     "</tr>" +
-                    "<tr id='addiction_row" + x + "' onclick=redirectaddiction('" + data[x].email + "') >" +
+                    "<tr class= 'addiction_row' id='addiction_row" + x + "' onclick=redirectaddiction('" + data[x].email + "') >" +
                         "<th>Verslavingen:</th>" +
                         "<td id='clientAddiction'>" + addictionlist + "</td>" +
                     "</tr>";
