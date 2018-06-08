@@ -78,7 +78,7 @@ function tableAllSubstances() {
             console.log(data);
         },
         error: function (data, textStatus, xhr) {
-            console.log("Error m8: " + textStatus);
+            console.log("Error" + textStatus);
         },
         complete: function (xhr, textStatus) {
             console.log(xhr.status);
@@ -86,6 +86,39 @@ function tableAllSubstances() {
         }
     })
 }
+
+function getSelectedSubstances() {
+    console.log("test");
+}
+
+function createAddiction(substance) {
+    let email = getParameterByName("email");
+    let substanceId = substance.id;
+
+    console.log("SUBSTANCEID: " + substanceId);
+
+    $.ajax({
+        type: 'POST',
+        url: 'https://mdod.herokuapp.com/api/v1/addiction',
+        beforeSend: setHeader,
+        dataType: 'JSON',
+        data: {
+            'substanceId': substanceId,
+            'email': email
+        },
+
+        success: function (data, textStatus, xhr) {
+            console.log("created addiction for substance: " + substance);
+        },
+        error: function (data, textStatus, xhr) {
+            console.log("Error:" + textStatus);
+        }
+
+    })
+}
+
+
+
 tableAllSubstances();
 
 //=======================================//
