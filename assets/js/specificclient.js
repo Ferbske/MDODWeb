@@ -1,6 +1,6 @@
 let token = getCookie("AuthToken");
 let email = getParameterByName("email");
-let clean;
+let clean = "";
 let addictionlist = [];
 
 // Get all addictions from a specific client. builds a table of all addictions on a succesful api-call
@@ -21,11 +21,11 @@ function getAddictionFromClient() {
             for (let x in data) {
                 addictionlist.push(data[x].name);
             }
-            getInfoClient(addictionlist);
+            cleanDays();
         },
         error: function (data, textStatus, error) {
             console.log(error);
-            getInfoClient(addictionlist)
+            cleanDays();
         },
         complete: function (xhr, textStatus) {
             console.log(xhr.status);
@@ -38,7 +38,7 @@ function getAddictionFromClient() {
 
 // This functionn gets info from 1 specific client by email
 // it gets the mail from the url
-function getInfoClient(addictionlist) {
+function getInfoClient(addictionlist, clean) {
     let email = getParameterByName("email");
 
     $.ajax({
@@ -50,12 +50,8 @@ function getInfoClient(addictionlist) {
 
         success: function (data, textStatus, xhr) {
             console.log("Succes");
-
-            let addictions = "";
-
             let x = 0, txt = "";
             let contact = data[x].contact || "";
-            let clean = "";
             for (x in data) {
                 document.getElementById("clientname").innerHTML = data[x].firstname + " " + data[x].infix + " " + data[x].lastname;
                 txt +=
@@ -137,9 +133,11 @@ function cleanDays() {
         success: function (data, textStatus, xhr) {
             console.log("Succes");
             clean = data.daysClean;
+            getInfoClient(addictionlist, clean)
         },
         error: function (data, textStatus, error) {
             console.log(error);
+            getInfoClient(addictionlist)
         },
         complete: function (xhr, textStatus) {
             console.log(xhr.status);
@@ -163,4 +161,3 @@ function getParameterByName(name, url) {
 }
 
 getAddictionFromClient();
-// getInfoClient();
