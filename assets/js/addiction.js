@@ -89,10 +89,10 @@ function getSelectedSubstances() {
     $("input:checked").each(function () {
         selectedSubstances.push($(this).attr("id"))
     });
-    console.log("substances: " + selectedSubstances);
+    console.log(selectedSubstances);
 
     for (let substanceId in selectedSubstances) {
-        createAddiction(substanceId);
+        createAddiction(selectedSubstances[substanceId]);
     }
 }
 
@@ -110,10 +110,14 @@ function createAddiction(substanceId) {
         },
 
         success: function (data, textStatus, xhr) {
-            console.log("created addiction for substance: " + substance);
+            console.log("created addiction for substance: " + substanceId);
+            window.location = "client?email=" + email;
         },
         error: function (data, textStatus, xhr) {
+            console.log("SubstanceID: " + substanceId);
+            console.log("Email: " + email);
             console.log("Error:" + textStatus);
+            console.log(data);
         }
 
     })
