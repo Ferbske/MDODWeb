@@ -51,6 +51,7 @@ function allsubstances(){
         success: function (data, testStatus, xhr) {
             console.log("Succes");
             substances = data;
+            setTimeout(1000);
         },
         error: function (data, textStatus, error) {
             console.log(error);
