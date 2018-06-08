@@ -172,26 +172,26 @@ table td {
 /*End Client*/
 
 /*Difficult moment*/
-#dm_body th, #dm_body td {
-    width: 30%!important;
+#dm_body .dm_substance, #dm_body .dm_date, #dm_body .dm_lust  {
+    width: 15%!important;
 }
 
-#dm_body th:last-child, #dm_body td:last-child {
-    width: 10%!important;
+#dm_body .dm_description {
+    width: 55%!important;
 }
 /*End Difficult moment*/
 
 /*Usage*/
-#usage_body .usage_amount, #usage_body .usage_mood {
+#usage_body .usage_amount {
     width: 10%!important;
 }
 
-#usage_body .usage_date, #usage_body .usage_substance, #usage_body .usage_location {
+#usage_body .usage_date, #usage_body .usage_substance, #usage_body .usage_location, #usage_body .usage_mood {
     width: 15%!important;
 }
 
 #usage_body .usage_cause {
-    width: 35%!important;
+    width: 30%!important;
 }
 /*End Usage*/
 
