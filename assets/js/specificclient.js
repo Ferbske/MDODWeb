@@ -23,6 +23,7 @@ function getAddictionFromClient() {
         },
         error: function (data, textStatus, error) {
             console.log(error);
+            getInfoClient(addictionlist)
         },
         complete: function (xhr, textStatus) {
             console.log(xhr.status);
