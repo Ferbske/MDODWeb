@@ -69,9 +69,11 @@ function tableAllSubstances() {
         success: function (data, testStatus, xhr) {
             for (let i in data) {
                 txt += "<li>" +
-                    "<input type='checkbox' id=''>" +
+                    "<input type='checkbox' id='substance" + i + "'" + "name='" + data[i].name + "'" + ">" +
                     data[i].name +
                     "</li>"
+
+
             }
             document.getElementsByClassName("substance_list")[0].innerHTML = txt;
 
@@ -82,13 +84,20 @@ function tableAllSubstances() {
         },
         complete: function (xhr, textStatus) {
             console.log(xhr.status);
-
         }
     })
 }
 
 function getSelectedSubstances() {
-    console.log("test");
+    let selectedSubstances = [];
+    $("input:checked").each(function () {
+        selectedSubstances.push($(this).attr("name"))
+    });
+    console.log("substances: " + selectedSubstances);
+
+    for (let substance in selectedSubstances) {
+        createAddiction(substance);
+    }
 }
 
 function createAddiction(substance) {
