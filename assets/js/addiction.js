@@ -58,7 +58,7 @@ function addAddictionToClient() {
     })
 }
 
-function getAllSubstances() {
+function tableAllSubstances() {
     let txt = "";
     $.ajax({
         type: 'GET',
@@ -67,6 +67,13 @@ function getAllSubstances() {
         dataType: 'JSON',
 
         success: function (data, testStatus, xhr) {
+            for (let i in data) {
+                txt += "<li>" +
+                    "<input type='checkbox' id=''>" +
+                    data[i].name +
+                    "</li>"
+            }
+            document.getElementsByClassName("substance_list")[0].innerHTML = txt;
 
             console.log(data);
         },
@@ -79,7 +86,7 @@ function getAllSubstances() {
         }
     })
 }
-getAllSubstances();
+tableAllSubstances();
 
 //=======================================//
 // Helper functions
