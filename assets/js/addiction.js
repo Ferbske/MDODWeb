@@ -1,6 +1,5 @@
 // API Call functions
 //==========================================================
-
 // Get all available substances from the database
 function tableAllSubstances() {
     let txt = "";
@@ -30,18 +29,31 @@ function tableAllSubstances() {
 }
 
 // Get all the checked substances
-function getSelectedSubstances() {
+function handleSelectedSubstances() {
     let selectedSubstances = [];
+    let unselectedSubstances = [];
+
     // Add every checked substance to the selectedSubstances array
     $("input:checked").each(function () {
         selectedSubstances.push($(this).attr("id"))
+    });
+
+    $("input:not:checked").each(function () {
+        unselectedSubstances.push($(this).attr("id"))
     });
 
     // Loop through the selectedSubstances array and create a new addiction for every substance
     for (let substanceId in selectedSubstances) {
         createAddiction(selectedSubstances[substanceId]);
     }
+
+    // Loop through the selectedSubstances array and try to remove them from the database
+    for (let substanceId in unselectedSubstances) {
+        removeAddiction(selectedSubstances[substanceId]);
+    }
 }
+
+// Get all unselected substances
 
 function createAddiction(substanceId) {
     let email = getParameterByName("email");
@@ -71,7 +83,6 @@ function createAddiction(substanceId) {
 
 function removeAddiction (substanceId) {
     let email = getParameterByName("email");
-    let substanceid = substanceId;
     $.ajax({
         type: 'DELETE',
         url: 'https://mdod.herokuapp.com/api/v1/addiction',
