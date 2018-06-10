@@ -1,63 +1,7 @@
 // API Call functions
 //==========================================================
-// function addictionclient() {
-//     let email = getParameterByName("email");
-//     $.ajax({
-//         type: 'PUT',
-//         url: 'https://mdod.herokuapp.com/api/v1/addiction',
-//         dataType: 'JSON',
-//         beforeSend: setHeader,
-//         data: {
-//             "email": email
-//         },
-//
-//         success: function (data, testStatus, xhr) {
-//             console.log("Succes");
-//             let x = 0, txt = "";
-//             for (x in data) {
-//                 txt += "<tr id='tablerow" + x + "'>" +
-//                     "<td>" + data[x].substance + "</td>" +
-//                     "</tr>";
-//                 x++;
-//             }
-//             document.getElementsByClassName("tbody_addiction")[0].innerHTML = txt;
-//         },
-//         error: function (data, textStatus, error) {
-//             console.log(error);
-//         },
-//         complete: function (xhr, textStatus) {
-//             console.log(xhr.status);
-//         }
-//     })
-// }
 
-function addAddictionToClient() {
-    let email = getParameterByName("email");
-    console.log("Supplied email: " + email);
-
-    $.ajax({
-        type: 'POST',
-        url: 'https://mdod.herokuapp.com/api/v1/addiction/single_client',
-        beforeSend: setHeader,
-        dataType: 'JSON',
-        data: {
-            "email": email
-        },
-
-        success: function (data, testStatus, xhr) {
-            console.log(data[0]);
-            console.log("Succes");
-        },
-        error: function (data, textStatus, error) {
-            console.log(error);
-            console.log("ERRORRRRR")
-        },
-        complete: function (xhr, textStatus) {
-            console.log(xhr.status);
-        }
-    })
-}
-
+// Get all available substances from the database
 function tableAllSubstances() {
     let txt = "";
     $.ajax({
@@ -67,6 +11,7 @@ function tableAllSubstances() {
         dataType: 'JSON',
 
         success: function (data, testStatus, xhr) {
+            // Loop through all substances and create a checklist of them
             for (let i in data) {
                 txt += "<li>" +
                     "<input type='checkbox' id='" + data[i].id + "' name='" + data[i].name + "'" + ">" +
@@ -84,13 +29,15 @@ function tableAllSubstances() {
     })
 }
 
+// Get all the checked substances
 function getSelectedSubstances() {
     let selectedSubstances = [];
+    // Add every checked substance to the selectedSubstances array
     $("input:checked").each(function () {
         selectedSubstances.push($(this).attr("id"))
     });
-    console.log(selectedSubstances);
 
+    // Loop through the selectedSubstances array and create a new addiction for every substance
     for (let substanceId in selectedSubstances) {
         createAddiction(selectedSubstances[substanceId]);
     }
@@ -98,7 +45,6 @@ function getSelectedSubstances() {
 
 function createAddiction(substanceId) {
     let email = getParameterByName("email");
-
     $.ajax({
         type: 'POST',
         url: 'https://mdod.herokuapp.com/api/v1/addiction',
@@ -123,9 +69,28 @@ function createAddiction(substanceId) {
     })
 }
 
+function removeAddiction (substanceId) {
+    let email = getParameterByName("email");
+    let substanceid = substanceId;
+    $.ajax({
+        type: 'DELETE',
+        url: 'https://mdod.herokuapp.com/api/v1/addiction',
+        beforeSend: setHeader,
+        dataType: 'JSON',
+        data: {
+            'substanceId': substanceId,
+            'email': email
+        },
 
-
-tableAllSubstances();
+        success: function (data, textStatus, xhr) {
+            console.log('Great succes' + data);
+        },
+        error: function (data, textStatus, xhr) {
+            console.log('Error');
+            console.log(data);
+        }
+    })
+}
 //=======================================//
 // Helper functions
 function setHeader(xhr) {
@@ -144,3 +109,7 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 //=======================================//
+
+// Calling defined functions //
+
+tableAllSubstances();
