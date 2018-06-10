@@ -1,103 +1,128 @@
 // API Call functions
-//==========================================================
-function addictionclient() {
-    let email = getParameterByName("email");
-    $.ajax({
-        type: 'PUT',
-        url: 'https://mdod.herokuapp.com/api/v1/addiction',
-        dataType: 'JSON',
-        beforeSend: setHeader,
-        data: {
-            "email": email
-        },
-
-        success: function (data, testStatus, xhr) {
-            console.log("Succes");
-            let x = 0, txt = "";
-            for (x in data) {
-                txt += "<tr id='tablerow" + x + "'>" +
-                    "<td>" + data[x].substance + "</td>" +
-                    "</tr>";
-                x++;
-            }
-            document.getElementsByClassName("tbody_addiction")[0].innerHTML = txt;
-        },
-        error: function (data, textStatus, error) {
-            console.log(error);
-        },
-        complete: function (xhr, textStatus) {
-            console.log(xhr.status);
-        }
-    })
-}
-
-// // Get all addictions from a specific client. builds a table of all addictions on a succesful api-call
-// function getAddictionFromClient() {
+// CHECK ALL CURRENT ADDICTIONS
+// $(document).ready(function() {
+//     let allClientAddictions = [];
 //     let email = getParameterByName("email");
-//     let addictionList = [];
-//     console.log("Supplied email: " + email);
-//
 //     $.ajax({
-//         type: 'POST',
-//         url: 'https://mdod.herokuapp.com/api/v1/addiction/single_client',
+//         type: 'GET',
+//         url: 'https://mdod.herokuapp.com/api/v1/addiction',
 //         beforeSend: setHeader,
 //         dataType: 'JSON',
 //         data: {
 //             "email": email
 //         },
 //
-//         success: function (data, testStatus, xhr) {
-//             console.log("Succes");
-//             // return data[0].name;
-//             // let txt = "";
-//             for (let x in data) {
-//                 addictionList.push(data[x].name);
-//             }
-//             // console.log(addictionList);
-//             return addictionList;
-//
-//             //     txt += "<tr id='tablerow" + x + "'>" +
-//             //         "<td>" + data[x].name + "</td>" +
-//             //         "</tr>";
-//             // }
-//             // document.getElementsByClassName("tbody")[0].innerHTML = txt;
+//         success: function (data, textStatus, xhr) {
+//             console.log("succes!");
+//             console.log(data);
 //         },
-//         error: function (data, textStatus, error) {
+//         error: function (data, textStatus, error ) {
+//             console.log();
+//             console.log("EROOR!");
 //             console.log(error);
+//             console.log("Status: " + textStatus);
 //         },
-//         complete: function (xhr, textStatus) {
-//             console.log(xhr.status);
-//         }
-//     })
-// }
+//     });
+// });
 
-function addAddictionToClient() {
-    let email = getParameterByName("email");
-    console.log("Supplied email: " + email);
-
+//==========================================================
+// Get all available substances from the database
+function tableAllSubstances() {
+    let txt = "";
     $.ajax({
-        type: 'POST',
-        url: 'https://mdod.herokuapp.com/api/v1/addiction/single_client',
+        type: 'GET',
+        url: 'https://mdod.herokuapp.com/api/v1/substance/all',
         beforeSend: setHeader,
         dataType: 'JSON',
-        data: {
-            "email": email
-        },
 
         success: function (data, testStatus, xhr) {
-            console.log(data[0]);
-            console.log("Succes");
+            // Loop through all substances and create a checklist of them
+            for (let i in data) {
+                txt += "<li>" +
+                    "<input type='checkbox' id='" + data[i].id + "' name='" + data[i].name + "'" + ">" +
+                    data[i].name +
+                    "</li>";
+            }
+            document.getElementsByClassName("substance_list")[0].innerHTML = txt;
         },
-        error: function (data, textStatus, error) {
-            console.log(error);
-            console.log("ERRORRRRR")
+        error: function (data, textStatus, xhr) {
+            console.log("Error" + textStatus);
         },
-        complete: function (xhr, textStatus) {
-            console.log(xhr.status);
-        }
     })
 }
 
+// Get all the checked substances
+function handleSelectedSubstances() {
+    let selectedSubstances = [];
+    let unselectedSubstances = [];
+
+    // Add every checked substance to the selectedSubstances array
+    $("input:checked").each(function () {
+        selectedSubstances.push($(this).attr("id"))
+    });
+
+    $("input:not(checked)").each(function () {
+        unselectedSubstances.push($(this).attr("id"))
+    });
+
+    // Loop through the selectedSubstances array and create a new addiction for every substance
+    for (let substanceId in selectedSubstances) {
+        createAddiction(selectedSubstances[substanceId]);
+    }
+
+    //Loop through the selectedSubstances array and try to remove them from the database
+    for (let substanceId in unselectedSubstances) {
+        removeAddiction(unselectedSubstances[substanceId]);
+    }
+}
+
+// Get all unselected substances
+
+function createAddiction(substanceId) {
+    let email = getParameterByName("email");
+    $.ajax({
+        type: 'POST',
+        url: 'https://mdod.herokuapp.com/api/v1/addiction',
+        beforeSend: setHeader,
+        dataType: 'JSON',
+        data: {
+            'substanceId': substanceId,
+            'email': email
+        },
+
+        success: function (data, textStatus, xhr) {
+            console.log("created addiction for substance: " + substanceId);
+            window.location = "client?email=" + email;
+        },
+        error: function (data, textStatus, xhr) {
+            alert("Een van de substanties is al geregistreerd bij deze persoon")
+        }
+
+    })
+}
+
+// function removeAddiction (substanceId) {
+//     let email = getParameterByName("email");
+//     $.ajax({
+//         type: 'DELETE',
+//         url: 'https://mdod.herokuapp.com/api/v1/addiction',
+//         beforeSend: setHeader,
+//         dataType: 'JSON',
+//         data: {
+//             'substanceId': substanceId,
+//             'email': email
+//         },
+//
+//         success: function (data, textStatus, xhr) {
+//             console.log('Great succes' + data);
+//         },
+//         error: function (data, textStatus, xhr) {
+//             return;
+//             console.log('Error');
+//             console.log(data);
+//         }
+//     })
+// }
 //=======================================//
 // Helper functions
 function setHeader(xhr) {
@@ -116,3 +141,7 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 //=======================================//
+
+// Calling defined functions //
+
+tableAllSubstances();

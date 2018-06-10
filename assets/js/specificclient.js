@@ -33,9 +33,6 @@ function getAddictionFromClient() {
     })
 }
 
-
-
-
 // This functionn gets info from 1 specific client by email
 // it gets the mail from the url
 function getInfoClient(addictionlist, clean) {
@@ -93,7 +90,7 @@ function getInfoClient(addictionlist, clean) {
                         "<th>Dagen Clean:</th>" +
                         "<td id='clientClean'>" + clean + "</td>" +
                     "</tr>" +
-                    "<tr>" +
+                    "<tr class= 'addiction_row' id='addiction_row" + x + "' onclick=redirectaddiction('" + data[x].email + "') >" +
                         "<th>Verslavingen:</th>" +
                         "<td id='clientAddiction'>" + addictionlist + "</td>" +
                     "</tr>";

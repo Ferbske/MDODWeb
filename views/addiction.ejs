@@ -16,14 +16,10 @@
 <!-- Container -->
 <div class="container">
     <div class="inner_container">
-        <h3 id="clientname">Verslavingen</h3>
-        <table>
-        <tbody class="tbody">
-
-        </tbody>
-        </table>
-
-        <button id="addAddictionbutton" class="btn btn-lg btn-primary" type="submit" onclick=""><i class="fa fa-plus"></i></button>
+        <h3 id="clientname">Middelen</h3>
+        <ul class="substance_list">
+        </ul>
+        <button id="addAddictionbutton" class="btn btn-lg btn-primary" type="submit" onclick="handleSelectedSubstances()">Opslaan</button>
     </div>
 </div> <!-- /container -->
 <!-- Footer added -->
@@ -35,6 +31,5 @@
 <script src="js/includehtml.js"></script>
 <script src="js/authcookie.js"></script>
 <script src="js/addiction.js"></script>
-<script>getAddictionFromClient()</script>
 <script>include();</script>
 </html>
