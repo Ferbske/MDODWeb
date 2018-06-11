@@ -1,3 +1,12 @@
+/*General*/
+
+html {
+    height: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 body {
     font-family: "proxima-nova", Arial;
     -webkit-font-smoothing: antialiased;
@@ -5,8 +14,10 @@ body {
     font-style: normal;
     background-color: #eee;
     width: 100%;
+    min-height: 100%;
     margin: 0;
     padding: 0;
+    position: relative;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -14,18 +25,18 @@ body {
 
 .container {
     margin: 0 auto;
-    height: calc(100vh - 100px);
-    overflow-y: scroll;
-    padding: 50px 0;
+    height: 100%;
+    padding: 50px 0px;
     width: 100%;
 }
 
 .inner_container {
     max-width: 960px;
     margin: 0 auto;
-    padding-top: 50px;
+    padding: 30px 0px;
 }
 
+/*Text*/
 p, a, a:hover, a:active {
     font-size: 14px;
     font-weight: 400;
@@ -55,7 +66,36 @@ h4  {
     color: #686759;
     font-size: 16px;
 }
+/*End Text*/
 
+/*Forms*/
+form {
+    max-width: 330px;
+    margin: 0 auto;
+}
+
+form h3 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+form .form-control {
+    /*position: relative;*/
+    height: auto;
+    padding: 10px;
+}
+
+form input[type=date].form-control {
+    line-height: inherit;
+}
+
+form input {
+    color: #686759!important;
+    margin-bottom: 10px;
+}
+/*End Forms*/
+
+/*Table*/
 table {
     width: 100%;
 }
@@ -64,10 +104,16 @@ table td {
     padding: 10px;
 }
 
+.table-hover >tbody>tr:hover {
+    background-color: rgba(234, 133, 22, 0.2);
+}
+
 .table tr:last-child {
     border-bottom: 1px solid #ddd;
 }
+/*End Table*/
 
+/*Buttons*/
 .btn{
     background-color: #ea8516;
     border-color: #ea8516;
@@ -77,23 +123,109 @@ table td {
     background-color: #d68024 !important;
     border-color: #d68024 !important;
 }
+/*End Buttons*/
+
+/*End General*/
+
+/*Specific pages*/
+
+/*Login*/
+#loginreg_img_logo {
+    width: 100%;
+}
+
+.container_loginreg {
+    height: 100%;
+}
+
+.link-to-registration {
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+#inputDisclaimer {
+    margin-top: 10px;
+    text-align: center;
+}
+/*End Login*/
 
 /*Profile*/
 .profile_buttons {
     float: right;
 }
+/*End Profile*/
 
-/*tableallclients.js / manageclients.ejs*/
-#tableClients tr {
+/*Clients*/
+#clients_body tr, #tclients_body tr {
     cursor: pointer;
 }
+/*End Clients*/
 
-/*client.ejs*/
-#treatclientbutton {
+/*Client*/
+.treatclient-buttons {
     float: right;
 }
 
-.table-hover >tbody>tr:hover {
-    background-color: rgba(234, 133, 22, 0.2);
+.client-buttons {
+    float: left;
 }
+
+#client_body .addiction_row:hover {
+    background-color: rgba(234, 133, 22, 0.2);
+    cursor: pointer;
+}
+/*End Client*/
+
+/*Addiction*/
+.substance_list {
+    padding-left: 0px;
+}
+
+.substance_list li {
+    list-style: none;
+    padding-bottom: 5px;
+}
+
+.substance_list input[type=checkbox] {
+    margin-right: 8px;
+    cursor: pointer;
+}
+/*End Addiction*/
+
+/*Difficult moment*/
+#dm_body .dm_substance, #dm_body .dm_date, #dm_body .dm_lust  {
+    width: 15%!important;
+}
+
+#dm_body .dm_description {
+    width: 55%!important;
+}
+/*End Difficult moment*/
+
+/*Usage*/
+#usage_body .usage_amount {
+    width: 10%!important;
+}
+
+#usage_body .usage_date, #usage_body .usage_substance, #usage_body .usage_location, #usage_body .usage_mood {
+    width: 15%!important;
+}
+
+#usage_body .usage_cause {
+    width: 30%!important;
+}
+/*End Usage*/
+
+/*End Specific pages*/
+
+/*Media screen*/
+@media screen and (max-width: 950px) {
+    .inner_container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+/*End Media screen*/
+
+
 
