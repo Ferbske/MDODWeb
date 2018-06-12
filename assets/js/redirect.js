@@ -1,9 +1,28 @@
 // This function redirects the page to /client?mail= with the mail from the selected client
+function redirectaddiction(email){
+    email = getParameterByName("email");
+    window.location = "addiction?email=" + email;
+}
+
+function redirect(email){
+    window.location = "client?email=" + email;
+}
+
+// This function redirects the page to /client?mail= with the mail from the selected client
+function redirectdifficultmoment(email){
+    email = getParameterByName("email");
+    window.location = "difficultmoment?email=" + email;
+}
+
 function redirectusage(email){
     email = getParameterByName("email");
     window.location = "usage?email=" + email;
 }
 
+function redirectnotes(email){
+    email = getParameterByName("email");
+    window.location = "notes?email=" + email;
+}
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");
