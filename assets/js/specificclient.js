@@ -1,21 +1,54 @@
 let token = getCookie("AuthToken");
+let email = getParameterByName("email");
+let clean = "";
+let addictionlist = [];
+
+// Get all addictions from a specific client. builds a table of all addictions on a succesful api-call
+function getAddictionFromClient() {
+    let email = getParameterByName("email");
+
+    $.ajax({
+        type: 'POST',
+        url: 'https://mdod.herokuapp.com/api/v1/addiction/single_client',
+        beforeSend: setHeader,
+        dataType: 'JSON',
+        data: {
+            "email": email
+        },
+
+        success: function (data, testStatus, xhr) {
+            console.log("Succes");
+            for (let x in data) {
+                addictionlist.push(data[x].name);
+            }
+            cleanDays();
+        },
+        error: function (data, textStatus, error) {
+            console.log(error);
+            cleanDays();
+        },
+        complete: function (xhr, textStatus) {
+            console.log(xhr.status);
+        }
+    })
+}
 
 // This functionn gets info from 1 specific client by email
 // it gets the mail from the url
-function getInfoClient() {
+function getInfoClient(addictionlist, clean) {
     let email = getParameterByName("email");
+
     $.ajax({
         type: 'POST',
         url: "https://mdod.herokuapp.com/api/v1/specific/client",
         dataType: 'JSON',
-        data: { "email": email},
+        data: {"email": email},
         beforeSend: setHeader,
 
         success: function (data, textStatus, xhr) {
             console.log("Succes");
             let x = 0, txt = "";
             let contact = data[x].contact || "";
-            // let addiction = addiction(email);
             for (x in data) {
                 document.getElementById("clientname").innerHTML = data[x].firstname + " " + data[x].infix + " " + data[x].lastname;
                 txt +=
@@ -43,26 +76,30 @@ function getInfoClient() {
                     "</tr>" +
                     "<tr>" +
                         "<th>Geboortedatum:</th>" +
-                        "<td id='clientBirthday'>" + data[x].birthday.substring(0,10) + "</td>" +
+                        "<td id='clientBirthday'>" + data[x].birthday.substring(0, 10) + "</td>" +
                     "</tr>" +
                     "<tr>" +
                         "<th>Telefoonnummer:</th>" +
                         "<td id='clientPhonenumber'>" + data[x].phonenumber + "</td>" +
                     "</tr>" +
-                    // "<tr>" +
-                    // "<th>Verslaving:</th>" +
-                    // "<td id='clientAddiction'>" + addiction + "</td>" +
-                    // "</tr>" +
                     "<tr>" +
                         "<th>Contact:</th>" +
                         "<td id='clientContact'>" + contact + "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                        "<th>Dagen Clean:</th>" +
+                        "<td id='clientClean'>" + clean + "</td>" +
+                    "</tr>" +
+                    "<tr class= 'addiction_row' id='addiction_row" + x + "' onclick=redirectaddiction('" + data[x].email + "') >" +
+                        "<th>Verslavingen:</th>" +
+                        "<td id='clientAddiction'>" + addictionlist + "</td>" +
                     "</tr>";
                 x++;
             }
             document.getElementById("client_body").innerHTML = txt;
 
             // This section removes the button if the contact field is filled out
-            let contactField = data[0].contact
+            let contactField = data[0].contact;
             // Check if the contactfield has a value of a string
             if (contactField) {
                 console.log("Waarde: " + contactField);
@@ -80,25 +117,30 @@ function getInfoClient() {
     });
 }
 
-// function addiction(email) {
-//     $.ajax({
-//         type: 'PUT',
-//         url: "https://mdod.herokuapp.com/api/v1/addiction",
-//         dataType: 'JSON',
-//         data: { "email": email},
-//         beforeSend: setHeader,
-//
-//         success: function (data, textStatus, xhr) {
-//             let result = "";
-//
-//             for (let x = 0; x < data.length; x++) {
-//                 result += data[x].addiction + ", ";
-//
-//             }
-//         }
-//
-//     })
-// }
+function cleanDays() {
+    $.ajax({
+        type: 'POST',
+        url: "https://mdod.herokuapp.com/api/v1/usage/client/data/clean/status",
+        dataType: 'JSON',
+        beforeSend: setHeader,
+        data: {
+            "email": email
+        },
+
+        success: function (data, textStatus, xhr) {
+            console.log("Succes");
+            clean = data.daysClean || "";
+            getInfoClient(addictionlist, clean)
+        },
+        error: function (data, textStatus, error) {
+            console.log(error);
+            getInfoClient(addictionlist)
+        },
+        complete: function (xhr, textStatus) {
+            console.log(xhr.status);
+        }
+    });
+}
 
 function setHeader(xhr) {
     // Set Authorization header
@@ -114,3 +156,5 @@ function getParameterByName(name, url) {
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
+
+getAddictionFromClient();

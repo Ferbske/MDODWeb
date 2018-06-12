@@ -15,18 +15,18 @@ function difficultmoment() {
             console.log("Succes");
             let x = 0;
             let txt = "<tr id='dm_head'>" +
-            "<th>Wat</th>" +
-            "<th>Beschrijving</th>" +
-            "<th>Datum</th>" +
-            "<th>Trek schaal 1 op 5</th>" +
-            "</tr>";
+                "<th class='dm_date'>Datum</th>" +
+                "<th class='dm_substance'>Wat</th>" +
+                "<th class='dm_description'>Beschrijving</th>" +
+                "<th class='dm_lust'>Trek <br><span style='font-size: 10px'>(schaal van 1 tm 5)</span></th>" +
+                "</tr>";
             for (x in data) {
                 let date = data[x].date_lust.substring(0, 10);
                 txt += "<tr id='dm_data" + x + "'>" +
-                    "<td>" + data[x].name + "</td>" +
-                    "<td>" + data[x].description + "</td>" +
-                    "<td>" + date + "</td>" +
-                    "<td>" + data[x].lust + "</td>" +
+                    "<td class='dm_date'>" + date + "</td>" +
+                    "<td class='dm_substance'>" + data[x].name + "</td>" +
+                    "<td class='dm_description'>" + data[x].description + "</td>" +
+                    "<td class='dm_lust'>" + data[x].lust + "</td>" +
                     "</tr>";
                 x++;
             }
