@@ -105,6 +105,12 @@ function handleSelectedSubstances() {
         console.log("substance: " + uncheckedSubstances[substanceID]);
         removeAddiction(uncheckedSubstances[substanceID]);
     }
+    alert("Wijzigingen doorgevoerd, u wordt nu doorgestuurd naar de cliënt-pagina");
+    returnToPreviousPage();
+}
+
+function returnToPreviousPage() {
+    window.location = "client?email=" + email;
 }
 
 // Get all unselected substances
@@ -125,7 +131,7 @@ function createAddiction(substanceId) {
             console.log("created addiction for substance: " + substanceId);
         },
         error: function (data, textStatus, xhr) {
-            return;
+            console.log("Error while creating addiction");
         }
 
     })
@@ -135,15 +141,16 @@ function removeAddiction(substanceId) {
     let email = getParameterByName("email");
     $.ajax({
         type: 'DELETE',
-        url: 'https://mdod.herokuapp.com/api/v1/addiction/' + substanceId,
+        url: 'https://mdod.herokuapp.com/api/v1/addiction/',
         beforeSend: setHeader,
         dataType: 'JSON',
         data: {
+            'substanceId': substanceId,
             'email': email
         },
 
         success: function (data, textStatus, xhr) {
-            console.log('Great succes' + data);
+            console.log('Addiction deleted');
         },
         error: function (data, textStatus, xhr) {
             console.log("error on deleting")
