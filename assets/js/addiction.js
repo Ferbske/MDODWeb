@@ -102,7 +102,6 @@ function handleSelectedSubstances() {
     }
 
     for (let substanceID in uncheckedSubstances) {
-        console.log("substance: " + uncheckedSubstances[substanceID]);
         removeAddiction(uncheckedSubstances[substanceID]);
     }
     alert("Wijzigingen doorgevoerd, u wordt nu doorgestuurd naar de cliënt-pagina");
