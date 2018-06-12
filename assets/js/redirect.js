@@ -28,6 +28,12 @@ function redirectcreatenote(email){
     email = getParameterByName("email");
     window.location = "notescreate?email=" + email;
 }
+
+function redirectupdatenote(id){
+    email = getParameterByName("email");
+    window.location = "notesupdate?email=" + email + "&id=" + id;
+}
+
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");
