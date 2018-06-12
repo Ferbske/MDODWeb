@@ -129,7 +129,7 @@ function cleanDays() {
 
         success: function (data, textStatus, xhr) {
             console.log("Succes");
-            clean = data.daysClean || "";
+            clean = data.daysClean || "0";
             getInfoClient(addictionlist, clean)
         },
         error: function (data, textStatus, error) {
