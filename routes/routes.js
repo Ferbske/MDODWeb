@@ -56,6 +56,11 @@ router.get('/notes', (req, res) => {
     res.render('../views/notes.ejs')
 });
 
+// Endpoint for creating a note for a specific client
+router.get('/notescreate', (req, res) => {
+    res.render('../views/notes-create.ejs')
+});
+
 // Endpoint that is needed for adding the header in pages
 router.get('/views/header', (req, res) => {
     res.render('../views/header.ejs')

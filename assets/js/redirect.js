@@ -23,6 +23,11 @@ function redirectnotes(email){
     email = getParameterByName("email");
     window.location = "notes?email=" + email;
 }
+
+function redirectcreatenote(email){
+    email = getParameterByName("email");
+    window.location = "notescreate?email=" + email;
+}
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");

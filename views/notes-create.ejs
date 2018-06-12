@@ -3,7 +3,7 @@
       class="wf-proximanova-n7-active wf-proximanova-n5-active wf-proximanova-n4-active wf-proximanova-n6-active wf-proximanova-n3-active wf-active">
 <head>
     <meta charset="UTF-8">
-    <title>Notes</title>
+    <title>Create Note</title>
 
     <!--Style for Bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -17,15 +17,12 @@
 <!-- Container -->
 <div class="container">
     <div class="inner_container">
-        <!--Table for difficult moments-->
-        <table class="dm_table table table-striped table-hover">
-            <tbody class="tbody" id="notes_body">
-            <h3>Notities</h3>
-            </tbody>
-        </table>
-        <!--/Table for difficult moments-->
-        <button id="addnotebutton" class="btn btn-lg btn-primary" type="submit" onclick="redirectcreatenote()">
-            Notitie toevoegen
+        <tbody class="tbody" id="notes_body">
+        <h3>Notitie</h3>
+        <textarea type="text" id="inputNote" name="note" class="form-control" placeholder="Notitie" required autofocus></textarea>
+        </tbody>
+        <button id="createnotebutton" class="btn btn-lg btn-primary" type="submit" onclick="createnoteclient()">
+            Submit
         </button>
     </div>
 </div>
@@ -38,8 +35,7 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/includehtml.js"></script>
 <script src="js/authcookie.js"></script>
-<script src="js/redirect.js"></script>
 <script src="js/notes.js"></script>
-<script>notesclient();</script>
+
 <script>include();</script>
 </html>

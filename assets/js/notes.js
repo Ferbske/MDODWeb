@@ -6,8 +6,8 @@ function notesclient() {
         "<th class='notes_description'>Descriptie</th>" +
         "</tr>";
     $.ajax({
-        type: '',
-        url: '',
+        type: 'POST',
+        url: 'https://mdod.herokuapp.com/api/v1/note/single_client',
         dataType: 'JSON',
         beforeSend: setHeader,
         data: {
@@ -28,6 +28,35 @@ function notesclient() {
         error: function (data, textStatus, error) {
             console.log(error);
             document.getElementById("notes_body").innerHTML = txt;
+        },
+        complete: function (xhr, textStatus) {
+            console.log(xhr.status);
+        }
+    })
+}
+
+function createnoteclient() {
+    let email = getParameterByName("email");
+    let txt = $("#inputNote").val();
+    $.ajax({
+        type: 'POST',
+        url: 'https://mdod.herokuapp.com/api/v1/note',
+        dataType: 'JSON',
+        beforeSend: setHeader,
+        data: {
+            "email": email,
+            "description": txt
+        },
+
+        success: function (data, testStatus, xhr) {
+            console.log("Succes");
+            alert("Notitie is aangemaakt");
+            window.location.href = "notes?email=" + email;
+        },
+        error: function (data, textStatus, error) {
+            console.log(error);
+            alert("Er is iets fout gegaan probeer het opnieuw.")
+            location.reload();
         },
         complete: function (xhr, textStatus) {
             console.log(xhr.status);
