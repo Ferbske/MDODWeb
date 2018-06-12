@@ -113,7 +113,6 @@ function updatenoteclient() {
 
         success: function (data, testStatus, xhr) {
             console.log("Succes");
-            alert("Notitie is update");
             window.location.href = "notes?email=" + email;
         },
         error: function (data, textStatus, error) {
