@@ -1,29 +1,49 @@
 // API Call functions
 // CHECK ALL CURRENT ADDICTIONS
-// $(document).ready(function() {
-//     let allClientAddictions = [];
-//     let email = getParameterByName("email");
-//     $.ajax({
-//         type: 'GET',
-//         url: 'https://mdod.herokuapp.com/api/v1/addiction',
-//         beforeSend: setHeader,
-//         dataType: 'JSON',
-//         data: {
-//             "email": email
-//         },
-//
-//         success: function (data, textStatus, xhr) {
-//             console.log("succes!");
-//             console.log(data);
-//         },
-//         error: function (data, textStatus, error ) {
-//             console.log();
-//             console.log("EROOR!");
-//             console.log(error);
-//             console.log("Status: " + textStatus);
-//         },
-//     });
-// });
+let uncheckedSubstances = [];
+let checkedSubstances = [];
+let email = getParameterByName("email");
+
+function addToUnselectedSubstances (checkbox) {
+    if (!document.getElementById(checkbox.id).checked) {
+        uncheckedSubstances.push(checkbox.id)
+    } else {
+        checkedSubstances.push(checkbox.id)
+    }
+}
+
+function checkAddictionsCheckbox() {
+    let allClientAddictions = [];
+    let email = getParameterByName("email");
+    $.ajax({
+        type: 'POST',
+        url: 'https://mdod.herokuapp.com/api/v1/addiction/single_client',
+        beforeSend: setHeader,
+        dataType: 'JSON',
+        data: {
+            "email" : email
+        },
+
+        success: function (data, textStatus, xhr) {
+            for (let addiction in data) {
+                allClientAddictions.push(data[addiction].substanceId);
+            }
+
+                // Loop over all checkboxes
+            $("input:not(checked)").each(function () {
+                for (let addiction in allClientAddictions) {
+                    // Check if the ID of the checkbox is equal to the SubstanceID of the addiction
+                    if ($(this).attr('id') == allClientAddictions[addiction]) {
+                        $(this).prop('checked', true);
+                    }
+                }
+            })
+        },
+        error: function (data, textStatus, error ) {
+            console.log(error);
+        },
+    });
+}
 
 //==========================================================
 // Get all available substances from the database
@@ -39,11 +59,12 @@ function tableAllSubstances() {
             // Loop through all substances and create a checklist of them
             for (let i in data) {
                 txt += "<li>" +
-                    "<input type='checkbox' id='" + data[i].id + "' name='" + data[i].name + "'" + ">" +
+                    "<input type='checkbox' onclick='addToUnselectedSubstances(this)' id='" + data[i].id + "' name='" + data[i].name + "'" + ">" +
                     data[i].name +
                     "</li>";
             }
             document.getElementsByClassName("substance_list")[0].innerHTML = txt;
+            checkAddictionsCheckbox();
         },
         error: function (data, textStatus, xhr) {
             console.log("Error" + textStatus);
@@ -52,28 +73,44 @@ function tableAllSubstances() {
 }
 
 // Get all the checked substances
+// function handleSelectedSubstances() {
+//     let selectedSubstances = [];
+//
+//     // Add every checked substance to the selectedSubstances array
+//     $("input:checked").each(function () {
+//         selectedSubstances.push($(this).attr("id"))
+//     });
+//
+//     $("input:not(checked)").each(function () {
+//         unselectedSubstances.push($(this).attr("id"))
+//     });
+//
+//     // Loop through the selectedSubstances array and create a new addiction for every substance
+//     for (let substanceId in selectedSubstances) {
+//         createAddiction(selectedSubstances[substanceId]);
+//     }
+//
+//     // Loop through the selectedSubstances array and try to remove them from the database
+//     for (let substanceId in unselectedSubstances) {
+//         removeAddiction(unselectedSubstances[substanceId]);
+//     }
+// }
+
 function handleSelectedSubstances() {
-    let selectedSubstances = [];
-    let unselectedSubstances = [];
-
-    // Add every checked substance to the selectedSubstances array
-    $("input:checked").each(function () {
-        selectedSubstances.push($(this).attr("id"))
-    });
-
-    $("input:not(checked)").each(function () {
-        unselectedSubstances.push($(this).attr("id"))
-    });
-
-    // Loop through the selectedSubstances array and create a new addiction for every substance
-    for (let substanceId in selectedSubstances) {
-        createAddiction(selectedSubstances[substanceId]);
+    for (let substanceID in checkedSubstances) {
+        createAddiction(checkedSubstances[substanceID]);
     }
 
-    //Loop through the selectedSubstances array and try to remove them from the database
-    for (let substanceId in unselectedSubstances) {
-        removeAddiction(unselectedSubstances[substanceId]);
+    for (let substanceID in uncheckedSubstances) {
+        console.log("substance: " + uncheckedSubstances[substanceID]);
+        removeAddiction(uncheckedSubstances[substanceID]);
     }
+    alert("Wijzigingen doorgevoerd, u wordt nu doorgestuurd naar de cliënt-pagina");
+    returnToPreviousPage();
+}
+
+function returnToPreviousPage() {
+    window.location = "client?email=" + email;
 }
 
 // Get all unselected substances
@@ -92,37 +129,34 @@ function createAddiction(substanceId) {
 
         success: function (data, textStatus, xhr) {
             console.log("created addiction for substance: " + substanceId);
-            window.location = "client?email=" + email;
         },
         error: function (data, textStatus, xhr) {
-            alert("Een van de substanties is al geregistreerd bij deze persoon")
+            console.log("Error while creating addiction");
         }
 
     })
 }
 
-// function removeAddiction (substanceId) {
-//     let email = getParameterByName("email");
-//     $.ajax({
-//         type: 'DELETE',
-//         url: 'https://mdod.herokuapp.com/api/v1/addiction',
-//         beforeSend: setHeader,
-//         dataType: 'JSON',
-//         data: {
-//             'substanceId': substanceId,
-//             'email': email
-//         },
-//
-//         success: function (data, textStatus, xhr) {
-//             console.log('Great succes' + data);
-//         },
-//         error: function (data, textStatus, xhr) {
-//             return;
-//             console.log('Error');
-//             console.log(data);
-//         }
-//     })
-// }
+function removeAddiction(substanceId) {
+    let email = getParameterByName("email");
+    $.ajax({
+        type: 'DELETE',
+        url: 'https://mdod.herokuapp.com/api/v1/addiction/',
+        beforeSend: setHeader,
+        dataType: 'JSON',
+        data: {
+            'substanceId': substanceId,
+            'email': email
+        },
+
+        success: function (data, textStatus, xhr) {
+            console.log('Addiction deleted');
+        },
+        error: function (data, textStatus, xhr) {
+            console.log("error on deleting")
+        }
+    })
+}
 //=======================================//
 // Helper functions
 function setHeader(xhr) {
