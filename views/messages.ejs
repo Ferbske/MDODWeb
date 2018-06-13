@@ -18,8 +18,16 @@
     <div class="inner_container">
         <h1>Berichten</h1>
         <!--Table with messages -->
+        <table>
+            <tr>
+                <td>Afzender</td>
+                <td>Bericht</td>
+                <td>Datum</td>
+            </tr>
+        </table>
         <table class='tclients_table table table-striped table-hover'>
-            <tbody class="tbody" id="tclients_messages"></tbody>
+            <tbody class="tbody" id="tclients_messages">
+            </tbody>
         </table>
         <!--/Table with treatment clients -->
     </div>
@@ -32,8 +40,9 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/includehtml.js"></script>
 <script src="js/authcookie.js"></script>
+<script src="js/messages.js"></script>
 <script src="js/redirect.js"></script>
-<script src="js/tabletreatmentclient.js"></script>
+<script>tableAllMessages()</script>
 <script>include();</script>
 </body>
 </html>
