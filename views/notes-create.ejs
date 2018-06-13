@@ -3,38 +3,39 @@
       class="wf-proximanova-n7-active wf-proximanova-n5-active wf-proximanova-n4-active wf-proximanova-n6-active wf-proximanova-n3-active wf-active">
 <head>
     <meta charset="UTF-8">
-    <title>All Clients</title>
+    <title>Create Note</title>
 
     <!--Style for Bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!--Style-->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <body>
-    <!-- Header added -->
-    <header id="header"></header>
-    <!-- Container -->
-    <div class="container">
-        <div class="inner_container">
-            <h1>Cliënten</h1>
-            <!--Table with clients-->
-            <table class='clients_table table table-striped table-hover'>
-                <tbody class="tbody" id="clients_body"></tbody>
-            </table>
-            <!--/Table with clients-->
-        </div>
+<!-- Header added -->
+<header id="header"></header>
+<!-- Container -->
+<div class="container">
+    <div class="inner_container">
+        <tbody class="tbody" id="notes_body">
+        <h3>Notitie aanmaken</h3>
+        <textarea type="text" id="inputNote" name="note" class="form-control" placeholder="Notitie" required autofocus></textarea>
+        </tbody>
+        <button id="createnotebutton" class="btn btn-lg btn-primary" type="submit" onclick="createnoteclient()">
+            Creëer notitie
+        </button>
     </div>
-    <!-- /Container -->
-    <!-- Footer added -->
-    <footer id="footer"></footer>
+</div>
+<!-- /Container -->
+<!-- Footer added -->
+<footer id="footer"></footer>
 </body>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/includehtml.js"></script>
 <script src="js/authcookie.js"></script>
-<script src="js/redirect.js"></script>
-<script src="js/tableallclients.js"></script>
+<script src="js/notes.js"></script>
+
 <script>include();</script>
 </html>
