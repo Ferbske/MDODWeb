@@ -2,9 +2,7 @@ let token = getCookie("AuthToken");
 
 function notesclient() {
     let email = getParameterByName("email");
-    let txt = "<tr id='notes_head'>" +
-        "<th class='notes_description'>Descriptie</th>" +
-        "</tr>";
+    let txt = "";
     $.ajax({
         type: 'POST',
         url: 'https://mdod.herokuapp.com/api/v1/note/single_client',
@@ -18,6 +16,7 @@ function notesclient() {
             console.log("Succes");
             for (let x in data) {
                 txt += "<tr id='" + data[x].id + "' onclick=redirectupdatenote(" + data[x].id + ") >" +
+                    "<th class='notes_title'>" + data[x].title + "</th>" +
                     "<td class='notes_description'>" + data[x].description + "</td>" +
                     "</tr>";
                 x++;

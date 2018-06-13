@@ -50,7 +50,7 @@ function getInfoClient(addictionlist, clean) {
             let x = 0, txt = "";
             let contact = data[x].contact || "";
             for (x in data) {
-                document.getElementById("clientname").innerHTML = data[x].firstname + " " + data[x].infix + " " + data[x].lastname;
+                document.getElementById("clientname").innerHTML += data[x].firstname + " " + data[x].infix + " " + data[x].lastname;
                 txt +=
                     "<tr>" +
                         "<th>Email:</th>" +
