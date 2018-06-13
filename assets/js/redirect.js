@@ -19,6 +19,11 @@ function redirectusage(email){
     window.location = "usage?email=" + email;
 }
 
+function redirectmood(email){
+    email = getParameterByName("email");
+    window.location = "mood?email=" + email;
+}
+
 function redirectnotes(email){
     email = getParameterByName("email");
     window.location = "notes?email=" + email;
