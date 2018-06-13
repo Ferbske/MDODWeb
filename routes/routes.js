@@ -46,6 +46,10 @@ router.get('/usage', (req, res) => {
     res.render('../views/usage.ejs')
 });
 
+router.get('/usagechart', (req, res) => {
+   res.render('../views/usagechart.ejs')
+});
+
 // Endpoint for the difficult moments from a client
 router.get('/difficultmoment', (req, res) => {
     res.render('../views/difficultmoment.ejs')

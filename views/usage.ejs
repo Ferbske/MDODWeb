@@ -11,16 +11,7 @@
     <!--Style-->
     <link rel="stylesheet" href="css/style.css" type="text/css">
 
-    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
-
 </head>
-
-<style>
-    #chartdiv {
-        width	: 100%;
-        height	: 500px;
-    }
-</style>
 
 <body>
 <!-- Header added -->
@@ -34,14 +25,9 @@
             <tbody class="tbody" id="usage_body">
             </tbody>
         </table>
-        <!--/Table with usages of client-->
-        <!--Button to go to chart-->
-        <!--<div class="chartbutton">-->
-            <!--<button id="usagechartclientbutton" class="btn btn-lg btn-primary" type="submit" onclick="">-->
-                <!--Grafiek-->
-            <!--</button>-->
-        <!--</div>-->
-        <!--/Button to go to chart-->
+        <button id="usagechartbutton" class="btn btn-lg btn-primary" type="submit"  onclick="redirectusagechart()">
+            Grafiek
+        </button>
     </div>
 </div>
 <!-- /Container -->
@@ -54,12 +40,7 @@
 <script src="js/includehtml.js"></script>
 <script src="js/authcookie.js"></script>
 <script src="js/usage.js"></script>
-<script src="js/usagechart.js"></script>
-
-<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
-<script src="https://www.amcharts.com/lib/3/serial.js"></script>
-<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
-<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+<script src="js/redirectspecificusage.js"></script>
 
 <script>usageclient()</script>
 <script>include();</script>

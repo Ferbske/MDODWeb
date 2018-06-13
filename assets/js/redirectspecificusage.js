@@ -4,6 +4,11 @@ function redirectusage(email){
     window.location = "usage?email=" + email;
 }
 
+function redirectusagechart(email) {
+    email = getParameterByName("email");
+    window.location = "usagechart?email=" + email;
+}
+
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");

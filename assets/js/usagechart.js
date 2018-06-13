@@ -1,8 +1,10 @@
+let token = getCookie("AuthToken");
+
 function usagechartclient() {
     let email = getParameterByName("email");
     $.ajax({
         type: 'POST',
-        url: '',
+        url: 'https://mdod.herokuapp.com/api/v1/usage/client/data',
         dataType: 'JSON',
         beforeSend: setHeader,
         data: {
@@ -10,99 +12,99 @@ function usagechartclient() {
         },
 
         success: function (data, testStatus, xhr) {
+            data.reverse();
 
-    var chart = AmCharts.makeChart("chartdiv", {
-        "type": "serial",
-        "theme": "light",
-        "marginRight": 40,
-        "marginLeft": 40,
-        "autoMarginOffset": 20,
-        "mouseWheelZoomEnabled":true,
-        "dataDateFormat": "YYYY-MM-DD",
-        "valueAxes": [{
-            "id": "v1",
-            "axisAlpha": 0,
-            "position": "left",
-            "ignoreAxisWidth":true
-        }],
-        "balloon": {
-            "borderThickness": 1,
-            "shadowAlpha": 0
-        },
-        "graphs": [{
-            "id": "g1",
-            "balloon":{
-                "drop":true,
-                "adjustBorderColor":false,
-                "color":"#ffffff"
-            },
-            "bullet": "round",
-            "bulletBorderAlpha": 1,
-            "bulletColor": "#FFFFFF",
-            "bulletSize": 5,
-            "hideBulletsCount": 50,
-            "lineThickness": 2,
-            "title": "red line",
-            "useLineColorForBulletBorder": true,
-            "valueField": "value",
-            "balloonText": "<span style='font-size:18px;'>[[value]]</span>"
-        }],
-        "chartScrollbar": {
-            "graph": "g1",
-            "oppositeAxis":false,
-            "offset":30,
-            "scrollbarHeight": 80,
-            "backgroundAlpha": 0,
-            "selectedBackgroundAlpha": 0.1,
-            "selectedBackgroundColor": "#888888",
-            "graphFillAlpha": 0,
-            "graphLineAlpha": 0.5,
-            "selectedGraphFillAlpha": 0,
-            "selectedGraphLineAlpha": 1,
-            "autoGridCount":true,
-            "color":"#AAAAAA"
-        },
-        "chartCursor": {
-            "pan": true,
-            "valueLineEnabled": true,
-            "valueLineBalloonEnabled": true,
-            "cursorAlpha":1,
-            "cursorColor":"#258cbb",
-            "limitToGraph":"g1",
-            "valueLineAlpha":0.2,
-            "valueZoomable":true
-        },
-        "valueScrollbar":{
-            "oppositeAxis":false,
-            "offset":50,
-            "scrollbarHeight":10
-        },
-        "categoryField": "date",
-        "categoryAxis": {
-            "parseDates": true,
-            "dashLength": 1,
-            "minorGridEnabled": true
-        },
-        "export": {
-            "enabled": true
-        },
-        //id, email van client, substanceId, description, usedAt
-        "dataProvider": [{
-            "date": "2012-07-27",
-            "value": 13
-        }, {
-            "date": "2012-07-28",
-            "value": 11
-        }]
-    });
+            let today = new Date();
+            let dd = today.getDate();
+            let mm = today.getMonth()+1; //January is 0!
+            let yyyy = today.getFullYear();
 
-chart.addListener("rendered", zoomChart);
+            if(dd<10) {
+                dd = '0'+dd
+            }
 
-zoomChart();
+            if(mm<10) {
+                mm = '0'+mm
+            }
 
-function zoomChart() {
-    chart.zoomToIndexes(chart.dataProvider.length - 40, chart.dataProvider.length - 1);
-}
+            today = mm + '/' + dd + '/' + yyyy;
+
+            let oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+            let start = data[0].usedAt.substring(0,10);
+            let end = today;
+            let firstDate = new Date(start);
+            let secondDate = new Date(end);
+            let diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
+
+            console.log("startdate is " + start);
+            console.log("enddate is " + end);
+
+            Date.parse(start).toString("MM DD yyyy");
+
+            console.log("startdate is " + start);
+            console.log("enddate is " + end);
+
+            Date.prototype.addDays = function(diffDays) {
+                let dat = new Date(this.valueOf());
+                dat.setDate(dat.getDate() + diffDays);
+                return dat;
+            };
+
+            function getDates(startDate, stopDate) {
+                let dateArray = [];
+                let currentDate = startDate;
+                while (currentDate <= stopDate) {
+                    dateArray.push(currentDate);
+                    currentDate = currentDate.addDays(1);
+                }
+                return dateArray;
+            }
+
+            let dateArray = getDates(new Date(start), (new Date(start)).addDays(diffDays));
+
+            for (let x in dateArray) {
+                console.log(x.usedAt);
+            }
+
+
+            // let date = new Date(data[0].usedAt);
+            // let startDate = moment(date);
+            //
+            // console.log(startDate);
+
+
+
+            new Chart(document.getElementById("usage-chart"), {
+                type: 'bar',
+                data: {
+                    //Begindatum tot einddatum?
+                    //data[0].usedAt tm vandaag
+                    labels: [],
+                    datasets: [{
+                        label: "Frequentie",
+                        type: "line",
+                        borderColor: "#ea8516",
+                        data: [408,547,675,734],
+                        fill: false
+                    }, {
+                        label: "Totaal",
+                        type: "bar",
+                        backgroundColor: "rgba(0,0,0,0.2)",
+                        backgroundColorHover: "#3e95cd",
+                        data: [133,221,783,2478]
+                    }
+                    ]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: 'Gebruik van de cliënt'
+                    },
+                    legend: {
+                        display: true
+                    }
+                }
+            });
         },
         error: function (data, textStatus, error) {
             console.log(error);
@@ -111,6 +113,36 @@ function zoomChart() {
             console.log(xhr.status);
         }
     })
+}
+
+function getDates(startDate, stopDate) {
+    let email = getParameterByName("email");
+    $.ajax({
+        type: 'POST',
+        url: 'https://mdod.herokuapp.com/api/v1/usage/client/data',
+        dataType: 'JSON',
+        beforeSend: setHeader,
+        data: {
+            "email": email
+        },
+
+        success: function (data, testStatus, xhr) {
+            var dateArray = [];
+            var currentDate = moment(startDate);
+            var stopDate = moment(stopDate);
+            while (currentDate <= stopDate) {
+                dateArray.push(moment(currentDate).format('YYYY-MM-DD'));
+                currentDate = moment(currentDate).add(1, 'days');
+            }
+            return dateArray;
+        },
+        error: function (data, textStatus, error) {
+            console.log(error);
+        },
+        complete: function (xhr, textStatus) {
+            console.log(xhr.status);
+        }
+    });
 }
 
 function setHeader(xhr) {
@@ -125,4 +157,7 @@ function getParameterByName(name, url) {
         results = regex.exec(url);
     if (!results) return null;
     if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, " "));}
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+usagechartclient();
