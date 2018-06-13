@@ -1,7 +1,9 @@
-// This function creates a Cookie that needs 3 parameters:
-// cname is the name you want the cookie to be called
-// cvalue is the value what it should store
-// exhours are the amount of our the it should be kept before it expires
+/*
+This function creates a Cookie based on 3 parameters:
+- cname is the name you want the cookie to be called
+- cvalue is the value that it should store
+- exhours is the time in hours before the cookie expires
+*/
 function setCookie(cname, cvalue, exhours) {
     let d = new Date();
     d.setTime(d.getTime() + (exhours*60*60*1000));
@@ -26,12 +28,12 @@ function getCookie(cname) {
     return "";
 }
 
-// This function looks up a cookie by name and set the value to nothing and makes it expired
+// This function looks up a cookie by name, sets the value to nothing and makes it expired
 function delCookie(cname) {
     document.cookie = cname + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
 
-// this function gives back a String with all the cookies that are currently created
+// this function returns a String with all the cookies that are currently created
 // when you call this function
 function listCookies() {
     let theCookies = document.cookie.split(';');
