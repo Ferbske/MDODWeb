@@ -2,6 +2,16 @@ let token = getCookie("AuthToken");
 
 function difficultmoment() {
     let email = getParameterByName("email");
+
+    let txthead = "<tr id='dm_head'>" +
+        "<th class='dm_date'>Datum</th>" +
+        "<th class='dm_substance'>Wat</th>" +
+        "<th class='dm_description'>Beschrijving</th>" +
+        "<th class='dm_lust'>Trek <br><span style='font-size: 10px'>(schaal van 1 tm 5)</span></th>" +
+        "</tr>";
+
+    document.getElementById("dm_head").innerHTML = txthead;
+
     $.ajax({
         type: 'POST',
         url: 'https://mdod.herokuapp.com/api/v1/difficult_moment/client',
@@ -14,12 +24,7 @@ function difficultmoment() {
         success: function (data, testStatus, xhr) {
             console.log("Succes");
             let x = 0;
-            let txt = "<tr id='dm_head'>" +
-                "<th class='dm_date'>Datum</th>" +
-                "<th class='dm_substance'>Wat</th>" +
-                "<th class='dm_description'>Beschrijving</th>" +
-                "<th class='dm_lust'>Trek <br><span style='font-size: 10px'>(schaal van 1 tm 5)</span></th>" +
-                "</tr>";
+            let txt = "";
             for (x in data) {
                 let date = data[x].date_lust.substring(0, 10);
                 txt += "<tr id='dm_data" + x + "'>" +

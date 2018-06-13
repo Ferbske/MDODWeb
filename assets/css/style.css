@@ -123,6 +123,10 @@ table td {
     background-color: #d68024 !important;
     border-color: #d68024 !important;
 }
+
+.fa-arrow-left {
+    cursor: pointer;
+}
 /*End Buttons*/
 
 /*End General*/
@@ -193,28 +197,60 @@ table td {
 /*End Addiction*/
 
 /*Difficult moment*/
-#dm_body .dm_substance, #dm_body .dm_date, #dm_body .dm_lust  {
+ .dm_substance, .dm_date, .dm_lust  {
     width: 15%!important;
 }
 
-#dm_body .dm_description {
+ .dm_description {
     width: 55%!important;
 }
 /*End Difficult moment*/
 
 /*Usage*/
-#usage_body .usage_amount {
+.usage_amount {
     width: 10%!important;
 }
 
-#usage_body .usage_date, #usage_body .usage_substance, #usage_body .usage_location, #usage_body .usage_mood {
+.usage_date, .usage_substance, .usage_location, .usage_mood {
     width: 15%!important;
 }
 
-#usage_body .usage_cause {
+.usage_cause {
     width: 30%!important;
 }
 /*End Usage*/
+
+/*Mood*/
+.mood_date, .mood_mood {
+    width: 15%!important;
+}
+
+.mood_description {
+    width: 70%!important;
+}
+/*End Mood*/
+
+/*Messages*/
+#messages_head {
+    display: block;
+}
+
+#messages_body {
+    display: block;
+    height: 300px;
+    overflow-y: scroll;
+}
+
+.send_message {
+    width: 300px;
+}
+
+textarea#message_input {
+    height: 80px;
+    width: 300px;
+    margin-right: 15px;
+}
+/*End Messages*/
 
 /*End Specific pages*/
 
