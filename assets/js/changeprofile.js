@@ -1,5 +1,7 @@
+// Get the security token from the cookie
 let token = getCookie("AuthToken");
 
+// This function gets all the psychologist profile information and fills the input fields with this information
 $(document).ready(function() {
     $.ajax({
         type: 'GET',
@@ -39,11 +41,6 @@ $(document).ready(function() {
         if (!infix) {
             infix = "";
         }
-        console.log(firstname)
-        console.log(infix)
-        console.log(lastname)
-        console.log(phonenumber)
-        console.log(location)
 
 // ======================================================================================
 // After submit functionality
