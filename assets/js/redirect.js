@@ -34,6 +34,11 @@ function redirectupdatenote(id){
     window.location = "notesupdate?email=" + email + "&id=" + id;
 }
 
+function redirectmessages() {
+    let email = getParameterByName("email");
+    window.location = "messages?email=" + email;
+}
+
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");
