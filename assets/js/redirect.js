@@ -5,9 +5,14 @@ function redirectaddiction(email){
 }
 
 function redirect(email){
+    window.location = "client?email=" + email;
+}
+
+function redirectclient(email){
     email = getParameterByName("email");
     window.location = "client?email=" + email;
 }
+
 
 // This function redirects the page to /client?mail= with the mail from the selected client
 function redirectdifficultmoment(email){

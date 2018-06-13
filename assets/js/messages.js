@@ -19,10 +19,10 @@ function tableAllMessages() {
             console.log("Succes");
 
             for (let x in data) {
-                txt += "<tr id='" + data[x].id + "' onclick=redirectupdatenote(" + data[x].id + ") >" +
+                txt += "<tr id='" + data[x].id + "'>" +
                     "<td class='messages_sender'>" + data[x].sendBy + "</td>" +
                     "<td class='messages_message'>" + data[x].message + "</td>" +
-                    "<td class='messages_date'>" + data[x].date + "</td>" +
+                    "<td class='messages_date'>" + data[x].date.substring(0,10) + "</td>" +
                     "</tr>";
             }
             document.getElementById("tclients_messages").innerHTML = txt;
