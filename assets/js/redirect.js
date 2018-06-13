@@ -8,6 +8,12 @@ function redirect(email){
     window.location = "client?email=" + email;
 }
 
+function redirectclient(email){
+    email = getParameterByName("email");
+    window.location = "client?email=" + email;
+}
+
+
 // This function redirects the page to /client?mail= with the mail from the selected client
 function redirectdifficultmoment(email){
     email = getParameterByName("email");
@@ -17,6 +23,11 @@ function redirectdifficultmoment(email){
 function redirectusage(email){
     email = getParameterByName("email");
     window.location = "usage?email=" + email;
+}
+
+function redirectmood(email){
+    email = getParameterByName("email");
+    window.location = "mood?email=" + email;
 }
 
 function redirectnotes(email){
@@ -32,6 +43,11 @@ function redirectcreatenote(email){
 function redirectupdatenote(id){
     email = getParameterByName("email");
     window.location = "notesupdate?email=" + email + "&id=" + id;
+}
+
+function redirectmessages() {
+    let email = getParameterByName("email");
+    window.location = "messages?email=" + email;
 }
 
 function getParameterByName(name, url) {
