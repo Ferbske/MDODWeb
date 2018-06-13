@@ -29,72 +29,46 @@ function usagechartclient() {
 
             today = mm + '/' + dd + '/' + yyyy;
 
-            let oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
             let start = data[0].usedAt.substring(0,10);
-            let end = today;
-            let firstDate = new Date(start);
-            let secondDate = new Date(end);
-            let diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
+            let startDate = new Date(start);
+            let endDate = new Date(today);
+            let timeDiff = Math.abs(endDate.getTime() - startDate.getTime());
+            let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
-            //date format veranderen testen
-            console.log("startdate is " + start);
-            console.log("enddate is " + end);
+            // let day1 = changeDateformat(startDate);
+            // let day2 = changeDateformat(endDate);
 
-            //Format van de date veranderen
-            Date.format(end, 'yy-mm-dd');
+            let label = [];
+            let date = startDate;
 
-            console.log("startdate is " + start);
-            console.log("enddate is " + end);
-            //
-
-            Date.prototype.addDays = function(diffDays) {
-                let dat = new Date(this.valueOf());
-                dat.setDate(dat.getDate() + diffDays);
-                return dat;
-            };
-
-            function getDates(startDate, stopDate) {
-                let dateArray = [];
-                let currentDate = startDate;
-                while (currentDate <= stopDate) {
-                    dateArray.push(currentDate);
-                    currentDate = currentDate.addDays(1);
-                }
-                return dateArray;
+            while (date <= endDate) {
+                let temp = changeDateformat(date);
+                label.push(temp);
+                date.setDate(date.getDate() + 1);
             }
 
-            let dateArray = getDates(new Date(start), (new Date(start)).addDays(diffDays));
+            let endLabel = changeDateformat(endDate);
+            label.push(endLabel);
 
-            for (let x in dateArray) {
-                console.log(x.usedAt);
-            }
-
-
-            // let date = new Date(data[0].usedAt);
-            // let startDate = moment(date);
-            //
-            // console.log(startDate);
-
-
+            let dataCountSubstances = [];
+            let dataTotalOneDay = [];
 
             new Chart(document.getElementById("usage-chart"), {
                 type: 'bar',
                 data: {
-                    //Begindatum tot einddatum?
-                    //data[0].usedAt tm vandaag
-                    labels: [],
+                    labels: label,
                     datasets: [{
-                        label: "Frequentie",
+                        label: "Verschillende middelen",
                         type: "line",
                         borderColor: "#ea8516",
-                        data: [408,547,675,734],
+                        data: dataCountSubstances,
                         fill: false
                     }, {
-                        label: "Totaal",
+                        label: "Totaal die dag gebruikt",
                         type: "bar",
                         backgroundColor: "rgba(0,0,0,0.2)",
                         backgroundColorHover: "#3e95cd",
-                        data: [133,221,783,2478]
+                        data: dataTotalOneDay
                     }
                     ]
                 },
@@ -118,34 +92,16 @@ function usagechartclient() {
     })
 }
 
-function getDates(startDate, stopDate) {
-    let email = getParameterByName("email");
-    $.ajax({
-        type: 'POST',
-        url: 'https://mdod.herokuapp.com/api/v1/usage/client/data',
-        dataType: 'JSON',
-        beforeSend: setHeader,
-        data: {
-            "email": email
-        },
+function changeDateformat(date){
+    let year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    let day = date.getDay() + 10;
 
-        success: function (data, testStatus, xhr) {
-            var dateArray = [];
-            var currentDate = moment(startDate);
-            var stopDate = moment(stopDate);
-            while (currentDate <= stopDate) {
-                dateArray.push(moment(currentDate).format('YYYY-MM-DD'));
-                currentDate = moment(currentDate).add(1, 'days');
-            }
-            return dateArray;
-        },
-        error: function (data, textStatus, error) {
-            console.log(error);
-        },
-        complete: function (xhr, textStatus) {
-            console.log(xhr.status);
-        }
-    });
+    if (month.length = 1) {
+        month = "0" + month;
+    }
+
+    return year + "-" + month + "-" + day
 }
 
 function setHeader(xhr) {
