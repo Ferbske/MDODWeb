@@ -5,6 +5,7 @@ function redirectaddiction(email){
 }
 
 function redirect(email){
+    email = getParameterByName("email");
     window.location = "client?email=" + email;
 }
 
