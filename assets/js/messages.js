@@ -1,5 +1,11 @@
 function tableAllMessages() {
     let email = getParameterByName("email");
+    let txt = "<tr>" +
+        "<th>Afzender</th>" +
+        "<th>Bericht</th>" +
+        "<th>Datum</th>" +
+        "</tr>";
+
     $.ajax({
         type: 'POST',
         url: 'https://mdod.herokuapp.com/api/v1/messages/get/psychologist',
@@ -10,7 +16,6 @@ function tableAllMessages() {
         },
 
         success: function (data, testStatus, xhr) {
-            let txt = "";
             console.log("Succes");
 
             for (let x in data) {
