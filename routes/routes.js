@@ -51,6 +51,11 @@ router.get('/difficultmoment', (req, res) => {
     res.render('../views/difficultmoment.ejs')
 });
 
+// Endpoint for viewing all messages between psychologist and client
+router.get('/messages', (req, res) => {
+    res.render('../views/messages.ejs')
+});
+
 // Endpoint for the notes for a specific client
 router.get('/notes', (req, res) => {
     res.render('../views/notes.ejs')
