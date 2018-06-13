@@ -97,6 +97,7 @@ function getInfoClient(addictionlist, clean) {
                 x++;
             }
             document.getElementById("client_body").innerHTML = txt;
+            document.getElementById("loading").style.display = "none";
 
             // This section removes the button if the contact field is filled out
             let contactField = data[0].contact;
