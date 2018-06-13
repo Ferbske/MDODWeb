@@ -36,13 +36,16 @@ function usagechartclient() {
             let secondDate = new Date(end);
             let diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
 
+            //date format veranderen testen
             console.log("startdate is " + start);
             console.log("enddate is " + end);
 
-            Date.parse(start).toString("MM DD yyyy");
+            //Format van de date veranderen
+            Date.format(end, 'yy-mm-dd');
 
             console.log("startdate is " + start);
             console.log("enddate is " + end);
+            //
 
             Date.prototype.addDays = function(diffDays) {
                 let dat = new Date(this.valueOf());
