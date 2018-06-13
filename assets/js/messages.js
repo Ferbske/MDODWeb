@@ -37,6 +37,33 @@ function tableAllMessages() {
     })
 }
 
+function sendMessage() {
+    let email = getParameterByName("email");
+    let message = $("#message_input").val();
+    console.log(message);
+    $.ajax({
+        type: 'POST',
+        url: 'https://mdod.herokuapp.com/api/v1/messages/psychologist',
+        dataType: 'JSON',
+        beforeSend: setHeader,
+        data: {
+            "email": email,
+            "message": message
+        },
+
+        success: function (data, testStatus, xhr) {
+            console.log("Message sent");
+            location.reload();
+        },
+        error: function (data, textStatus, error) {
+            console.log(error);
+        },
+        complete: function (xhr, textStatus) {
+            console.log(xhr.status);
+        }
+    })
+}
+
 
 // Helper functions
 function setHeader(xhr) {
