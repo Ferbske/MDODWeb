@@ -48,30 +48,25 @@ function usagechartclient() {
             let endLabel = changeDateformat(endDate);
             label.push(endLabel);
 
-            let x = 0;
-            let adate = data[0].usedAt.substring(0,10);
-            let aadate = new Date(adate);
-            for (x in data) {
-                // All needed variables for date
-                let currentdate = changeDateformat(aadate);
-                let bdate = data[x].usedAt.substring(0,10);
-                let bbdate = new Date(bdate);
-                let tempdate = changeDateformat(bbdate);
+            let x = 0, i = 0;
+            for (let i in label) {
+                for (x in data) {
+                    // All needed variables for date
+                    let date = data[x].usedAt.substring(0,10);
+                    let adate = new Date(date);
+                    let currentdate = changeDateformat(adate);
 
-                if (tempdate == currentdate) {
-                    dataCountOneDay.push("1");
-                    dataCountSubstances += data[x].amount;
-                } else {
-                    dataTotalOneDay.push(dataCountOneDay.length);
-                    dataCountOneDay = [];
-                    dataCountOneDay.push("1");
-
-                    dataTotalSubstances.push(dataCountSubstances);
-                    dataCountSubstances = 0;
-
-                    aadate.setDate(aadate.getDate() + 1);
+                    if (label[i] == currentdate) {
+                        dataCountOneDay.push("1");
+                        dataCountSubstances += data[x].amount;
+                    }
+                    x++;
                 }
-                x++;
+                dataTotalOneDay.push(dataCountOneDay.length);
+                dataTotalSubstances.push(dataCountSubstances);
+                dataCountOneDay = [];
+                dataCountSubstances = 0;
+                i++;
             }
 
             dataTotalSubstances.push(dataCountSubstances);
@@ -93,8 +88,7 @@ function usagechartclient() {
                         backgroundColor: "rgba(0,0,0,0.2)",
                         backgroundColorHover: "#3e95cd",
                         data: dataTotalSubstances,
-                    }
-                    ]
+                    }]
                 },
                 options: {
                     title: {
