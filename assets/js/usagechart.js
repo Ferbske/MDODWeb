@@ -16,8 +16,12 @@ function usagechartclient() {
 
             let today = new Date();
             let dd = today.getDate();
-            let mm = today.getMonth()+1; //January is 0!
+            let mm = today.getMonth() + 1;
             let yyyy = today.getFullYear();
+            let dataCountSubstances = 0;
+            let dataCountOneDay = [];
+            let dataTotalSubstances = [];
+            let dataTotalOneDay = [];
 
             if(dd<10) {
                 dd = '0'+dd
@@ -32,12 +36,6 @@ function usagechartclient() {
             let start = data[0].usedAt.substring(0,10);
             let startDate = new Date(start);
             let endDate = new Date(today);
-            let timeDiff = Math.abs(endDate.getTime() - startDate.getTime());
-            let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-
-            // let day1 = changeDateformat(startDate);
-            // let day2 = changeDateformat(endDate);
-
             let label = [];
             let date = startDate;
 
@@ -49,26 +47,62 @@ function usagechartclient() {
 
             let endLabel = changeDateformat(endDate);
             label.push(endLabel);
+            // alert(label);
 
-            let dataCountSubstances = [];
-            let dataTotalOneDay = [];
+            let x = 0;
+            let adate = data[0].usedAt.substring(0,10);
+            let aadate = new Date(adate);
+            for (x in data) {
+                // All needed variables for date
+                let currentdate = changeDateformat(aadate);
+                let bdate = data[x].usedAt.substring(0,10);
+                let bbdate = new Date(bdate);
+                let tempdate = changeDateformat(bbdate);
+
+                if (tempdate == currentdate) {
+                    dataCountOneDay.push("1");
+                    dataCountSubstances += data[x].amount;
+
+                } else {
+                    dataTotalOneDay.push(dataCountOneDay.length);
+                    dataTotalSubstances.push(dataCountSubstances);
+                    dataCountSubstances = 0;
+                    dataCountSubstances += data[x].amount;
+                    dataCountOneDay = [];
+                    dataCountOneDay.push("1");
+
+                    aadate.setDate(aadate.getDate() + 1);
+                }
+                x++;
+            }
+            dataTotalSubstances.push(dataCountSubstances);
+            dataTotalOneDay.push(dataCountOneDay.length);
+
+
+            // dataCountSubstances.push(data[x].substanceId);
+            // alert(dataCountSubstances);
+            // alert(dataCountOneDay);
+            // dataTotalSubstances.push(dataCountSubstances.length);
+
+            // alert(dataTotalOneDay);
+            // alert(dataTotalSubstances);
 
             new Chart(document.getElementById("usage-chart"), {
                 type: 'bar',
                 data: {
                     labels: label,
                     datasets: [{
-                        label: "Verschillende middelen",
+                        label: "Hoevaak heeft de cliënt gebruikt",
                         type: "line",
                         borderColor: "#ea8516",
-                        data: dataCountSubstances,
+                        data: dataTotalOneDay,
                         fill: false
                     }, {
-                        label: "Totaal die dag gebruikt",
+                        label: "Totale hoeveelheid middelen",
                         type: "bar",
                         backgroundColor: "rgba(0,0,0,0.2)",
                         backgroundColorHover: "#3e95cd",
-                        data: dataTotalOneDay
+                        data: dataTotalSubstances,
                     }
                     ]
                 },
@@ -79,6 +113,13 @@ function usagechartclient() {
                     },
                     legend: {
                         display: true
+                    },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
                     }
                 }
             });
@@ -87,7 +128,7 @@ function usagechartclient() {
             console.log(error);
         },
         complete: function (xhr, textStatus) {
-            console.log(xhr.status);
+            console.log("Status: " + xhr.status);
         }
     })
 }
