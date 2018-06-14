@@ -1,16 +1,34 @@
+let email = getParameterByName("email");
+
 function getAllUsages() {
+    let html = "<tr>" +
+        "<th>Middel</th>" +
+        "<th>Gebruikt op</th>" +
+        "</tr>";
+
     $.ajax({
-        type: 'DELETE',
-        url: 'https://mdod.herokuapp.com/api/v1/addiction/',
+        type: 'POST',
+        url: 'https://mdod.herokuapp.com/api/v1/usage/client/data',
         beforeSend: setHeader,
         dataType: 'JSON',
         data: {
-            'substanceId': substanceId,
             'email': email
         },
 
         success: function (data, textStatus, xhr) {
-            console.log('succes');
+            console.log("Succes");
+            for (let x in data) {
+                getAverageUsagePerDay(data[x].name, data[x].usedAt.substring(0, 10));
+            }
+            //
+            // for (let x in data) {
+            //     html +=
+            //         "<tr id='" + data[x].id + "'>" +
+            //         "<td id='usage_name'>" + data[x].name + "</td>" +
+            //         "<td id='usage_usedAt'>" + data[x].usedAt.substring(0,10)  + "</td>" +
+            //         "</tr>";
+            // }
+            // document.getElementById("tclients_body").innerHTML = html;
         },
         error: function (data, textStatus, xhr) {
             console.log("error on getting substances")
@@ -18,6 +36,13 @@ function getAllUsages() {
     })
 }
 
+function getAverageUsagePerDay(substance, date) {
+    let totalUsagePerDay = [];
+    let averageUsagePerDay = 0;
+
+    console.log("Average usage per day: " + averageUsagePerDay);
+    return averageUsagePerDay;
+}
 
 
 //=======================================//
@@ -38,3 +63,4 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 //=======================================//
+getAllUsages();
