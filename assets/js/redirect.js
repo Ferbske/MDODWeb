@@ -25,6 +25,11 @@ function redirectusage(email){
     window.location = "usage?email=" + email;
 }
 
+function redirectusagechart(email) {
+    email = getParameterByName("email");
+    window.location = "usagechart?email=" + email;
+}
+
 function redirectmood(email){
     email = getParameterByName("email");
     window.location = "mood?email=" + email;
