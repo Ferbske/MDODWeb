@@ -33,6 +33,7 @@ function moodclient() {
             }
 
             document.getElementById("mood_body").innerHTML = txt;
+            document.getElementById("loading").style.display = "none";
         },
         error: function (data, textStatus, error) {
             console.log(error);

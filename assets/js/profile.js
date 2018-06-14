@@ -11,15 +11,18 @@ $(document).ready(function() {
         success: function (data, textStatus, xhr) {
             console.log("Succes");
             // Fill firstname header in profile.ejs
-            document.getElementById("lblvoornaam").innerHTML = data[0].firstname;
+            document.getElementById("lblvoornaam").innerHTML = "<span style='text-transform: capitalize;'>" + data[0].firstname + "</span>";
             // Fill infix header in profile.ejs
-            document.getElementById("lbltussenvoegsel").innerHTML = data[0].infix;
+            document.getElementById("lbltussenvoegsel").innerHTML = "<span style='text-transform: lowercase;'>" + data[0].infix + "</span>";
             // Fill lastname header in profile.ejs
-            document.getElementById("lblachternaam").innerHTML = data[0].lastname;
+            document.getElementById("lblachternaam").innerHTML = "<span style='text-transform: capitalize;'>" + data[0].lastname + "</span>";
             // Fill phonenumber header in profile.ejs
             document.getElementById("lbltelefoonnummer").innerHTML = data[0].phonenumber;
             // Fill location header in profile.ejs
             document.getElementById("lbllocatie").innerHTML = data[0].job_location;
+
+
+            document.getElementById("loading").style.display = "none";
         },
         error: function (data, textStatus, error ) {
             // Log the error

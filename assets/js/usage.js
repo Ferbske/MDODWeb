@@ -31,7 +31,7 @@ function usageclient() {
                     "<td class='usage_date'>" + data[x].usedAt.substring(0,10) + "</td>" +
                     "<td class='usage_substance'>" + data[x].name + "</td>" +
                     "<td class='usage_amount'>" + data[x].amount + "</td>" +
-                    "<td class='usage_location'>" + data[x].location + "</td>" +
+                    "<td class='usage_location'><span style='text-transform: capitalize'>" + data[x].location + "</span></td>" +
                     "<td class='usage_cause'>" + data[x].cause + "</td>" +
                     "<td class='usage_mood'>" + data[x].mood + "</td>" +
                     "</tr>";
@@ -39,6 +39,7 @@ function usageclient() {
             }
 
             document.getElementById("usage_body").innerHTML = txt;
+            document.getElementById("loading").style.display = "none";
         },
         error: function (data, textStatus, error) {
             console.log(error);

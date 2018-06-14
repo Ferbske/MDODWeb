@@ -36,6 +36,7 @@ function difficultmoment() {
                 x++;
             }
             document.getElementById("dm_body").innerHTML = txt;
+            document.getElementById("loading").style.display = "none";
         },
         error: function (data, textStatus, error) {
             console.log(error);

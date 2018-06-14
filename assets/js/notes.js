@@ -23,10 +23,12 @@ function notesclient() {
             }
 
             document.getElementById("notes_body").innerHTML = txt;
+            document.getElementById("loading").style.display = "none";
         },
         error: function (data, textStatus, error) {
             console.log(error);
             document.getElementById("notes_body").innerHTML = txt;
+            document.getElementById("loading").style.display = "none";
         },
         complete: function (xhr, textStatus) {
             console.log(xhr.status);
@@ -84,6 +86,7 @@ function singlenoteclient() {
                 }
             }
             document.getElementById("inputNote").innerHTML = txt;
+            document.getElementById("loading").style.display = "none";
         },
         error: function (data, textStatus, error) {
             console.log(error);

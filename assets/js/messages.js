@@ -29,6 +29,7 @@ function tableAllMessages() {
                     "</tr>";
             }
             document.getElementById("messages_body").innerHTML = txt;
+            document.getElementById("loading").style.display = "none";
         },
         error: function (data, textStatus, error) {
             console.log(error);
