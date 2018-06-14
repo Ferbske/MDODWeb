@@ -77,7 +77,7 @@ router.get('/notesupdate', (req, res) => {
 });
 
 // Endpoint for viewing the statistics of a specific client
-router.get('statistics', (req, res) => {
+router.get('/statistics', (req, res) => {
     res.render('../views/client-statistics.ejs')
 });
 

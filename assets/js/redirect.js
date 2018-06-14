@@ -50,6 +50,11 @@ function redirectmessages() {
     window.location = "messages?email=" + email;
 }
 
+function redirectstatistics() {
+    let email = getParameterByName("email");
+    window.location = "statistics?email=" + email;
+}
+
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");
