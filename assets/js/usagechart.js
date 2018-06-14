@@ -31,7 +31,7 @@ function usagechartclient() {
                 mm = '0'+mm
             }
 
-            today = mm + '/' + dd + '/' + yyyy;
+            today = mm + '-' + dd + '-' + yyyy;
 
             let start = data[0].usedAt.substring(0,10);
             let startDate = new Date(start);
@@ -47,7 +47,6 @@ function usagechartclient() {
 
             let endLabel = changeDateformat(endDate);
             label.push(endLabel);
-            // alert(label);
 
             let x = 0;
             let adate = data[0].usedAt.substring(0,10);
@@ -62,30 +61,21 @@ function usagechartclient() {
                 if (tempdate == currentdate) {
                     dataCountOneDay.push("1");
                     dataCountSubstances += data[x].amount;
-
                 } else {
                     dataTotalOneDay.push(dataCountOneDay.length);
-                    dataTotalSubstances.push(dataCountSubstances);
-                    dataCountSubstances = 0;
-                    dataCountSubstances += data[x].amount;
                     dataCountOneDay = [];
                     dataCountOneDay.push("1");
+
+                    dataTotalSubstances.push(dataCountSubstances);
+                    dataCountSubstances = 0;
 
                     aadate.setDate(aadate.getDate() + 1);
                 }
                 x++;
             }
+
             dataTotalSubstances.push(dataCountSubstances);
             dataTotalOneDay.push(dataCountOneDay.length);
-
-
-            // dataCountSubstances.push(data[x].substanceId);
-            // alert(dataCountSubstances);
-            // alert(dataCountOneDay);
-            // dataTotalSubstances.push(dataCountSubstances.length);
-
-            // alert(dataTotalOneDay);
-            // alert(dataTotalSubstances);
 
             new Chart(document.getElementById("usage-chart"), {
                 type: 'bar',
@@ -134,15 +124,15 @@ function usagechartclient() {
 }
 
 function changeDateformat(date){
-    let year = date.getFullYear();
-    let month = date.getMonth() + 1;
-    let day = date.getDay() + 10;
+    let d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
 
-    if (month.length = 1) {
-        month = "0" + month;
-    }
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
 
-    return year + "-" + month + "-" + day
+    return [year, month, day].join('-');
 }
 
 function setHeader(xhr) {
