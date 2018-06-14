@@ -1,8 +1,10 @@
+let token = getCookie("AuthToken");
+
 function usagechartclient() {
     let email = getParameterByName("email");
     $.ajax({
         type: 'POST',
-        url: '',
+        url: 'https://mdod.herokuapp.com/api/v1/usage/client/data',
         dataType: 'JSON',
         beforeSend: setHeader,
         data: {
@@ -10,107 +12,127 @@ function usagechartclient() {
         },
 
         success: function (data, testStatus, xhr) {
+            data.reverse();
 
-    var chart = AmCharts.makeChart("chartdiv", {
-        "type": "serial",
-        "theme": "light",
-        "marginRight": 40,
-        "marginLeft": 40,
-        "autoMarginOffset": 20,
-        "mouseWheelZoomEnabled":true,
-        "dataDateFormat": "YYYY-MM-DD",
-        "valueAxes": [{
-            "id": "v1",
-            "axisAlpha": 0,
-            "position": "left",
-            "ignoreAxisWidth":true
-        }],
-        "balloon": {
-            "borderThickness": 1,
-            "shadowAlpha": 0
-        },
-        "graphs": [{
-            "id": "g1",
-            "balloon":{
-                "drop":true,
-                "adjustBorderColor":false,
-                "color":"#ffffff"
-            },
-            "bullet": "round",
-            "bulletBorderAlpha": 1,
-            "bulletColor": "#FFFFFF",
-            "bulletSize": 5,
-            "hideBulletsCount": 50,
-            "lineThickness": 2,
-            "title": "red line",
-            "useLineColorForBulletBorder": true,
-            "valueField": "value",
-            "balloonText": "<span style='font-size:18px;'>[[value]]</span>"
-        }],
-        "chartScrollbar": {
-            "graph": "g1",
-            "oppositeAxis":false,
-            "offset":30,
-            "scrollbarHeight": 80,
-            "backgroundAlpha": 0,
-            "selectedBackgroundAlpha": 0.1,
-            "selectedBackgroundColor": "#888888",
-            "graphFillAlpha": 0,
-            "graphLineAlpha": 0.5,
-            "selectedGraphFillAlpha": 0,
-            "selectedGraphLineAlpha": 1,
-            "autoGridCount":true,
-            "color":"#AAAAAA"
-        },
-        "chartCursor": {
-            "pan": true,
-            "valueLineEnabled": true,
-            "valueLineBalloonEnabled": true,
-            "cursorAlpha":1,
-            "cursorColor":"#258cbb",
-            "limitToGraph":"g1",
-            "valueLineAlpha":0.2,
-            "valueZoomable":true
-        },
-        "valueScrollbar":{
-            "oppositeAxis":false,
-            "offset":50,
-            "scrollbarHeight":10
-        },
-        "categoryField": "date",
-        "categoryAxis": {
-            "parseDates": true,
-            "dashLength": 1,
-            "minorGridEnabled": true
-        },
-        "export": {
-            "enabled": true
-        },
-        //id, email van client, substanceId, description, usedAt
-        "dataProvider": [{
-            "date": "2012-07-27",
-            "value": 13
-        }, {
-            "date": "2012-07-28",
-            "value": 11
-        }]
-    });
+            let today = new Date();
+            let dd = today.getDate();
+            let mm = today.getMonth() + 1;
+            let yyyy = today.getFullYear();
+            let dataCountSubstances = 0;
+            let dataCountOneDay = [];
+            let dataTotalSubstances = [];
+            let dataTotalOneDay = [];
 
-chart.addListener("rendered", zoomChart);
+            if(dd<10) {
+                dd = '0'+dd
+            }
 
-zoomChart();
+            if(mm<10) {
+                mm = '0'+mm
+            }
 
-function zoomChart() {
-    chart.zoomToIndexes(chart.dataProvider.length - 40, chart.dataProvider.length - 1);
-}
+            today = mm + '-' + dd + '-' + yyyy;
+
+            let start = data[0].usedAt.substring(0,10);
+            let startDate = new Date(start);
+            let endDate = new Date(today);
+            let label = [];
+            let date = startDate;
+
+            while (date <= endDate) {
+                let temp = changeDateformat(date);
+                label.push(temp);
+                date.setDate(date.getDate() + 1);
+            }
+
+            let endLabel = changeDateformat(endDate);
+            label.push(endLabel);
+
+            let x = 0;
+            let adate = data[0].usedAt.substring(0,10);
+            let aadate = new Date(adate);
+            for (x in data) {
+                // All needed variables for date
+                let currentdate = changeDateformat(aadate);
+                let bdate = data[x].usedAt.substring(0,10);
+                let bbdate = new Date(bdate);
+                let tempdate = changeDateformat(bbdate);
+
+                if (tempdate == currentdate) {
+                    dataCountOneDay.push("1");
+                    dataCountSubstances += data[x].amount;
+                } else {
+                    dataTotalOneDay.push(dataCountOneDay.length);
+                    dataCountOneDay = [];
+                    dataCountOneDay.push("1");
+
+                    dataTotalSubstances.push(dataCountSubstances);
+                    dataCountSubstances = 0;
+
+                    aadate.setDate(aadate.getDate() + 1);
+                }
+                x++;
+            }
+
+            dataTotalSubstances.push(dataCountSubstances);
+            dataTotalOneDay.push(dataCountOneDay.length);
+
+            new Chart(document.getElementById("usage-chart"), {
+                type: 'bar',
+                data: {
+                    labels: label,
+                    datasets: [{
+                        label: "Hoevaak heeft de cliënt gebruikt",
+                        type: "line",
+                        borderColor: "#ea8516",
+                        data: dataTotalOneDay,
+                        fill: false
+                    }, {
+                        label: "Totale hoeveelheid middelen",
+                        type: "bar",
+                        backgroundColor: "rgba(0,0,0,0.2)",
+                        backgroundColorHover: "#3e95cd",
+                        data: dataTotalSubstances,
+                    }
+                    ]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: 'Gebruik van de cliënt'
+                    },
+                    legend: {
+                        display: true
+                    },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
+                }
+            });
         },
         error: function (data, textStatus, error) {
             console.log(error);
         },
         complete: function (xhr, textStatus) {
-            console.log(xhr.status);
+            console.log("Status: " + xhr.status);
         }
     })
+}
+
+function changeDateformat(date){
+    let d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
 }
 
 function setHeader(xhr) {
@@ -125,4 +147,7 @@ function getParameterByName(name, url) {
         results = regex.exec(url);
     if (!results) return null;
     if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, " "));}
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+usagechartclient();
