@@ -16,7 +16,8 @@
 <!-- Container -->
 <div class="container">
     <div class="inner_container">
-        <h3 id="clientname">Middelen</h3>
+        <!--REDIRECT NOT WORKING!-->
+        <h3 id="clientname"><i class="fa fa-arrow-left" onclick="history.back()"></i> Middelen</h3>
         <ul class="substance_list">
         </ul>
         <button id="addAddictionbutton" class="btn btn-lg btn-primary" type="submit" onclick="handleSelectedSubstances()">Opslaan</button>
@@ -31,5 +32,6 @@
 <script src="js/includehtml.js"></script>
 <script src="js/authcookie.js"></script>
 <script src="js/addiction.js"></script>
+<script src="js/redirect.js"></script>
 <script>include();</script>
 </html>

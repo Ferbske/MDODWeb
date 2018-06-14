@@ -51,7 +51,8 @@ function redirectmessages() {
 }
 
 function redirectclientlist() {
-    window.location = "clients";
+    // history.back();
+    // window.location = "clients";
 }
 
 function getParameterByName(name, url) {
