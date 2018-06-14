@@ -76,6 +76,11 @@ router.get('/notesupdate', (req, res) => {
     res.render('../views/notes-update.ejs')
 });
 
+// Endpoint for viewing the statistics of a specific client
+router.get('statistics', (req, res) => {
+    res.render('../views/client-statistics.ejs')
+});
+
 // Endpoint that is needed for adding the header in pages
 router.get('/views/header', (req, res) => {
     res.render('../views/header.ejs')
