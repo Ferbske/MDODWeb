@@ -71,7 +71,7 @@ function moodchartclient() {
                 data: {
                     labels: label,
                     datasets: [{
-                        label: "Hoevaak heeft de cliënt gebruikt",
+                        label: "Hoevaak heeft de cliënt een gemoedstand gehad",
                         type: "line",
                         borderColor: "#ea8516",
                         data: dataTotalOneDay,
@@ -87,7 +87,7 @@ function moodchartclient() {
                 options: {
                     title: {
                         display: true,
-                        text: 'Gebruik van de cliënt'
+                        text: 'Gemoedstoestanden van de cliënt'
                     },
                     legend: {
                         display: true
