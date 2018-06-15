@@ -46,6 +46,7 @@ router.get('/usage', (req, res) => {
     res.render('../views/usage.ejs')
 });
 
+// Endpoint for the chart for usage
 router.get('/usagechart', (req, res) => {
    res.render('../views/usagechart.ejs')
 });
@@ -58,6 +59,11 @@ router.get('/difficultmoment', (req, res) => {
 // Endpoint for the moods for a specific client
 router.get('/mood', (req, res) => {
     res.render('../views/mood.ejs')
+});
+
+// Endpoint for the chart for mood
+router.get('/moodchart', (req, res) => {
+    res.render('../views/moodchart.ejs')
 });
 
 // Endpoint for viewing all messages between psychologist and client
