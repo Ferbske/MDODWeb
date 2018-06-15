@@ -1,10 +1,10 @@
 let token = getCookie("AuthToken");
 
-function usagechartclient() {
+function moodchartclient() {
     let email = getParameterByName("email");
     $.ajax({
         type: 'POST',
-        url: 'https://mdod.herokuapp.com/api/v1/usage/client/data',
+        url: 'https://mdod.herokuapp.com/api/v1/mood/client',
         dataType: 'JSON',
         beforeSend: setHeader,
         data: {
@@ -18,9 +18,7 @@ function usagechartclient() {
             let dd = today.getDate();
             let mm = today.getMonth() + 1;
             let yyyy = today.getFullYear();
-            let dataCountSubstances = 0;
             let dataCountOneDay = [];
-            let dataTotalSubstances = [];
             let dataTotalOneDay = [];
 
             if(dd<10) {
@@ -33,7 +31,7 @@ function usagechartclient() {
 
             today = mm + '-' + dd + '-' + yyyy;
 
-            let start = data[0].usedAt.substring(0,10);
+            let start = data[0].addedDate.substring(0,10);
             let startDate = new Date(start);
             let endDate = new Date(today);
             let label = [];
@@ -52,27 +50,23 @@ function usagechartclient() {
             for (let i in label) {
                 for (x in data) {
                     // All needed variables for date
-                    let date = data[x].usedAt.substring(0,10);
+                    let date = data[x].addedDate.substring(0,10);
                     let adate = new Date(date);
                     let currentdate = changeDateformat(adate);
 
                     if (label[i] == currentdate) {
                         dataCountOneDay.push("1");
-                        dataCountSubstances += data[x].amount;
                     }
                     x++;
                 }
                 dataTotalOneDay.push(dataCountOneDay.length);
-                dataTotalSubstances.push(dataCountSubstances);
                 dataCountOneDay = [];
-                dataCountSubstances = 0;
                 i++;
             }
 
-            dataTotalSubstances.push(dataCountSubstances);
             dataTotalOneDay.push(dataCountOneDay.length);
 
-            new Chart(document.getElementById("usage-chart"), {
+            new Chart(document.getElementById("mood-chart"), {
                 type: 'bar',
                 data: {
                     labels: label,
@@ -83,11 +77,11 @@ function usagechartclient() {
                         data: dataTotalOneDay,
                         fill: false
                     }, {
-                        label: "Totale hoeveelheid middelen",
+                        label: "",
                         type: "bar",
                         backgroundColor: "rgba(0,0,0,0.2)",
                         backgroundColorHover: "#3e95cd",
-                        data: dataTotalSubstances,
+                        data: [],
                     }]
                 },
                 options: {
@@ -144,4 +138,4 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-usagechartclient();
+moodchartclient();

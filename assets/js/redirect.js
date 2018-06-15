@@ -35,6 +35,11 @@ function redirectmood(email){
     window.location = "mood?email=" + email;
 }
 
+function redirectmoodchart(email) {
+    email = getParameterByName("email");
+    window.location = "moodchart?email=" + email;
+}
+
 function redirectnotes(email){
     email = getParameterByName("email");
     window.location = "notes?email=" + email;
