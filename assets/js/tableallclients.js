@@ -11,18 +11,17 @@ $(document).ready(function() {
         success: function (data, textStatus, xhr) {
             console.log("Succes");
             let x = 0, txt = "";
-            // txt += "<table class='table table-striped'>";
             for (x in data) {
-                txt += "<tr id='clients_row" + x + "' onclick=redirect('" + data[x].email + "') >" +
-                    "<th>" + data[x].firstname + " " +
-                    data[x].infix + " " +
-                    data[x].lastname + "</th>" +
+                    txt += "<tr id='clients_row" + x + "' onclick=redirect('" + data[x].email + "') >" +
+                    "<th><span style='text-transform: capitalize;'>" + data[x].firstname + "</span> " +
+                        "<span style='text-transform: lowercase;'>" + data[x].infix + "</span> " +
+                        "<span style='text-transform: capitalize;'>" + data[x].lastname + "</span></th>" +
                     "<td>" + data[x].email + "</td>" +
                 "</tr>";
                 x++;
             }
-            // txt += "</table>";
             document.getElementById("clients_body").innerHTML = txt;
+            document.getElementById("loading").style.display = "none";
         },
         error: function (data, textStatus, error) {
             console.log(error);

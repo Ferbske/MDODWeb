@@ -66,7 +66,25 @@ h4  {
     color: #686759;
     font-size: 16px;
 }
+
+/*Manipulating capitals*/
+.dm_description:first-letter, .usage_cause:first-letter, .mood_description:first-letter, .notes_title:first-letter, .notes_description:first-letter, .messages_message:first-letter {
+    text-transform: capitalize;
+}
+/*End Manipulating capitals*/
+
 /*End Text*/
+
+/*Loading symbol*/
+#loading {
+    width: 100%;
+    height: 100px;
+}
+
+#loading_symbol {
+    margin: 0 auto!important;
+}
+/*End Loading symbol*/
 
 /*Forms*/
 form {
@@ -80,7 +98,6 @@ form h3 {
 }
 
 form .form-control {
-    /*position: relative;*/
     height: auto;
     padding: 10px;
 }
@@ -106,6 +123,7 @@ table td {
 
 .table-hover >tbody>tr:hover {
     background-color: rgba(234, 133, 22, 0.2);
+    cursor: pointer;
 }
 
 .table tr:last-child {
@@ -117,17 +135,29 @@ table td {
 .btn{
     background-color: #ea8516;
     border-color: #ea8516;
+    padding: 6px 10px;
+    font-size: 15px;
 }
 
 .btn:hover, .btn:active, .btn:focus {
     background-color: #d68024 !important;
     border-color: #d68024 !important;
 }
+
+.fa-arrow-left {
+    cursor: pointer;
+}
 /*End Buttons*/
 
 /*End General*/
 
 /*Specific pages*/
+
+/*Register*/
+p#back_to_login {
+    text-align: center;
+}
+/*End Register*/
 
 /*Login*/
 #loginreg_img_logo {
@@ -156,9 +186,7 @@ table td {
 /*End Profile*/
 
 /*Clients*/
-#clients_body tr, #tclients_body tr {
-    cursor: pointer;
-}
+
 /*End Clients*/
 
 /*Client*/
@@ -193,28 +221,77 @@ table td {
 /*End Addiction*/
 
 /*Difficult moment*/
-#dm_body .dm_substance, #dm_body .dm_date, #dm_body .dm_lust  {
+ .dm_substance, .dm_date, .dm_lust  {
     width: 15%!important;
 }
 
-#dm_body .dm_description {
+ .dm_description {
     width: 55%!important;
 }
 /*End Difficult moment*/
 
 /*Usage*/
-#usage_body .usage_amount {
+.usage_amount {
     width: 10%!important;
 }
 
-#usage_body .usage_date, #usage_body .usage_substance, #usage_body .usage_location, #usage_body .usage_mood {
+.usage_date, .usage_substance, .usage_location, .usage_mood {
     width: 15%!important;
 }
 
-#usage_body .usage_cause {
+.usage_cause {
     width: 30%!important;
 }
 /*End Usage*/
+
+/*Mood*/
+.mood_date, .mood_mood {
+    width: 15%!important;
+}
+
+.mood_description {
+    width: 70%!important;
+}
+/*End Mood*/
+
+/*Messages*/
+#messages_head {
+    display: block;
+}
+
+#messages_body {
+    display: block;
+    height: 300px;
+    overflow-y: scroll;
+}
+
+.send_message {
+    width: 300px;
+}
+
+textarea#message_input {
+    height: 80px;
+    width: 300px;
+    margin-right: 15px;
+}
+/*End Messages*/
+
+/*Notes*/
+.notes_title {
+    width: 20%;
+}
+
+.notes_description {
+    width: 80%;
+}
+
+/*Update notes*/
+#inputNote {
+    margin-bottom: 10px;
+}
+/*End Update notes*/
+
+/*End Notes*/
 
 /*End Specific pages*/
 

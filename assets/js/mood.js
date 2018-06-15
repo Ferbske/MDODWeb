@@ -2,11 +2,14 @@ let token = getCookie("AuthToken");
 
 function moodclient() {
     let email = getParameterByName("email");
-    let txt = "<tr id='notes_head'>" +
+    let txthead = "<tr id='notes_head'>" +
         "<th class='mood_date'>Datum</th>" +
         "<th class='mood_description'>Descriptie</th>" +
         "<th class='mood_mood'>Gevoel <br><span style='font-size: 10px'>(Schaal van 1 tm 5)</span></th>" +
         "</tr>";
+
+    document.getElementById("mood_head").innerHTML = txthead;
+
     $.ajax({
         type: 'POST',
         url: 'https://mdod.herokuapp.com/api/v1/mood/client',
@@ -18,6 +21,8 @@ function moodclient() {
 
         success: function (data, testStatus, xhr) {
             console.log("Succes");
+
+            let txt = "";
             for (let x in data) {
                 txt += "<tr>" +
                     "<td class='mood_date'>" + data[x].addedDate.substring(0,10) + "</td>" +
@@ -28,6 +33,7 @@ function moodclient() {
             }
 
             document.getElementById("mood_body").innerHTML = txt;
+            document.getElementById("loading").style.display = "none";
         },
         error: function (data, textStatus, error) {
             console.log(error);

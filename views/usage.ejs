@@ -8,6 +8,11 @@
     <!--Style for Bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!--Style for icons (font-awesome)-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--Style loading icon-->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!--Style-->
     <link rel="stylesheet" href="css/style.css" type="text/css">
 
@@ -19,15 +24,25 @@
 <!-- Container -->
 <div class="container">
     <div class="inner_container">
-        <h3>Gebruik</h3>
+        <h3><i class="fa fa-arrow-left" onclick="history.back()"></i> Gebruik</h3>
         <!--Table with usages of client-->
         <table class="usage_table table table-striped">
+            <thead id="usage_head">
+            </thead>
+            <div id="loading">
+                <i id="loading_symbol" class="material-icons w3-spin w3-jumbo">refresh</i>
+            </div>
             <tbody class="tbody" id="usage_body">
             </tbody>
         </table>
-        <button id="usagechartbutton" class="btn btn-lg btn-primary" type="submit"  onclick="redirectusagechart()">
-            Grafiek
-        </button>
+        <!--/Table with usages of client-->
+        <!--Button to go to chart-->
+        <div class="chartbutton">
+            <button id="usagechartclientbutton" class="btn btn-lg btn-primary" type="submit" onclick="">
+                Grafiek
+            </button>
+        </div>
+        <!--/Button to go to chart-->
     </div>
 </div>
 <!-- /Container -->
@@ -40,6 +55,7 @@
 <script src="js/includehtml.js"></script>
 <script src="js/authcookie.js"></script>
 <script src="js/usage.js"></script>
+<script src="js/usagechart.js"></script>
 <script src="js/redirect.js"></script>
 
 <script>usageclient()</script>

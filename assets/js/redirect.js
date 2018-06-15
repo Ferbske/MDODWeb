@@ -60,6 +60,11 @@ function redirectmessages() {
     window.location = "messages?email=" + email;
 }
 
+function redirectclientlist() {
+    // history.back();
+    // window.location = "clients";
+}
+
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");

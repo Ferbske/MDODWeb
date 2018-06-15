@@ -2,7 +2,7 @@ let token = getCookie("AuthToken");
 
 function usageclient() {
     let email = getParameterByName("email");
-    let txt = "<tr id='usage_head'>" +
+    let txthead = "<tr id='usage_head'>" +
         "<th class='usage_date'>Datum</th>" +
         "<th class='usage_substance'>Wat</th>" +
         "<th class='usage_amount'>Hoeveel</th>" +
@@ -10,6 +10,9 @@ function usageclient() {
         "<th class='usage_cause'>Oorzaak</th>" +
         "<th class='usage_mood'>Gevoel <br><span style='font-size: 10px'>(Schaal van 1 tm 5)</span></th>" +
         "</tr>";
+
+    document.getElementById("usage_head").innerHTML = txthead;
+
     $.ajax({
         type: 'POST',
         url: 'https://mdod.herokuapp.com/api/v1/usage/client/data',
@@ -21,12 +24,14 @@ function usageclient() {
 
         success: function (data, testStatus, xhr) {
             console.log("Succes");
+
+            let txt = "";
             for (let x in data) {
                 txt += "<tr id='usage_data" + x + "'>" +
                     "<td class='usage_date'>" + data[x].usedAt.substring(0,10) + "</td>" +
                     "<td class='usage_substance'>" + data[x].name + "</td>" +
                     "<td class='usage_amount'>" + data[x].amount + "</td>" +
-                    "<td class='usage_location'>" + data[x].location + "</td>" +
+                    "<td class='usage_location'><span style='text-transform: capitalize'>" + data[x].location + "</span></td>" +
                     "<td class='usage_cause'>" + data[x].cause + "</td>" +
                     "<td class='usage_mood'>" + data[x].mood + "</td>" +
                     "</tr>";
@@ -34,6 +39,7 @@ function usageclient() {
             }
 
             document.getElementById("usage_body").innerHTML = txt;
+            document.getElementById("loading").style.display = "none";
         },
         error: function (data, textStatus, error) {
             console.log(error);

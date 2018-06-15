@@ -1,10 +1,12 @@
 function tableAllMessages() {
     let email = getParameterByName("email");
-    let txt = "<tr>" +
+    let txthead = "<tr>" +
         "<th>Afzender</th>" +
         "<th>Bericht</th>" +
         "<th>Datum</th>" +
         "</tr>";
+
+    document.getElementById("messages_head").innerHTML = txthead;
 
     $.ajax({
         type: 'POST',
@@ -18,6 +20,7 @@ function tableAllMessages() {
         success: function (data, testStatus, xhr) {
             console.log("Succes");
 
+            let txt = "";
             for (let x in data) {
                 txt += "<tr id='" + data[x].id + "'>" +
                     "<td class='messages_sender'>" + data[x].sendBy + "</td>" +
@@ -25,11 +28,12 @@ function tableAllMessages() {
                     "<td class='messages_date'>" + data[x].date.substring(0,10) + "</td>" +
                     "</tr>";
             }
-            document.getElementById("tclients_messages").innerHTML = txt;
+            document.getElementById("messages_body").innerHTML = txt;
+            document.getElementById("loading").style.display = "none";
         },
         error: function (data, textStatus, error) {
             console.log(error);
-            document.getElementById("tclients_messages").innerHTML = "";
+            document.getElementById("messages_body").innerHTML = "";
         },
         complete: function (xhr, textStatus) {
             console.log(xhr.status);
