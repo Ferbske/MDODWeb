@@ -25,6 +25,7 @@ function checkAddictionsCheckbox() {
         },
 
         success: function (data, textStatus, xhr) {
+            document.getElementById("loading").style.display = "none";
             for (let addiction in data) {
                 allClientAddictions.push(data[addiction].substanceId);
             }
