@@ -12,6 +12,7 @@ function usagechartclient() {
         },
 
         success: function (data, testStatus, xhr) {
+            document.getElementById("loading").style.display = "none";
             data.reverse();
 
             let today = new Date();
