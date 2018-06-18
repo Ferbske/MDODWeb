@@ -270,7 +270,8 @@ p#back_to_login {
 
 #messages_body {
     display: block;
-    height: 300px;
+    max-height: 450px;
+    height: 100%;
     overflow-y: scroll;
 }
 
