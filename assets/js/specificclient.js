@@ -50,7 +50,10 @@ function getInfoClient(addictionlist, clean) {
             let x = 0, txt = "";
             let contact = data[x].contact || "";
             for (x in data) {
-                document.getElementById("clientname").innerHTML = data[x].firstname + " " + data[x].infix + " " + data[x].lastname;
+                document.getElementById("clientname").innerHTML +=
+                    "<span style='text-transform: capitalize;'>" + data[x].firstname + "</span> " +
+                    "<span style='text-transform: lowercase;'>" + data[x].infix + "</span> " +
+                    "<span style='text-transform: capitalize;'>" + data[x].lastname + "</span>";
                 txt +=
                     "<tr>" +
                         "<th>Email:</th>" +
@@ -58,9 +61,11 @@ function getInfoClient(addictionlist, clean) {
                     "</tr>" +
                     "<tr>" +
                         "<th>Naam:</th>" +
-                        "<td id='clientName'>" + data[x].firstname + " " +
-                        data[x].infix + " " +
-                        data[x].lastname + "</td>" +
+                        "<td id='clientName'>" +
+                            "<span style='text-transform: capitalize;'>" + data[x].firstname + "</span> " +
+                            "<span style='text-transform: lowercase;'>" + data[x].infix + "</span> " +
+                            "<span style='text-transform: capitalize;'>" + data[x].lastname + "</span>" +
+                        "</td>" +
                     "</tr>" +
                     "<tr>" +
                         "<th>Adres:</th>" +
@@ -97,6 +102,7 @@ function getInfoClient(addictionlist, clean) {
                 x++;
             }
             document.getElementById("client_body").innerHTML = txt;
+            document.getElementById("loading").style.display = "none";
 
             // This section removes the button if the contact field is filled out
             let contactField = data[0].contact;
@@ -129,7 +135,7 @@ function cleanDays() {
 
         success: function (data, textStatus, xhr) {
             console.log("Succes");
-            clean = data.daysClean || "";
+            clean = data.daysClean || "0";
             getInfoClient(addictionlist, clean)
         },
         error: function (data, textStatus, error) {

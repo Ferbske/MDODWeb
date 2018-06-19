@@ -7,6 +7,8 @@
     <!--Style for Bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!--Style for icons (font-awesome)-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--Style-->
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -19,6 +21,9 @@
             <h1>Mijn cliënten</h1>
             <!--Table with treatment clients -->
             <table class='tclients_table table table-striped table-hover'>
+                <div id="loading">
+                    <i id="loading_symbol" class="fa fa-refresh fa-spin"></i>
+                </div>
                 <tbody class="tbody" id="tclients_body"></tbody>
             </table>
             <!--/Table with treatment clients -->
@@ -37,7 +42,7 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/includehtml.js"></script>
     <script src="js/authcookie.js"></script>
-    <script src="js/redirectspecificclient.js"></script>
+    <script src="js/redirect.js"></script>
     <script src="js/tabletreatmentclient.js"></script>
     <script>include();</script>
 </body>

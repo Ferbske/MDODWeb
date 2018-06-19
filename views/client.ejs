@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--Style-->
     <link rel="stylesheet" href="css/style.css" type="text/css">
+
+
 </head>
 <body>
 <!-- Header added -->
@@ -19,19 +21,32 @@
 <!-- Container -->
 <div class="container">
     <div class="inner_container">
-        <h3 id="clientname"></h3>
+        <h3 id="clientname"><i class="fa fa-arrow-left" onclick="history.back()"></i> </h3>
         <!--Table with client info-->
         <table class="client_table table table-striped">
-            <tbody class="tbody" id="client_body"></tbody>
+            <div id="loading">
+                <i id="loading_symbol" class="fa fa-refresh fa-spin"></i>
+            </div>
+            <tbody class="tbody" id="client_body">
+            </tbody>
         </table>
         <!--/Table with client info-->
-        <!--Buttons for usage and difficult moments-->
+        <!--Buttons for usage, difficult moments, notes and messages-->
         <div class="client-buttons">
             <button id="usageclientbutton" class="btn btn-lg btn-primary" type="submit" onclick="redirectusage()">
                 Gebruik
             </button>
             <button id="difficultmomentclientbutton" class="btn btn-lg btn-primary" type="submit" onclick="redirectdifficultmoment()">
                 Moeilijke momenten
+            </button>
+            <button id="moodclientbutton" class="btn btn-lg btn-primary" type="submit" onclick="redirectmood()">
+                Gemoedstoestand
+            </button>
+            <button id="notesclientbutton" class="btn btn-lg btn-primary" type="submit" onclick="redirectnotes()">
+                Notities
+            </button>
+            <button id="messagesclientbutton" class="btn btn-lg btn-primary" type="submit" onclick="redirectmessages()">
+                Berichten
             </button>
         </div>
         <!--/Buttons for usage and difficult moments-->
@@ -56,10 +71,8 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/includehtml.js"></script>
 <script src="js/authcookie.js"></script>
-<script src="js/redirectspecificusage.js"></script>
-<script src="js/redirectspecificdifficultmoment.js"></script>
+<script src="js/redirect.js"></script>
 <script src="js/specificclient.js"></script>
-<script src="js/redirectspecificaddiction.js"></script>
 <script>include();</script>
 <script src="js/treatclient.js"></script>
 </html>

@@ -1,20 +1,18 @@
 let token = getCookie("AuthToken");
 
-function difficultmoment() {
+function moodclient() {
     let email = getParameterByName("email");
-
-    let txthead = "<tr id='dm_head'>" +
-        "<th class='dm_date'>Datum</th>" +
-        "<th class='dm_substance'>Wat</th>" +
-        "<th class='dm_description'>Beschrijving</th>" +
-        "<th class='dm_lust'>Trek <br><span style='font-size: 10px'>(schaal van 1 tm 5)</span></th>" +
+    let txthead = "<tr id='notes_head'>" +
+        "<th class='mood_date'>Datum</th>" +
+        "<th class='mood_description'>Descriptie</th>" +
+        "<th class='mood_mood'>Gevoel <br><span style='font-size: 10px'>(Schaal van 1 tm 5)</span></th>" +
         "</tr>";
 
-    document.getElementById("dm_head").innerHTML = txthead;
+    document.getElementById("mood_head").innerHTML = txthead;
 
     $.ajax({
         type: 'POST',
-        url: 'https://mdod.herokuapp.com/api/v1/difficult_moment/client',
+        url: 'https://mdod.herokuapp.com/api/v1/mood/client',
         dataType: 'JSON',
         beforeSend: setHeader,
         data: {
@@ -23,23 +21,23 @@ function difficultmoment() {
 
         success: function (data, testStatus, xhr) {
             console.log("Succes");
-            let x = 0;
+
             let txt = "";
-            for (x in data) {
-                let date = data[x].date_lust.substring(0, 10);
-                txt += "<tr id='dm_data" + x + "'>" +
-                    "<td class='dm_date'>" + date + "</td>" +
-                    "<td class='dm_substance'>" + data[x].name + "</td>" +
-                    "<td class='dm_description'>" + data[x].description + "</td>" +
-                    "<td class='dm_lust'>" + data[x].lust + "</td>" +
+            for (let x in data) {
+                txt += "<tr>" +
+                    "<td class='mood_date'>" + data[x].addedDate.substring(0,10) + "</td>" +
+                    "<td class='mood_description'>" + data[x].description + "</td>" +
+                    "<td class='mood_mood'>" + data[x].value + "</td>" +
                     "</tr>";
                 x++;
             }
-            document.getElementById("dm_body").innerHTML = txt;
+
+            document.getElementById("mood_body").innerHTML = txt;
             document.getElementById("loading").style.display = "none";
         },
         error: function (data, textStatus, error) {
             console.log(error);
+            document.getElementById("mood_body").innerHTML = txt;
         },
         complete: function (xhr, textStatus) {
             console.log(xhr.status);
@@ -61,3 +59,5 @@ function getParameterByName(name, url) {
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
+
+moodclient();

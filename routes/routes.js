@@ -46,9 +46,44 @@ router.get('/usage', (req, res) => {
     res.render('../views/usage.ejs')
 });
 
+// Endpoint for the chart for usage
+router.get('/usagechart', (req, res) => {
+   res.render('../views/usagechart.ejs')
+});
+
 // Endpoint for the difficult moments from a client
 router.get('/difficultmoment', (req, res) => {
     res.render('../views/difficultmoment.ejs')
+});
+
+// Endpoint for the moods for a specific client
+router.get('/mood', (req, res) => {
+    res.render('../views/mood.ejs')
+});
+
+// Endpoint for the chart for mood
+router.get('/moodchart', (req, res) => {
+    res.render('../views/moodchart.ejs')
+});
+
+// Endpoint for viewing all messages between psychologist and client
+router.get('/messages', (req, res) => {
+    res.render('../views/messages.ejs')
+});
+
+// Endpoint for the notes for a specific client
+router.get('/notes', (req, res) => {
+    res.render('../views/notes.ejs')
+});
+
+// Endpoint for creating a note for a specific client
+router.get('/notescreate', (req, res) => {
+    res.render('../views/notes-create.ejs')
+});
+
+// Endpoint for updating a note for a specific client
+router.get('/notesupdate', (req, res) => {
+    res.render('../views/notes-update.ejs')
 });
 
 // Endpoint that is needed for adding the header in pages
