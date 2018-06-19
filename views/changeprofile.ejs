@@ -25,60 +25,59 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body>
-<!-- Header added -->
-<header id="header"></header>
-<!--Container-->
-<div class="container">
-    <div class="inner_container">
-        <form class="cp_form form-register">
-            <h3>Wijzig uw gegevens</h3>
+    <!-- Header added -->
+    <header id="header"></header>
+    <!--Container-->
+    <div class="container">
+        <div class="inner_container">
+            <form class="cp_form form-register">
+                <h3>Wijzig uw gegevens</h3>
 
-            <!-- Firstname inputfield -->
+                <!-- Firstname inputfield -->
+                <div class="form-group">
+                    <h4>Voornaam:</h4>
+                    <label for="inputVoornaam" class="sr-only">Voornaam</label>
+                    <input type="text" id="inputVoornaam" name="firstname" class="form-control" placeholder="Voornaam" required autofocus>
+                </div>
+
+                <!-- Infix inputfield -->
+                <div class="form-group">
+                    <h4>Tussenvoegsel:</h4>
+                    <label for="inputTussenvoegsel" class="sr-only">Tussenvoegsel</label>
+                    <input type="text" id="inputTussenvoegsel" name="infix" class="form-control" placeholder="Tussenvoegsel">
+                </div>
+
+                <!-- Lastname inputfield -->
+                <div class="form-group">
+                    <h4>Achternaam:</h4>
+                    <label for="inputAchternaam" class="sr-only">Achternaam</label>
+                    <input type="text" id="inputAchternaam" name="lastname" class="form-control" placeholder="Achternaam" required>
+                </div>
+
+            <!-- Phonenumber inputfield -->
             <div class="form-group">
-                <h4>Voornaam:</h4>
-                <label for="inputVoornaam" class="sr-only">Voornaam</label>
-                <input type="text" id="inputVoornaam" name="firstname" class="form-control" placeholder="Voornaam" required autofocus>
+                <h4>Telefoonnummer:</h4>
+                <label for="inputTelefoonnummerRegister" class="sr-only">Telefoonnummer</label>
+                <input type="text" id="inputTelefoonnummer" name="phonenumber" class="form-control" placeholder="Telefoonnummer" required>
             </div>
 
-            <!-- Infix inputfield -->
+            <!-- Location inputfield -->
             <div class="form-group">
-                <h4>Tussenvoegsel:</h4>
-                <label for="inputTussenvoegsel" class="sr-only">Tussenvoegsel</label>
-                <input type="text" id="inputTussenvoegsel" name="infix" class="form-control" placeholder="Tussenvoegsel">
+                <h4>Locatie:</h4>
+                <label for="inputLocatieRegister" class="sr-only">Locatie</label>
+                <input type="text" id="inputLocatie" name="location" class="form-control" placeholder="Locatie" required>
             </div>
 
-            <!-- Lastname inputfield -->
-            <div class="form-group">
-                <h4>Achternaam:</h4>
-                <label for="inputAchternaam" class="sr-only">Achternaam</label>
-                <input type="text" id="inputAchternaam" name="lastname" class="form-control" placeholder="Achternaam" required>
-            </div>
-
-        <!-- Phonenumber inputfield -->
-        <div class="form-group">
-            <h4>Telefoonnummer:</h4>
-            <label for="inputTelefoonnummerRegister" class="sr-only">Telefoonnummer</label>
-            <input type="text" id="inputTelefoonnummer" name="phonenumber" class="form-control" placeholder="Telefoonnummer" required>
+                <!-- Submit inputfield -->
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Wijzigingen opslaan</button>
+            </form>
         </div>
-
-        <!-- Location inputfield -->
-        <div class="form-group">
-            <h4>Locatie:</h4>
-            <label for="inputLocatieRegister" class="sr-only">Locatie</label>
-            <input type="text" id="inputLocatie" name="location" class="form-control" placeholder="Locatie" required>
-        </div>
-
-            <!-- Submit inputfield -->
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Wijzigingen opslaan</button>
-        </form>
     </div>
-</div>
-<!-- /Container -->
-<!--Footer added-->
-<footer id="footer"></footer>
+    <!-- /Container -->
+    <!--Footer added-->
+    <footer id="footer"></footer>
 </body>
-    <script src="js/includehtml.js"></script>
-    <script src="js/authcookie.js"></script>
-    <script src="js/changeprofile.js"></script>
-    <script>include();</script>
+<script src="js/includehtml.js"></script>
+<script src="js/authcookie.js"></script>
+<script src="js/changeprofile.js"></script>
 </html>

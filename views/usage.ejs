@@ -3,8 +3,7 @@
       class="wf-proximanova-n7-active wf-proximanova-n5-active wf-proximanova-n4-active wf-proximanova-n6-active wf-proximanova-n3-active wf-active">
 <head>
     <meta charset="UTF-8">
-    <title>Client</title>
-
+    <title>Gebruik</title>
     <!--Style for Bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -12,39 +11,37 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--Style-->
     <link rel="stylesheet" href="css/style.css" type="text/css">
-
 </head>
-
 <body>
-<!-- Header added -->
-<header id="header"></header>
-<!-- Container -->
-<div class="container">
-    <div class="inner_container">
-        <h3><i class="fa fa-arrow-left" onclick="history.back()"></i> Gebruik</h3>
-        <!--Table with usages of client-->
-        <table class="usage_table table table-striped">
-            <thead id="usage_head">
-            </thead>
-            <div id="loading">
-                <i id="loading_symbol" class="fa fa-refresh fa-spin"></i>
+    <!-- Header added -->
+    <header id="header"></header>
+    <!-- Container -->
+    <div class="container">
+        <div class="inner_container">
+            <h3><i class="fa fa-arrow-left" onclick="history.back()"></i> Gebruik</h3>
+            <!--Table with usages of client-->
+            <table class="usage_table table table-striped">
+                <thead id="usage_head">
+                </thead>
+                <div id="loading">
+                    <i id="loading_symbol" class="fa fa-refresh fa-spin"></i>
+                </div>
+                <tbody class="tbody" id="usage_body">
+                </tbody>
+            </table>
+            <!--/Table with usages of client-->
+            <!--Button to go to chart-->
+            <div class="chartbutton">
+                <button id="usagechartclientbutton" class="btn btn-lg btn-primary" type="submit" onclick="redirectusagechart()">
+                    Grafiek
+                </button>
             </div>
-            <tbody class="tbody" id="usage_body">
-            </tbody>
-        </table>
-        <!--/Table with usages of client-->
-        <!--Button to go to chart-->
-        <div class="chartbutton">
-            <button id="usagechartclientbutton" class="btn btn-lg btn-primary" type="submit" onclick="redirectusagechart()">
-                Grafiek
-            </button>
+            <!--/Button to go to chart-->
         </div>
-        <!--/Button to go to chart-->
     </div>
-</div>
-<!-- /Container -->
-<!-- Footer added -->
-<footer id="footer"></footer>
+    <!-- /Container -->
+    <!-- Footer added -->
+    <footer id="footer"></footer>
 </body>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -54,7 +51,4 @@
 <script src="js/usage.js"></script>
 <script src="js/usagechart.js"></script>
 <script src="js/redirect.js"></script>
-
-<script>usageclient()</script>
-<script>include();</script>
 </html>
