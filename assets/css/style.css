@@ -49,9 +49,9 @@ th, td {
     width: 50%;
 }
 
-h1, h3  {
+h1  {
     color: #ea8516 !important;
-    line-height: 26px;
+    line-height: 40px;
 }
 
 h2  {
@@ -59,6 +59,11 @@ h2  {
     margin: 0;
     font-weight: 600;
     font-size: 21px;
+    line-height: 26px;
+}
+
+h3 {
+    color: #ea8516 !important;
     line-height: 26px;
 }
 
@@ -198,6 +203,10 @@ p#back_to_login {
     float: left;
 }
 
+.client-buttons .btn {
+    width: 155px;
+}
+
 #client_body .addiction_row:hover {
     background-color: rgba(234, 133, 22, 0.2);
     cursor: pointer;
@@ -261,7 +270,8 @@ p#back_to_login {
 
 #messages_body {
     display: block;
-    height: 300px;
+    max-height: 450px;
+    height: 100%;
     overflow-y: scroll;
 }
 

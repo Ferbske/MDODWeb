@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
-
     <!--Style for Bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <!--Style loading icon-->
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!--Style for icons (font-awesome)-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--Style-->
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -23,7 +21,7 @@
             <!--Table with treatment clients -->
             <table class='tclients_table table table-striped table-hover'>
                 <div id="loading">
-                    <i id="loading_symbol" class="material-icons w3-spin w3-jumbo">refresh</i>
+                    <i id="loading_symbol" class="fa fa-refresh fa-spin"></i>
                 </div>
                 <tbody class="tbody" id="tclients_body"></tbody>
             </table>
@@ -45,6 +43,5 @@
     <script src="js/authcookie.js"></script>
     <script src="js/redirect.js"></script>
     <script src="js/tabletreatmentclient.js"></script>
-    <script>include();</script>
 </body>
 </html>
