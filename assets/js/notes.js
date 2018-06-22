@@ -38,7 +38,8 @@ function notesclient() {
 
 function createnoteclient() {
     let email = getParameterByName("email");
-    let txt = $("#inputNote").val();
+    let txthead = $("#note_head").val();
+    let txt = $("#note_input").val();
     $.ajax({
         type: 'POST',
         url: 'https://mdod.herokuapp.com/api/v1/note',
@@ -46,6 +47,7 @@ function createnoteclient() {
         beforeSend: setHeader,
         data: {
             "email": email,
+            "title": txthead,
             "description": txt
         },
 
@@ -68,6 +70,7 @@ function createnoteclient() {
 function singlenoteclient() {
     let email = getParameterByName("email");
     let identifier = getParameterByName("id");
+    let txthead = "";
     let txt = "";
     $.ajax({
         type: 'POST',
@@ -82,15 +85,19 @@ function singlenoteclient() {
             console.log("Succes");
             for (let x in data) {
                 if (data[x].id == identifier) {
+                    txthead += data[x].title;
                     txt += data[x].description;
                 }
             }
-            document.getElementById("inputNote").innerHTML = txt;
+            document.getElementById("note_head").value = txthead;
+            document.getElementById("note_input").innerHTML = txt;
             document.getElementById("loading").style.display = "none";
         },
         error: function (data, textStatus, error) {
             console.log(error);
-            document.getElementById("inputNote").innerHTML = txt;
+            document.getElementById("note_head").innerHTML = txthead;
+            document.getElementById("note_input").innerHTML = txt;
+            document.getElementById("loading").style.display = "none";
         },
         complete: function (xhr, textStatus) {
             console.log(xhr.status);
@@ -100,7 +107,8 @@ function singlenoteclient() {
 
 function updatenoteclient() {
     let email = getParameterByName("email");
-    let txt = $("#inputNote").val();
+    let txthead = $("#note_head").val();
+    let txt = $("#note_input").val();
     let identifier = getParameterByName("id");
     $.ajax({
         type: 'PUT',
@@ -110,6 +118,7 @@ function updatenoteclient() {
         data: {
             "id": identifier,
             "email": email,
+            "title": txthead,
             "description": txt
         },
 

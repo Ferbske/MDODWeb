@@ -24,8 +24,8 @@
             <h3 id="notes_create"><i class="fa fa-arrow-left" onclick="history.back()"></i> Notitie aanmaken</h3>
             <table class="notes_create">
                 <tbody class="tbody" id="notes_body">
-                    <textarea type="text" id="inputNote" name="note" class="form-control" placeholder="Notitie" required autofocus>
-                    </textarea>
+                    <input type="text" id="note_head" placeholder="Titel">
+                    <textarea type="text" id="note_input" name="note" class="form-control" placeholder="Notitie" required autofocus></textarea>
                 </tbody>
             </table>
             <button id="createnotebutton" class="btn btn-lg btn-primary" type="submit" onclick="createnoteclient()">
